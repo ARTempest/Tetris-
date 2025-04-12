@@ -1,7 +1,7 @@
 CMakeFiles/tetris.dir/src/main.cpp.o: \
  /home/antuan/Personal/projects/Tetris-/src/main.cpp \
  /usr/include/stdc-predef.h \
- /home/antuan/Personal/projects/Tetris-/src/game.cpp \
+ /home/antuan/Personal/projects/Tetris-/src/blocks.cpp \
  /usr/include/glad/glad.h /usr/include/KHR/khrplatform.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \

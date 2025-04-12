@@ -1,11 +1,15 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include "../include/shader.hpp"
 #include <iostream>
-
+#include "blocks.cpp"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
   glViewport(0, 0, width, height);
 };
+
+
+Shader ourShader("../src/shaders/vShader.txt", "../src/shaders/fShader.txt");
 
 class Game {
 private:
@@ -17,7 +21,6 @@ private:
 public:
   Game (unsigned int, unsigned int);
   GLFWwindow *window;
-  
   void Init();
 
 };
@@ -33,7 +36,7 @@ void Game::Init(){
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
+  
   window = glfwCreateWindow(width, height, "Tetris", NULL, NULL);
   
   if (window == NULL) {
@@ -68,6 +71,9 @@ void Game::processInput() {
 void Game::Render() {
   glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT);
+
+  ourShader.use();
+  glDrawArrays(GL_TRIANGLES, 0, 3);
 }
 
 

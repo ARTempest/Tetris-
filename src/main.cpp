@@ -1,6 +1,6 @@
-#include "game.cpp"
+#include "piece/piece.h"
+#include <glm/fwd.hpp>
 
 int main() {
-  Game game(800,600);
-  game.Init();
+  Piece test (Piece::J, glm::vec1(2.0f));
 }
