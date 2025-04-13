@@ -1,7 +1,7 @@
-CMakeFiles/tetris.dir/src/main.cpp.o: \
- /home/antuan/Personal/projects/Tetris-/src/main.cpp \
+CMakeFiles/tetris.dir/src/render/render.cpp.o: \
+ /home/antuan/Personal/projects/Tetris-/src/render/render.cpp \
  /usr/include/stdc-predef.h \
- /home/antuan/Personal/projects/Tetris-/src/game/game.h \
+ /home/antuan/Personal/projects/Tetris-/src/render/render.h \
  /usr/include/glad/glad.h /usr/include/KHR/khrplatform.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -21,6 +21,7 @@ CMakeFiles/tetris.dir/src/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
  /home/antuan/Personal/projects/Tetris-/libs/glfw/include/GLFW/glfw3.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
+ /home/antuan/Personal/projects/Tetris-/src/render/../game/game.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -155,5 +156,4 @@ CMakeFiles/tetris.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/locale_facets.tcc \
  /usr/include/c++/13/bits/basic_ios.tcc \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
- /usr/include/c++/13/bits/istream.tcc \
- /home/antuan/Personal/projects/Tetris-/src/render/render.h
+ /usr/include/c++/13/bits/istream.tcc

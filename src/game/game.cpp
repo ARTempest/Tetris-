@@ -1,29 +1,4 @@
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include "../include/shader.hpp"
-#include <iostream>
-#include "blocks.cpp"
-
-void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
-  glViewport(0, 0, width, height);
-};
-
-
-Shader ourShader("../src/shaders/vShader.txt", "../src/shaders/fShader.txt");
-
-class Game {
-private:
-  unsigned int width, height;
-  void processInput();
-  void Render();
-
-
-public:
-  Game (unsigned int, unsigned int);
-  GLFWwindow *window;
-  void Init();
-
-};
+#include "game.h"
 
 Game::Game(unsigned int w, unsigned int h){
   width = w;
@@ -31,7 +6,6 @@ Game::Game(unsigned int w, unsigned int h){
 }
 
 void Game::Init(){
-  
   glfwInit();
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -44,22 +18,13 @@ void Game::Init(){
     glfwTerminate();
   }
   glfwMakeContextCurrent(window);
-  
+
   if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
     std::cout << "Failed to initialize GLAD" << std::endl;
   }    
 
-  glViewport(0, 0, 800, 600);
-  glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);  
-  
-
-  while (!glfwWindowShouldClose(window)){
-    processInput();
-    Render();
-    
-    glfwSwapBuffers(window);
-    glfwPollEvents();
-  }
+  glViewport(0,0, width, height);
+  //glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);  
 }
 
 void Game::processInput() {
@@ -68,17 +33,9 @@ void Game::processInput() {
   }
 }
 
-void Game::Render() {
-  glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-  glClear(GL_COLOR_BUFFER_BIT);
-
-  ourShader.use();
-  glDrawArrays(GL_TRIANGLES, 0, 3);
-}
-
-
-
-
+//void Game::framebuffer_size_callback(GLFWwindow* w, int widt, int heigh) {
+ // glViewport(0, 0, widt, heigh);
+//}
 
 
 

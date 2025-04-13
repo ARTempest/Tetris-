@@ -274,6 +274,30 @@ src/OpenGL/stb.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/OpenGL/stb.cpp.s
 .PHONY : src/OpenGL/stb.cpp.s
 
+src/game/game.o: src/game/game.cpp.o
+.PHONY : src/game/game.o
+
+# target to build an object file
+src/game/game.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/game/game.cpp.o
+.PHONY : src/game/game.cpp.o
+
+src/game/game.i: src/game/game.cpp.i
+.PHONY : src/game/game.i
+
+# target to preprocess a source file
+src/game/game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/game/game.cpp.i
+.PHONY : src/game/game.cpp.i
+
+src/game/game.s: src/game/game.cpp.s
+.PHONY : src/game/game.s
+
+# target to generate assembly for a file
+src/game/game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/game/game.cpp.s
+.PHONY : src/game/game.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -298,6 +322,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/render/render.o: src/render/render.cpp.o
+.PHONY : src/render/render.o
+
+# target to build an object file
+src/render/render.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/render/render.cpp.o
+.PHONY : src/render/render.cpp.o
+
+src/render/render.i: src/render/render.cpp.i
+.PHONY : src/render/render.i
+
+# target to preprocess a source file
+src/render/render.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/render/render.cpp.i
+.PHONY : src/render/render.cpp.i
+
+src/render/render.s: src/render/render.cpp.s
+.PHONY : src/render/render.s
+
+# target to generate assembly for a file
+src/render/render.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/render/render.cpp.s
+.PHONY : src/render/render.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -321,9 +369,15 @@ help:
 	@echo "... src/OpenGL/stb.o"
 	@echo "... src/OpenGL/stb.i"
 	@echo "... src/OpenGL/stb.s"
+	@echo "... src/game/game.o"
+	@echo "... src/game/game.i"
+	@echo "... src/game/game.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/render/render.o"
+	@echo "... src/render/render.i"
+	@echo "... src/render/render.s"
 .PHONY : help
 
 

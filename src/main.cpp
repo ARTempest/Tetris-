@@ -1,6 +1,9 @@
-#include "piece/piece.h"
-#include <glm/fwd.hpp>
+#include "game/game.h"
+#include "render/render.h"
 
 int main() {
-  Piece test (Piece::J, glm::vec1(2.0f));
+  Game game(800,600);
+  game.Init();
+  Render render(&game);
+  render.loop();
 }

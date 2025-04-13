@@ -9,7 +9,12 @@ add_subdirectory(libs/glfw)
 add_subdirectory(libs/glm)
 
 # Add your executable
-add_executable(tetris src/main.cpp src/OpenGL/glad.c src/OpenGL/stb.cpp)
+add_executable(tetris src/main.cpp 
+src/OpenGL/glad.c
+src/OpenGL/stb.cpp
+src/render/render.cpp
+src/game/game.cpp
+)
 
 # Link OpenGL and GLFW
 find_package(OpenGL REQUIRED)

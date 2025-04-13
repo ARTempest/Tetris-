@@ -10,7 +10,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/antuan/Personal/projects/Tetris-/src/OpenGL/glad.c" "CMakeFiles/tetris.dir/src/OpenGL/glad.c.o" "gcc" "CMakeFiles/tetris.dir/src/OpenGL/glad.c.o.d"
   "/home/antuan/Personal/projects/Tetris-/src/OpenGL/stb.cpp" "CMakeFiles/tetris.dir/src/OpenGL/stb.cpp.o" "gcc" "CMakeFiles/tetris.dir/src/OpenGL/stb.cpp.o.d"
+  "/home/antuan/Personal/projects/Tetris-/src/game/game.cpp" "CMakeFiles/tetris.dir/src/game/game.cpp.o" "gcc" "CMakeFiles/tetris.dir/src/game/game.cpp.o.d"
   "/home/antuan/Personal/projects/Tetris-/src/main.cpp" "CMakeFiles/tetris.dir/src/main.cpp.o" "gcc" "CMakeFiles/tetris.dir/src/main.cpp.o.d"
+  "/home/antuan/Personal/projects/Tetris-/src/render/render.cpp" "CMakeFiles/tetris.dir/src/render/render.cpp.o" "gcc" "CMakeFiles/tetris.dir/src/render/render.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

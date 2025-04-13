@@ -1,5 +1,5 @@
-CMakeFiles/tetris.dir/src/main.cpp.o: \
- /home/antuan/Personal/projects/Tetris-/src/main.cpp \
+CMakeFiles/tetris.dir/src/game/game.cpp.o: \
+ /home/antuan/Personal/projects/Tetris-/src/game/game.cpp \
  /usr/include/stdc-predef.h \
  /home/antuan/Personal/projects/Tetris-/src/game/game.h \
  /usr/include/glad/glad.h /usr/include/KHR/khrplatform.h \
@@ -155,5 +155,4 @@ CMakeFiles/tetris.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/locale_facets.tcc \
  /usr/include/c++/13/bits/basic_ios.tcc \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
- /usr/include/c++/13/bits/istream.tcc \
- /home/antuan/Personal/projects/Tetris-/src/render/render.h
+ /usr/include/c++/13/bits/istream.tcc
