@@ -12,15 +12,21 @@ class Block {
 private:
   glm::vec3 color;
 
-  const float vertices[9] = {
-    -0.5f, -0.5f, 0.0f,
-     0.5f, -0.5f, 0.0f,
-     0.0f,  0.5f, 0.0f
+  const float vertices[12] = {
+     0.5f,  0.5f, 0.0f,  // top right
+     0.5f, -0.5f, 0.0f,  // bottom right
+    -0.5f, -0.5f, 0.0f,  // bottom left
+    -0.5f,  0.5f, 0.0f   // top left 
+  };
+
+  const int indices[6] = {
+    0, 1, 3,
+    1, 2, 3
   };
 
 
 public:
-  unsigned int VBO, VAO;
+  unsigned int VBO, VAO, EBO;
   glm::vec2 position;
   enum colors {red, blue, yellow, green};
 

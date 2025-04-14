@@ -2,6 +2,7 @@
 #include "../game/game.h"
 #include "../block/block.h"
 #include "../../include/shader.h"
+#include <GLFW/glfw3.h>
 
 
 Render::Render(Game* g, Shader* s, Block* b) {
@@ -17,6 +18,11 @@ void Render::loop() {
     renderization(); // Rendering Commands
     swapBuffers(); // Calls and swap buffers
  }
+
+  glDeleteVertexArrays(1, &block->VAO);
+  glDeleteBuffers(1, &block->VBO);
+  glDeleteBuffers(1, &block->EBO);
+  glfwTerminate();
 }
 
 void Render::renderization(){
@@ -24,14 +30,10 @@ void Render::renderization(){
   
   glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT); 
-
-  // Define an orto projection
-  //glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(4.0f, 6.0f, 0.0f));
-  //glm::mat4 projection = glm::ortho(0.0f, 10.0f, 20.0f, 0.0f, -1.0f, 1.0f);
-
   shader->use();
+
   glBindVertexArray(block->VAO);
-  glDrawArrays(GL_TRIANGLES, 0, 3);
+  glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
 void Render::swapBuffers() {
