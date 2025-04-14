@@ -1,27 +1,4 @@
-#ifndef SHADER_H
-#define SHADER_H
-
-#include <glad/glad.h>
-
-#include <string>
-#include <fstream>
-#include <sstream>
-#include <iostream>
-
-
-class Shader {
-
-public:
-  unsigned int ID;
-    
-  Shader(const char* vertePath, const char* fragmentPath);
-    
-  void use();
-
-  void setBool(const std::string &name, bool value) const;
-  void setInt(const std::string &name, int value) const;
-  void setFloat(const std::string &name, float value) const;
-};
+#include "shader.h"
 
 Shader::Shader(const char* vertexPath, const char* fragmentPath) {
   std::string vertexCode;
@@ -50,7 +27,7 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath) {
 
 
 
-  } catch(std::ifstream::failure e) {
+  } catch(std::ifstream::failure& e) {
     std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << '\n';
   }
 
@@ -114,6 +91,3 @@ void Shader::setInt(const std::string &name, int value) const {
 void Shader::setFloat(const std::string &name, float value) const {
   glUniform1i(glGetUniformLocation(ID, name.c_str()), value);
 }
-
-
-#endif

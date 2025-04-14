@@ -226,6 +226,30 @@ glm_dummy/fast:
 	$(MAKE) $(MAKESILENT) -f libs/glm/glm/CMakeFiles/glm_dummy.dir/build.make libs/glm/glm/CMakeFiles/glm_dummy.dir/build
 .PHONY : glm_dummy/fast
 
+include/shader.o: include/shader.cpp.o
+.PHONY : include/shader.o
+
+# target to build an object file
+include/shader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/include/shader.cpp.o
+.PHONY : include/shader.cpp.o
+
+include/shader.i: include/shader.cpp.i
+.PHONY : include/shader.i
+
+# target to preprocess a source file
+include/shader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/include/shader.cpp.i
+.PHONY : include/shader.cpp.i
+
+include/shader.s: include/shader.cpp.s
+.PHONY : include/shader.s
+
+# target to generate assembly for a file
+include/shader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/include/shader.cpp.s
+.PHONY : include/shader.cpp.s
+
 src/OpenGL/glad.o: src/OpenGL/glad.c.o
 .PHONY : src/OpenGL/glad.o
 
@@ -273,6 +297,30 @@ src/OpenGL/stb.s: src/OpenGL/stb.cpp.s
 src/OpenGL/stb.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/OpenGL/stb.cpp.s
 .PHONY : src/OpenGL/stb.cpp.s
+
+src/block/block.o: src/block/block.cpp.o
+.PHONY : src/block/block.o
+
+# target to build an object file
+src/block/block.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/block/block.cpp.o
+.PHONY : src/block/block.cpp.o
+
+src/block/block.i: src/block/block.cpp.i
+.PHONY : src/block/block.i
+
+# target to preprocess a source file
+src/block/block.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/block/block.cpp.i
+.PHONY : src/block/block.cpp.i
+
+src/block/block.s: src/block/block.cpp.s
+.PHONY : src/block/block.s
+
+# target to generate assembly for a file
+src/block/block.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/block/block.cpp.s
+.PHONY : src/block/block.cpp.s
 
 src/game/game.o: src/game/game.cpp.o
 .PHONY : src/game/game.o
@@ -363,12 +411,18 @@ help:
 	@echo "... glfw"
 	@echo "... glm_dummy"
 	@echo "... tetris"
+	@echo "... include/shader.o"
+	@echo "... include/shader.i"
+	@echo "... include/shader.s"
 	@echo "... src/OpenGL/glad.o"
 	@echo "... src/OpenGL/glad.i"
 	@echo "... src/OpenGL/glad.s"
 	@echo "... src/OpenGL/stb.o"
 	@echo "... src/OpenGL/stb.i"
 	@echo "... src/OpenGL/stb.s"
+	@echo "... src/block/block.o"
+	@echo "... src/block/block.i"
+	@echo "... src/block/block.s"
 	@echo "... src/game/game.o"
 	@echo "... src/game/game.i"
 	@echo "... src/game/game.s"

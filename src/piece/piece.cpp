@@ -1,6 +1,4 @@
 #include "piece.h"  // T L J S Z O
-#include <glm/fwd.hpp>
-
 
 Piece::Piece(shape newShape, float posX){
 // Selecting piece shape
@@ -33,6 +31,8 @@ Piece::Piece(shape newShape, float posX){
 // Assigning a position for the new piece
   position.x = posX;
 };
+
+
 
 
 

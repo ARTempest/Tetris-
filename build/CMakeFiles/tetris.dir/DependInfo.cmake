@@ -9,7 +9,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/antuan/Personal/projects/Tetris-/src/OpenGL/glad.c" "CMakeFiles/tetris.dir/src/OpenGL/glad.c.o" "gcc" "CMakeFiles/tetris.dir/src/OpenGL/glad.c.o.d"
+  "/home/antuan/Personal/projects/Tetris-/include/shader.cpp" "CMakeFiles/tetris.dir/include/shader.cpp.o" "gcc" "CMakeFiles/tetris.dir/include/shader.cpp.o.d"
   "/home/antuan/Personal/projects/Tetris-/src/OpenGL/stb.cpp" "CMakeFiles/tetris.dir/src/OpenGL/stb.cpp.o" "gcc" "CMakeFiles/tetris.dir/src/OpenGL/stb.cpp.o.d"
+  "/home/antuan/Personal/projects/Tetris-/src/block/block.cpp" "CMakeFiles/tetris.dir/src/block/block.cpp.o" "gcc" "CMakeFiles/tetris.dir/src/block/block.cpp.o.d"
   "/home/antuan/Personal/projects/Tetris-/src/game/game.cpp" "CMakeFiles/tetris.dir/src/game/game.cpp.o" "gcc" "CMakeFiles/tetris.dir/src/game/game.cpp.o.d"
   "/home/antuan/Personal/projects/Tetris-/src/main.cpp" "CMakeFiles/tetris.dir/src/main.cpp.o" "gcc" "CMakeFiles/tetris.dir/src/main.cpp.o.d"
   "/home/antuan/Personal/projects/Tetris-/src/render/render.cpp" "CMakeFiles/tetris.dir/src/render/render.cpp.o" "gcc" "CMakeFiles/tetris.dir/src/render/render.cpp.o.d"

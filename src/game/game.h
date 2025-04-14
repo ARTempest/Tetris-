@@ -9,12 +9,15 @@
 class Game {
 private:
   unsigned int width, height;
+  
 public:
-  GLFWwindow* window; 
-  void processInput();
-  //static void framebuffer_size_callback(GLFWwindow*, int, int);
-  void Init();
   Game(unsigned int, unsigned int);
+  void processInput();
+  void Init();
 
+  static void framebuffer_size_callback(GLFWwindow*, int, int);
+
+  GLFWwindow* window; 
 };
 #endif 
+

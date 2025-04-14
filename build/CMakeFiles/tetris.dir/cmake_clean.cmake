@@ -1,8 +1,12 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/tetris.dir/include/shader.cpp.o"
+  "CMakeFiles/tetris.dir/include/shader.cpp.o.d"
   "CMakeFiles/tetris.dir/src/OpenGL/glad.c.o"
   "CMakeFiles/tetris.dir/src/OpenGL/glad.c.o.d"
   "CMakeFiles/tetris.dir/src/OpenGL/stb.cpp.o"
   "CMakeFiles/tetris.dir/src/OpenGL/stb.cpp.o.d"
+  "CMakeFiles/tetris.dir/src/block/block.cpp.o"
+  "CMakeFiles/tetris.dir/src/block/block.cpp.o.d"
   "CMakeFiles/tetris.dir/src/game/game.cpp.o"
   "CMakeFiles/tetris.dir/src/game/game.cpp.o.d"
   "CMakeFiles/tetris.dir/src/main.cpp.o"

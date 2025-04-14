@@ -10,9 +10,17 @@
 
 class Block {
 private:
-  unsigned int VBO, VAO, BEO;
   glm::vec3 color;
+
+  const float vertices[9] = {
+    -0.5f, -0.5f, 0.0f,
+     0.5f, -0.5f, 0.0f,
+     0.0f,  0.5f, 0.0f
+  };
+
+
 public:
+  unsigned int VBO, VAO;
   glm::vec2 position;
   enum colors {red, blue, yellow, green};
 

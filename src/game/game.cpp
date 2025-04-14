@@ -1,4 +1,5 @@
 #include "game.h"
+#include <GLFW/glfw3.h>
 
 Game::Game(unsigned int w, unsigned int h){
   width = w;
@@ -18,13 +19,12 @@ void Game::Init(){
     glfwTerminate();
   }
   glfwMakeContextCurrent(window);
+  glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+
 
   if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
     std::cout << "Failed to initialize GLAD" << std::endl;
   }    
-
-  glViewport(0,0, width, height);
-  //glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);  
 }
 
 void Game::processInput() {
@@ -33,9 +33,9 @@ void Game::processInput() {
   }
 }
 
-//void Game::framebuffer_size_callback(GLFWwindow* w, int widt, int heigh) {
- // glViewport(0, 0, widt, heigh);
-//}
+void Game::framebuffer_size_callback(GLFWwindow* window, int w, int h) {
+    glViewport(0, 0, w, h);
+}
 
 
 

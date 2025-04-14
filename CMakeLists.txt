@@ -14,6 +14,8 @@ src/OpenGL/glad.c
 src/OpenGL/stb.cpp
 src/render/render.cpp
 src/game/game.cpp
+src/block/block.cpp
+include/shader.cpp
 )
 
 # Link OpenGL and GLFW
