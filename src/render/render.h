@@ -9,6 +9,7 @@ class Game;
 class Shader;
 class Block;
 class Texture;
+class Piece;
 
 class Render {
 private:

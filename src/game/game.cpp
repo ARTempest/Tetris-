@@ -1,5 +1,7 @@
 #include "game.h"
 #include <GLFW/glfw3.h>
+#include <glm/ext/vector_float2.hpp>
+#include <memory>
 
 Game::Game(unsigned int w, unsigned int h){
   width = w;
@@ -27,7 +29,11 @@ void Game::Init(){
   if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
     std::cout << "Failed to initialize GLAD" << std::endl;
   }    
+
+
+  activePiece = std::make_unique<Piece>(Piece::Z, glm::vec2(5.0f, 5.0f));
 }
+
 
 void Game::processInput() {
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {

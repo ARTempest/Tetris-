@@ -394,6 +394,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/piece/piece.o: src/piece/piece.cpp.o
+.PHONY : src/piece/piece.o
+
+# target to build an object file
+src/piece/piece.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/piece/piece.cpp.o
+.PHONY : src/piece/piece.cpp.o
+
+src/piece/piece.i: src/piece/piece.cpp.i
+.PHONY : src/piece/piece.i
+
+# target to preprocess a source file
+src/piece/piece.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/piece/piece.cpp.i
+.PHONY : src/piece/piece.cpp.i
+
+src/piece/piece.s: src/piece/piece.cpp.s
+.PHONY : src/piece/piece.s
+
+# target to generate assembly for a file
+src/piece/piece.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/piece/piece.cpp.s
+.PHONY : src/piece/piece.cpp.s
+
 src/render/render.o: src/render/render.cpp.o
 .PHONY : src/render/render.o
 
@@ -456,6 +480,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/piece/piece.o"
+	@echo "... src/piece/piece.i"
+	@echo "... src/piece/piece.s"
 	@echo "... src/render/render.o"
 	@echo "... src/render/render.i"
 	@echo "... src/render/render.s"

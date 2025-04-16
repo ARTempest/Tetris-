@@ -1,14 +1,10 @@
 #include "render.h"
 #include "../game/game.h"
 #include "../block/block.h"
+#include "../piece/piece.h"
 #include "../../include/shader.h"
 #include "../../include/texture.h"
-#include <GLFW/glfw3.h>
-#include <glm/ext/matrix_clip_space.hpp>
-#include <glm/ext/matrix_float4x4.hpp>
-#include <glm/ext/vector_float3.hpp>
-#include <glm/gtc/quaternion.hpp>
-
+#include <glm/ext/vector_float2.hpp>
 
 Render::Render(Game* g, Shader* s, Block* b, Texture* t) {
   game   = g;
@@ -34,15 +30,18 @@ void Render::loop() {
 void Render::renderization(){
  // Define and Apply the Background
   
-  glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+  glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+  //glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT); 
 
-  glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(4.0f, 6.0f, 0.0f));
   glm::mat4 projection = glm::ortho(0.0f, game->worldW, 0.0f, game->worldH, -1.0f, 1.0f);
+
+  for (int i=0; i < 4; i++){
+  
+  glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(game->activePiece->blockPos[i], 0.0f));
 
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, texture->texture);
-
 
   shader->use();
   shader->setMat4("model", model);
@@ -50,7 +49,8 @@ void Render::renderization(){
 
   glBindVertexArray(block->VAO);
   glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-}
+  }
+ }
 
 void Render::swapBuffers() {
     glfwPollEvents();

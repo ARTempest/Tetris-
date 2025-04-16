@@ -15,6 +15,7 @@ src/OpenGL/stb.cpp
 src/render/render.cpp
 src/game/game.cpp
 src/block/block.cpp
+src/piece/piece.cpp
 include/shader.cpp
 include/texture.cpp
 )
