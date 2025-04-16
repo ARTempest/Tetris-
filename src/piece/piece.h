@@ -13,16 +13,18 @@
 class Block;
 
 class Piece {
-public:
-  glm::vec2 blockPos[4];
-  enum shape {T, L, J, S, Z, O};
-  Piece(shape, glm::vec2);
+private:
   void createT(glm::vec2 pos);
   void createL(glm::vec2 pos);
   void createJ(glm::vec2 pos);
   void createS(glm::vec2 pos);
   void createZ(glm::vec2 pos);
   void createO(glm::vec2 pos);
+public:
+  glm::vec2 blockPos[4];
+  enum shape {T, L, J, S, Z, O};
+  Piece(shape, glm::vec2);
+  void movePiece(int, int);
 };
 #endif
 

@@ -17,6 +17,8 @@ private:
   Shader* shader;
   Block* block;
   Texture* texture;
+  int frame = 0;
+  void actualizeFrame();
 public:
   Render(Game*, Shader*, Block*, Texture*);
   void renderization();

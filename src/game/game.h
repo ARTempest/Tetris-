@@ -14,6 +14,7 @@ class Piece;
 class Game {
 private:
   unsigned int width, height;
+  void pieceMov();
 public:
   float worldW = 10.0f;
   float worldH = 20.0f;
@@ -21,7 +22,7 @@ public:
   std::unique_ptr<Piece> activePiece;
 
   Game(unsigned int, unsigned int);
-  void processInput();
+  void processInput(int);
   void Init();
 
   void generatePiece();

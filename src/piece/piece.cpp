@@ -75,3 +75,12 @@ void Piece::createO(glm::vec2 pos) {
   blockPos[3] = {pos.x + 2, pos.y + 2};
 }
 
+void Piece::movePiece(int x, int y) {
+  blockPos[0].x += x; blockPos[0].y += y;
+  blockPos[1].x += x; blockPos[1].y += y;
+  blockPos[2].x += x; blockPos[2].y += y;
+  blockPos[3].x += x; blockPos[3].y += y;
+}
+
+
+

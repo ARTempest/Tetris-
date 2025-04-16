@@ -35,9 +35,13 @@ void Game::Init(){
 }
 
 
-void Game::processInput() {
+void Game::processInput(int frameRate) {
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
     glfwSetWindowShouldClose(window, true);
+  }
+
+  if (frameRate % 8 == 0) {
+    pieceMov();
   }
 }
 
@@ -50,6 +54,19 @@ void Game::framebuffer_size_callback(GLFWwindow* window, int w, int h) {
   game->worldH = 20.0f;
   game->worldW = game->worldH * aspect;
   
+}
+
+
+void Game::pieceMov() {
+  if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
+    activePiece->movePiece(1, 0);
+  } else if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
+    activePiece->movePiece(-1, 0);
+  }
+
+  if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) {
+    activePiece->movePiece(0, -1);
+  }
 }
 
 

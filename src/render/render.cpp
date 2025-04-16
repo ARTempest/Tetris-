@@ -5,6 +5,7 @@
 #include "../../include/shader.h"
 #include "../../include/texture.h"
 #include <glm/ext/vector_float2.hpp>
+#include <iostream>
 
 Render::Render(Game* g, Shader* s, Block* b, Texture* t) {
   game   = g;
@@ -14,9 +15,10 @@ Render::Render(Game* g, Shader* s, Block* b, Texture* t) {
 }
 
 void Render::loop() {
-  while (!glfwWindowShouldClose(game->window)) {
 
-    game->processInput(); // Input
+  while (!glfwWindowShouldClose(game->window)) {
+    actualizeFrame();
+    game->processInput(frame); // Input
     renderization(); // Rendering Commands
     swapBuffers(); // Calls and swap buffers
  }
@@ -57,4 +59,11 @@ void Render::swapBuffers() {
     glfwSwapBuffers(game->window);
 }
 
+void Render::actualizeFrame() {
+  frame += 1;
+  if (frame == 60) {
+    frame = 0;
+  }
 
+  std::cout << frame << '\n';
+}
