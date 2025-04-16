@@ -250,6 +250,30 @@ include/shader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/include/shader.cpp.s
 .PHONY : include/shader.cpp.s
 
+include/texture.o: include/texture.cpp.o
+.PHONY : include/texture.o
+
+# target to build an object file
+include/texture.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/include/texture.cpp.o
+.PHONY : include/texture.cpp.o
+
+include/texture.i: include/texture.cpp.i
+.PHONY : include/texture.i
+
+# target to preprocess a source file
+include/texture.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/include/texture.cpp.i
+.PHONY : include/texture.cpp.i
+
+include/texture.s: include/texture.cpp.s
+.PHONY : include/texture.s
+
+# target to generate assembly for a file
+include/texture.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/include/texture.cpp.s
+.PHONY : include/texture.cpp.s
+
 src/OpenGL/glad.o: src/OpenGL/glad.c.o
 .PHONY : src/OpenGL/glad.o
 
@@ -414,6 +438,9 @@ help:
 	@echo "... include/shader.o"
 	@echo "... include/shader.i"
 	@echo "... include/shader.s"
+	@echo "... include/texture.o"
+	@echo "... include/texture.i"
+	@echo "... include/texture.s"
 	@echo "... src/OpenGL/glad.o"
 	@echo "... src/OpenGL/glad.i"
 	@echo "... src/OpenGL/glad.s"

@@ -354,4 +354,7 @@ CMakeFiles/tetris.dir/src/main.cpp.o: \
  /usr/include/string.h /usr/include/strings.h \
  /usr/include/glm/gtc/type_ptr.inl \
  /home/antuan/Personal/projects/Tetris-/src/render/render.h \
+ /home/antuan/Personal/projects/Tetris-/src/../include/texture.h \
+ /home/antuan/Personal/projects/Tetris-/src/../include/../libs/stb_image.h \
+ /usr/include/c++/13/stdlib.h \
  /home/antuan/Personal/projects/Tetris-/src/block/block.h

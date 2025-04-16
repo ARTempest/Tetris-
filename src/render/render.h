@@ -8,16 +8,16 @@
 class Game;
 class Shader;
 class Block;
-
+class Texture;
 
 class Render {
 private:
   Game* game;
   Shader* shader;
   Block* block;
-
+  Texture* texture;
 public:
-  Render(Game*, Shader*, Block*);
+  Render(Game*, Shader*, Block*, Texture*);
   void renderization();
   void swapBuffers();
   void loop();

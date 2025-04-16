@@ -16,6 +16,7 @@ src/render/render.cpp
 src/game/game.cpp
 src/block/block.cpp
 include/shader.cpp
+include/texture.cpp
 )
 
 # Link OpenGL and GLFW

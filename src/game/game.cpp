@@ -14,12 +14,14 @@ void Game::Init(){
   
   window = glfwCreateWindow(width, height, "Tetris", NULL, NULL);
   
+  glfwSetWindowUserPointer(window, this);
+
   if (window == NULL) {
     std::cout << "ERROR_WHILE_CREATING_WINDOW" << '\n';
     glfwTerminate();
   }
   glfwMakeContextCurrent(window);
-  glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+  glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);                                                                       
 
 
   if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
@@ -34,7 +36,14 @@ void Game::processInput() {
 }
 
 void Game::framebuffer_size_callback(GLFWwindow* window, int w, int h) {
-    glViewport(0, 0, w, h);
+  Game* game = static_cast<Game*>(glfwGetWindowUserPointer(window));
+
+  glViewport(0, 0, w, h);
+
+  float aspect = static_cast<float>(w) / static_cast<float>(h);
+  game->worldH = 20.0f;
+  game->worldW = game->worldH * aspect;
+  
 }
 
 
