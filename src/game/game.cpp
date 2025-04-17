@@ -39,10 +39,7 @@ void Game::processInput(int frameRate) {
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
     glfwSetWindowShouldClose(window, true);
   }
-
-  if (frameRate % 8 == 0) {
-    pieceMov();
-  }
+  pieceMov(frameRate);
 }
 
 void Game::framebuffer_size_callback(GLFWwindow* window, int w, int h) {
@@ -57,15 +54,50 @@ void Game::framebuffer_size_callback(GLFWwindow* window, int w, int h) {
 }
 
 
-void Game::pieceMov() {
-  if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
+void Game::pieceMov(int frameRate) {
+  bool pressingR = glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS;
+  bool pressingL = glfwGetKey(window, GLFW_KEY_LEFT)  == GLFW_PRESS;
+  bool pressingD = glfwGetKey(window, GLFW_KEY_DOWN)  == GLFW_PRESS;
+
+
+  if (pressingR && !pressingL && movingR == false) {
     activePiece->movePiece(1, 0);
-  } else if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
+    movingR = true;
+    delayR = 10;
+  }
+  else if (pressingL && !pressingR && movingL == false) {
     activePiece->movePiece(-1, 0);
+    movingL = true;
+    delayL = 10;
+  }
+  else if (frameRate % 15 == 0){
+
+    if (pressingR && !pressingL && delayR == 0) {
+     activePiece->movePiece(1, 0);
+    } 
+    else if (pressingL && !pressingR && delayL == 0) {
+     activePiece->movePiece(-1, 0);
+    }
+
+    if (pressingD) {
+     activePiece->movePiece(0, -1);
+    }
   }
 
-  if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) {
-    activePiece->movePiece(0, -1);
+  if (!pressingR) {
+    movingR = false;
+  }
+
+  if (!pressingL) {
+    movingL = false;
+  }
+  
+  if (delayR > 0) {
+    delayR -= 1;
+  }
+
+  if (delayL > 0) {
+    delayL -= 1;
   }
 }
 
