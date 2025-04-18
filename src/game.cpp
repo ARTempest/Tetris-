@@ -1,4 +1,4 @@
-#include "game.h"
+#include "../include/game.h"
 #include <GLFW/glfw3.h>
 #include <glm/ext/vector_float2.hpp>
 #include <memory>

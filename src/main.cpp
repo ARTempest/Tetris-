@@ -1,8 +1,8 @@
-#include "game/game.h"
+#include "../include/game.h"
 #include "../include/shader.h"
-#include "render/render.h"
+#include "../include/render.h"
 #include "../include/texture.h"
-#include "block/block.h"
+#include "../include/block.h"
 
 int main() {
   Render* renderPointer;

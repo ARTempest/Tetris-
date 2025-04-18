@@ -1,4 +1,4 @@
-#include "block.h"
+#include "../include/block.h"
 
 Block::Block(glm::vec2 pos, colors c) {
   position = pos;

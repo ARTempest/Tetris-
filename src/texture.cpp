@@ -1,4 +1,4 @@
-#include "texture.h"
+#include "../include/texture.h"
 
 
 Texture::Texture(const char* path) {

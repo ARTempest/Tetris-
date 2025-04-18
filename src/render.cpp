@@ -1,9 +1,9 @@
-#include "render.h"
-#include "../game/game.h"
-#include "../block/block.h"
-#include "../piece/piece.h"
-#include "../../include/shader.h"
-#include "../../include/texture.h"
+#include "../include/render.h"
+#include "../include/game.h"
+#include "../include/block.h"
+#include "../include/piece.h"
+#include "../include/shader.h"
+#include "../include/texture.h"
 #include <glm/ext/vector_float2.hpp>
 #include <iostream>
 

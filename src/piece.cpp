@@ -1,5 +1,5 @@
-#include "piece.h"  // T L J S Z O
-#include "../block/block.h"
+#include "../include/piece.h"  // T L J S Z O
+#include "../include/block.h"
 #include <glm/ext/vector_float2.hpp>
 
 Piece::Piece(shape newShape, glm::vec2 pos) {
