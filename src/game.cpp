@@ -23,13 +23,11 @@ void Game::Init(){
     glfwTerminate();
   }
   glfwMakeContextCurrent(window);
-  glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);                                                                       
-
+  glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
   if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
     std::cout << "Failed to initialize GLAD" << std::endl;
   }    
-
 
   activePiece = std::make_unique<Piece>(Piece::Z, glm::vec2(5.0f, 5.0f));
 }
@@ -53,7 +51,6 @@ void Game::framebuffer_size_callback(GLFWwindow* window, int w, int h) {
   
 }
 
-
 void Game::pieceMov(int frameRate) {
   bool pressingR = glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS;
   bool pressingL = glfwGetKey(window, GLFW_KEY_LEFT)  == GLFW_PRESS;
@@ -61,26 +58,26 @@ void Game::pieceMov(int frameRate) {
 
 
   if (pressingR && !pressingL && movingR == false) {
-    activePiece->movePiece(1, 0);
+    activePiece->move(1, 0);
     movingR = true;
     delayR = 10;
   }
   else if (pressingL && !pressingR && movingL == false) {
-    activePiece->movePiece(-1, 0);
+    activePiece->move(-1, 0);
     movingL = true;
     delayL = 10;
   }
   else if (frameRate % 15 == 0){
 
     if (pressingR && !pressingL && delayR == 0) {
-     activePiece->movePiece(1, 0);
+     activePiece->move(1, 0);
     } 
     else if (pressingL && !pressingR && delayL == 0) {
-     activePiece->movePiece(-1, 0);
+     activePiece->move(-1, 0);
     }
 
     if (pressingD) {
-     activePiece->movePiece(0, -1);
+     activePiece->move(0, -1);
     }
   }
 

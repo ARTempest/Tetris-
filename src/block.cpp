@@ -1,8 +1,7 @@
 #include "../include/block.h"
 
-Block::Block(glm::vec2 pos, colors c) {
-  position = pos;
-
+Block::Block(glm::vec2 pos, colors c) : position(pos) {
+ 
   glGenVertexArrays(1, &VAO);
   glGenBuffers(1, &VBO);
   glGenBuffers(1, &EBO);
@@ -23,9 +22,6 @@ Block::Block(glm::vec2 pos, colors c) {
 
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
-
-  //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-
 } 
 
 

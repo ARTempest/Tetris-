@@ -226,54 +226,6 @@ glm_dummy/fast:
 	$(MAKE) $(MAKESILENT) -f libs/glm/glm/CMakeFiles/glm_dummy.dir/build.make libs/glm/glm/CMakeFiles/glm_dummy.dir/build
 .PHONY : glm_dummy/fast
 
-include/shader.o: include/shader.cpp.o
-.PHONY : include/shader.o
-
-# target to build an object file
-include/shader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/include/shader.cpp.o
-.PHONY : include/shader.cpp.o
-
-include/shader.i: include/shader.cpp.i
-.PHONY : include/shader.i
-
-# target to preprocess a source file
-include/shader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/include/shader.cpp.i
-.PHONY : include/shader.cpp.i
-
-include/shader.s: include/shader.cpp.s
-.PHONY : include/shader.s
-
-# target to generate assembly for a file
-include/shader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/include/shader.cpp.s
-.PHONY : include/shader.cpp.s
-
-include/texture.o: include/texture.cpp.o
-.PHONY : include/texture.o
-
-# target to build an object file
-include/texture.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/include/texture.cpp.o
-.PHONY : include/texture.cpp.o
-
-include/texture.i: include/texture.cpp.i
-.PHONY : include/texture.i
-
-# target to preprocess a source file
-include/texture.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/include/texture.cpp.i
-.PHONY : include/texture.cpp.i
-
-include/texture.s: include/texture.cpp.s
-.PHONY : include/texture.s
-
-# target to generate assembly for a file
-include/texture.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/include/texture.cpp.s
-.PHONY : include/texture.cpp.s
-
 src/OpenGL/glad.o: src/OpenGL/glad.c.o
 .PHONY : src/OpenGL/glad.o
 
@@ -322,53 +274,53 @@ src/OpenGL/stb.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/OpenGL/stb.cpp.s
 .PHONY : src/OpenGL/stb.cpp.s
 
-src/block/block.o: src/block/block.cpp.o
-.PHONY : src/block/block.o
+src/block.o: src/block.cpp.o
+.PHONY : src/block.o
 
 # target to build an object file
-src/block/block.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/block/block.cpp.o
-.PHONY : src/block/block.cpp.o
+src/block.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/block.cpp.o
+.PHONY : src/block.cpp.o
 
-src/block/block.i: src/block/block.cpp.i
-.PHONY : src/block/block.i
+src/block.i: src/block.cpp.i
+.PHONY : src/block.i
 
 # target to preprocess a source file
-src/block/block.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/block/block.cpp.i
-.PHONY : src/block/block.cpp.i
+src/block.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/block.cpp.i
+.PHONY : src/block.cpp.i
 
-src/block/block.s: src/block/block.cpp.s
-.PHONY : src/block/block.s
+src/block.s: src/block.cpp.s
+.PHONY : src/block.s
 
 # target to generate assembly for a file
-src/block/block.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/block/block.cpp.s
-.PHONY : src/block/block.cpp.s
+src/block.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/block.cpp.s
+.PHONY : src/block.cpp.s
 
-src/game/game.o: src/game/game.cpp.o
-.PHONY : src/game/game.o
+src/game.o: src/game.cpp.o
+.PHONY : src/game.o
 
 # target to build an object file
-src/game/game.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/game/game.cpp.o
-.PHONY : src/game/game.cpp.o
+src/game.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/game.cpp.o
+.PHONY : src/game.cpp.o
 
-src/game/game.i: src/game/game.cpp.i
-.PHONY : src/game/game.i
+src/game.i: src/game.cpp.i
+.PHONY : src/game.i
 
 # target to preprocess a source file
-src/game/game.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/game/game.cpp.i
-.PHONY : src/game/game.cpp.i
+src/game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/game.cpp.i
+.PHONY : src/game.cpp.i
 
-src/game/game.s: src/game/game.cpp.s
-.PHONY : src/game/game.s
+src/game.s: src/game.cpp.s
+.PHONY : src/game.s
 
 # target to generate assembly for a file
-src/game/game.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/game/game.cpp.s
-.PHONY : src/game/game.cpp.s
+src/game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/game.cpp.s
+.PHONY : src/game.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
@@ -394,53 +346,101 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/piece/piece.o: src/piece/piece.cpp.o
-.PHONY : src/piece/piece.o
+src/piece.o: src/piece.cpp.o
+.PHONY : src/piece.o
 
 # target to build an object file
-src/piece/piece.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/piece/piece.cpp.o
-.PHONY : src/piece/piece.cpp.o
+src/piece.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/piece.cpp.o
+.PHONY : src/piece.cpp.o
 
-src/piece/piece.i: src/piece/piece.cpp.i
-.PHONY : src/piece/piece.i
+src/piece.i: src/piece.cpp.i
+.PHONY : src/piece.i
 
 # target to preprocess a source file
-src/piece/piece.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/piece/piece.cpp.i
-.PHONY : src/piece/piece.cpp.i
+src/piece.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/piece.cpp.i
+.PHONY : src/piece.cpp.i
 
-src/piece/piece.s: src/piece/piece.cpp.s
-.PHONY : src/piece/piece.s
+src/piece.s: src/piece.cpp.s
+.PHONY : src/piece.s
 
 # target to generate assembly for a file
-src/piece/piece.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/piece/piece.cpp.s
-.PHONY : src/piece/piece.cpp.s
+src/piece.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/piece.cpp.s
+.PHONY : src/piece.cpp.s
 
-src/render/render.o: src/render/render.cpp.o
-.PHONY : src/render/render.o
+src/render.o: src/render.cpp.o
+.PHONY : src/render.o
 
 # target to build an object file
-src/render/render.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/render/render.cpp.o
-.PHONY : src/render/render.cpp.o
+src/render.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/render.cpp.o
+.PHONY : src/render.cpp.o
 
-src/render/render.i: src/render/render.cpp.i
-.PHONY : src/render/render.i
+src/render.i: src/render.cpp.i
+.PHONY : src/render.i
 
 # target to preprocess a source file
-src/render/render.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/render/render.cpp.i
-.PHONY : src/render/render.cpp.i
+src/render.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/render.cpp.i
+.PHONY : src/render.cpp.i
 
-src/render/render.s: src/render/render.cpp.s
-.PHONY : src/render/render.s
+src/render.s: src/render.cpp.s
+.PHONY : src/render.s
 
 # target to generate assembly for a file
-src/render/render.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/render/render.cpp.s
-.PHONY : src/render/render.cpp.s
+src/render.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/render.cpp.s
+.PHONY : src/render.cpp.s
+
+src/shader.o: src/shader.cpp.o
+.PHONY : src/shader.o
+
+# target to build an object file
+src/shader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/shader.cpp.o
+.PHONY : src/shader.cpp.o
+
+src/shader.i: src/shader.cpp.i
+.PHONY : src/shader.i
+
+# target to preprocess a source file
+src/shader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/shader.cpp.i
+.PHONY : src/shader.cpp.i
+
+src/shader.s: src/shader.cpp.s
+.PHONY : src/shader.s
+
+# target to generate assembly for a file
+src/shader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/shader.cpp.s
+.PHONY : src/shader.cpp.s
+
+src/texture.o: src/texture.cpp.o
+.PHONY : src/texture.o
+
+# target to build an object file
+src/texture.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/texture.cpp.o
+.PHONY : src/texture.cpp.o
+
+src/texture.i: src/texture.cpp.i
+.PHONY : src/texture.i
+
+# target to preprocess a source file
+src/texture.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/texture.cpp.i
+.PHONY : src/texture.cpp.i
+
+src/texture.s: src/texture.cpp.s
+.PHONY : src/texture.s
+
+# target to generate assembly for a file
+src/texture.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tetris.dir/build.make CMakeFiles/tetris.dir/src/texture.cpp.s
+.PHONY : src/texture.cpp.s
 
 # Help Target
 help:
@@ -459,33 +459,33 @@ help:
 	@echo "... glfw"
 	@echo "... glm_dummy"
 	@echo "... tetris"
-	@echo "... include/shader.o"
-	@echo "... include/shader.i"
-	@echo "... include/shader.s"
-	@echo "... include/texture.o"
-	@echo "... include/texture.i"
-	@echo "... include/texture.s"
 	@echo "... src/OpenGL/glad.o"
 	@echo "... src/OpenGL/glad.i"
 	@echo "... src/OpenGL/glad.s"
 	@echo "... src/OpenGL/stb.o"
 	@echo "... src/OpenGL/stb.i"
 	@echo "... src/OpenGL/stb.s"
-	@echo "... src/block/block.o"
-	@echo "... src/block/block.i"
-	@echo "... src/block/block.s"
-	@echo "... src/game/game.o"
-	@echo "... src/game/game.i"
-	@echo "... src/game/game.s"
+	@echo "... src/block.o"
+	@echo "... src/block.i"
+	@echo "... src/block.s"
+	@echo "... src/game.o"
+	@echo "... src/game.i"
+	@echo "... src/game.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/piece/piece.o"
-	@echo "... src/piece/piece.i"
-	@echo "... src/piece/piece.s"
-	@echo "... src/render/render.o"
-	@echo "... src/render/render.i"
-	@echo "... src/render/render.s"
+	@echo "... src/piece.o"
+	@echo "... src/piece.i"
+	@echo "... src/piece.s"
+	@echo "... src/render.o"
+	@echo "... src/render.i"
+	@echo "... src/render.s"
+	@echo "... src/shader.o"
+	@echo "... src/shader.i"
+	@echo "... src/shader.s"
+	@echo "... src/texture.o"
+	@echo "... src/texture.i"
+	@echo "... src/texture.s"
 .PHONY : help
 
 

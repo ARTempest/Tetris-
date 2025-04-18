@@ -19,12 +19,14 @@ private:
   void createJ(glm::vec2 pos);
   void createS(glm::vec2 pos);
   void createZ(glm::vec2 pos);
+  void createI(glm::vec2 pos);
   void createO(glm::vec2 pos);
 public:
   glm::vec2 blockPos[4];
-  enum shape {T, L, J, S, Z, O};
+  enum shape {T, L, J, S, Z, O, I};
   Piece(shape, glm::vec2);
-  void movePiece(int, int);
+
+  void move(int, int);
 };
 #endif
 

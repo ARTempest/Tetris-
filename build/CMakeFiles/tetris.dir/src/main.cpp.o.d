@@ -1,7 +1,7 @@
 CMakeFiles/tetris.dir/src/main.cpp.o: \
  /home/antuan/Personal/projects/Tetris-/src/main.cpp \
  /usr/include/stdc-predef.h \
- /home/antuan/Personal/projects/Tetris-/src/game/game.h \
+ /home/antuan/Personal/projects/Tetris-/src/../include/game.h \
  /usr/include/glad/glad.h /usr/include/KHR/khrplatform.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -156,7 +156,7 @@ CMakeFiles/tetris.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/basic_ios.tcc \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
  /usr/include/c++/13/bits/istream.tcc \
- /home/antuan/Personal/projects/Tetris-/src/game/../piece/piece.h \
+ /home/antuan/Personal/projects/Tetris-/src/../include/piece.h \
  /usr/include/glm/fwd.hpp /usr/include/glm/detail/qualifier.hpp \
  /usr/include/glm/detail/setup.hpp /usr/include/c++/13/cassert \
  /usr/include/assert.h /usr/include/glm/simd/platform.h \
@@ -370,8 +370,8 @@ CMakeFiles/tetris.dir/src/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc /usr/include/c++/13/sstream \
  /usr/include/c++/13/bits/sstream.tcc \
- /home/antuan/Personal/projects/Tetris-/src/render/render.h \
+ /home/antuan/Personal/projects/Tetris-/src/../include/render.h \
  /home/antuan/Personal/projects/Tetris-/src/../include/texture.h \
  /home/antuan/Personal/projects/Tetris-/src/../include/../libs/stb_image.h \
  /usr/include/c++/13/stdlib.h \
- /home/antuan/Personal/projects/Tetris-/src/block/block.h
+ /home/antuan/Personal/projects/Tetris-/src/../include/block.h

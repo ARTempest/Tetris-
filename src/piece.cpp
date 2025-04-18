@@ -4,31 +4,33 @@
 
 Piece::Piece(shape newShape, glm::vec2 pos) {
 // Selecting piece shape
-
   switch (newShape) {
     case Piece::T:
       createT(pos);
-      break;
+    break;
 
     case Piece::L:
       createL(pos);
-      break;
+    break;
 
     case Piece::J:
       createJ(pos);
-      break;
+    break;
 
     case Piece::S:
       createS(pos);
-      break;
+    break;
 
     case Piece::Z:
       createZ(pos);
-      break;
+    break;
 
+    case Piece::I:
+      createI(pos);
+    break;
     default:
       createO(pos);
-      break;
+    break;
   }
 };
 
@@ -68,6 +70,13 @@ void Piece::createZ(glm::vec2 pos) {
   blockPos[3] = {pos.x - 2, pos.y + 2};
 }
 
+void Piece::createI(glm::vec2 pos) {
+  blockPos[0] = {pos.x, pos.y};
+  blockPos[1] = {pos.x, pos.y - 2};
+  blockPos[2] = {pos.x, pos.y + 2};
+  blockPos[3] = {pos.x, pos.y + 4}; 
+}
+
 void Piece::createO(glm::vec2 pos) {
   blockPos[0] = {pos.x, pos.y};
   blockPos[1] = {pos.x + 2, pos.y};
@@ -75,11 +84,11 @@ void Piece::createO(glm::vec2 pos) {
   blockPos[3] = {pos.x + 2, pos.y + 2};
 }
 
-void Piece::movePiece(int x, int y) {
-  blockPos[0].x += x; blockPos[0].y += y;
-  blockPos[1].x += x; blockPos[1].y += y;
-  blockPos[2].x += x; blockPos[2].y += y;
-  blockPos[3].x += x; blockPos[3].y += y;
+void Piece::move(int x, int y) {
+  for (auto& pos: blockPos) {
+    pos.x += x;
+    pos.y += y;
+  }
 }
 
 

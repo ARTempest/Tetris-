@@ -15,6 +15,5 @@ public:
   unsigned char *data; 
   Texture(const char*);
 };
-
 #endif
 
