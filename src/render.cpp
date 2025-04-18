@@ -6,7 +6,7 @@
 
 Render::Render(Game* g, Shader* s, Block* b, Texture* t) : game(g), shader(s), block(b), texture(t) {};
 
-void Render::loop() {
+void Render::activate() {
 
   while (!glfwWindowShouldClose(game->window)) {
     actualizeFrame();

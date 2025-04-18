@@ -23,7 +23,7 @@ public:
   Render(Game*, Shader*, Block*, Texture*);
   void renderization();
   void swapBuffers();
-  void loop();
+  void activate();
 };
 
 #endif
