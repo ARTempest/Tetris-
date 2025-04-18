@@ -1,12 +1,10 @@
-#include "game/game.h"
+#include "../include/game.h"
 #include "../include/shader.h"
-#include "render/render.h"
+#include "../include/render.h"
 #include "../include/texture.h"
-#include "block/block.h"
+#include "../include/block.h"
 
 int main() {
-  Render* renderPointer;
-
   // Initializing Game Class
   Game game(800, 600);
   game.Init();
@@ -17,6 +15,5 @@ int main() {
 
   // Initializing Render Class
   Render render(&game, &myShader, &myBlock, &myTexture);
-  renderPointer = &render;
-  render.loop();
+  render.activate();
 }

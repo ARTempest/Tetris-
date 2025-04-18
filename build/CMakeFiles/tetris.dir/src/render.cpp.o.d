@@ -1,7 +1,7 @@
-CMakeFiles/tetris.dir/src/main.cpp.o: \
- /home/antuan/Personal/projects/Tetris-/src/main.cpp \
+CMakeFiles/tetris.dir/src/render.cpp.o: \
+ /home/antuan/Personal/projects/Tetris-/src/render.cpp \
  /usr/include/stdc-predef.h \
- /home/antuan/Personal/projects/Tetris-/src/../include/game.h \
+ /home/antuan/Personal/projects/Tetris-/src/../include/render.h \
  /usr/include/glad/glad.h /usr/include/KHR/khrplatform.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -21,6 +21,7 @@ CMakeFiles/tetris.dir/src/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
  /home/antuan/Personal/projects/Tetris-/libs/glfw/include/GLFW/glfw3.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
+ /home/antuan/Personal/projects/Tetris-/src/../include/game.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -364,14 +365,13 @@ CMakeFiles/tetris.dir/src/main.cpp.o: \
  /usr/include/c++/13/backward/auto_ptr.h \
  /usr/include/c++/13/pstl/glue_memory_defs.h \
  /usr/include/c++/13/pstl/execution_defs.h \
+ /home/antuan/Personal/projects/Tetris-/src/../include/block.h \
  /home/antuan/Personal/projects/Tetris-/src/../include/shader.h \
  /usr/include/c++/13/fstream /usr/include/c++/13/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc /usr/include/c++/13/sstream \
  /usr/include/c++/13/bits/sstream.tcc \
- /home/antuan/Personal/projects/Tetris-/src/../include/render.h \
  /home/antuan/Personal/projects/Tetris-/src/../include/texture.h \
  /home/antuan/Personal/projects/Tetris-/src/../include/../libs/stb_image.h \
- /usr/include/c++/13/stdlib.h \
- /home/antuan/Personal/projects/Tetris-/src/../include/block.h
+ /usr/include/c++/13/stdlib.h
