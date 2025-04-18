@@ -521,6 +521,7 @@ CMakeFiles/tetris.dir/src/game.cpp.o: /home/antuan/Personal/projects/Tetris-/src
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
   /usr/include/assert.h \
+  /usr/include/c++/13/array \
   /usr/include/c++/13/backward/auto_ptr.h \
   /usr/include/c++/13/backward/binders.h \
   /usr/include/c++/13/bit \
@@ -597,6 +598,7 @@ CMakeFiles/tetris.dir/src/game.cpp.o: /home/antuan/Personal/projects/Tetris-/src
   /usr/include/c++/13/climits \
   /usr/include/c++/13/clocale \
   /usr/include/c++/13/cmath \
+  /usr/include/c++/13/compare \
   /usr/include/c++/13/cstddef \
   /usr/include/c++/13/cstdint \
   /usr/include/c++/13/cstdio \
@@ -963,6 +965,7 @@ CMakeFiles/tetris.dir/src/main.cpp.o: /home/antuan/Personal/projects/Tetris-/src
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
   /usr/include/assert.h \
+  /usr/include/c++/13/array \
   /usr/include/c++/13/backward/auto_ptr.h \
   /usr/include/c++/13/backward/binders.h \
   /usr/include/c++/13/bit \
@@ -1042,6 +1045,7 @@ CMakeFiles/tetris.dir/src/main.cpp.o: /home/antuan/Personal/projects/Tetris-/src
   /usr/include/c++/13/climits \
   /usr/include/c++/13/clocale \
   /usr/include/c++/13/cmath \
+  /usr/include/c++/13/compare \
   /usr/include/c++/13/cstddef \
   /usr/include/c++/13/cstdint \
   /usr/include/c++/13/cstdio \
@@ -1408,6 +1412,7 @@ CMakeFiles/tetris.dir/src/piece.cpp.o: /home/antuan/Personal/projects/Tetris-/sr
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
   /usr/include/assert.h \
+  /usr/include/c++/13/array \
   /usr/include/c++/13/backward/binders.h \
   /usr/include/c++/13/bit \
   /usr/include/c++/13/bits/alloc_traits.h \
@@ -1472,6 +1477,7 @@ CMakeFiles/tetris.dir/src/piece.cpp.o: /home/antuan/Personal/projects/Tetris-/sr
   /usr/include/c++/13/climits \
   /usr/include/c++/13/clocale \
   /usr/include/c++/13/cmath \
+  /usr/include/c++/13/compare \
   /usr/include/c++/13/cstddef \
   /usr/include/c++/13/cstdint \
   /usr/include/c++/13/cstdio \
@@ -1833,6 +1839,7 @@ CMakeFiles/tetris.dir/src/render.cpp.o: /home/antuan/Personal/projects/Tetris-/s
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
   /usr/include/assert.h \
+  /usr/include/c++/13/array \
   /usr/include/c++/13/backward/auto_ptr.h \
   /usr/include/c++/13/backward/binders.h \
   /usr/include/c++/13/bit \
@@ -1912,6 +1919,7 @@ CMakeFiles/tetris.dir/src/render.cpp.o: /home/antuan/Personal/projects/Tetris-/s
   /usr/include/c++/13/climits \
   /usr/include/c++/13/clocale \
   /usr/include/c++/13/cmath \
+  /usr/include/c++/13/compare \
   /usr/include/c++/13/cstddef \
   /usr/include/c++/13/cstdint \
   /usr/include/c++/13/cstdio \
@@ -3110,6 +3118,8 @@ CMakeFiles/tetris.dir/src/texture.cpp.o: /home/antuan/Personal/projects/Tetris-/
 
 /usr/include/c++/13/system_error:
 
+/usr/include/c++/13/compare:
+
 /usr/include/glm/ext/vector_int2.hpp:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h:
@@ -3611,6 +3621,8 @@ CMakeFiles/tetris.dir/src/texture.cpp.o: /home/antuan/Personal/projects/Tetris-/
 /usr/include/x86_64-linux-gnu/bits/types.h:
 
 /usr/include/glm/detail/func_packing.inl:
+
+/usr/include/c++/13/array:
 
 /usr/include/glm/gtc/matrix_transform.inl:
 

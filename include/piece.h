@@ -9,6 +9,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <iostream>
+#include <array>
 
 class Block;
 
@@ -23,10 +24,15 @@ private:
   void createO(glm::vec2 pos);
 public:
   glm::vec2 blockPos[4];
+  int amountRot = 0;
+  int numberRot = 0;
+  std::array<std::array<glm::vec2, 3>, 4> blockRot;
+
   enum shape {T, L, J, S, Z, O, I};
   Piece(shape, glm::vec2);
 
   void move(int, int);
+  void rotate(int);
 };
 #endif
 

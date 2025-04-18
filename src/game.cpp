@@ -29,7 +29,7 @@ void Game::Init(){
     std::cout << "Failed to initialize GLAD" << std::endl;
   }    
 
-  activePiece = std::make_unique<Piece>(Piece::Z, glm::vec2(5.0f, 5.0f));
+  activePiece = std::make_unique<Piece>(Piece::T, glm::vec2(5.0f, 10.0f));
 }
 
 
@@ -38,6 +38,7 @@ void Game::processInput(int frameRate) {
     glfwSetWindowShouldClose(window, true);
   }
   pieceMov(frameRate);
+  pieceRot(frameRate);
 }
 
 void Game::framebuffer_size_callback(GLFWwindow* window, int w, int h) {
@@ -98,7 +99,44 @@ void Game::pieceMov(int frameRate) {
   }
 }
 
+void Game::pieceRot(int frameRate) {
+  bool pressingZ = glfwGetKey(window, GLFW_KEY_Z);
+  bool pressingX = glfwGetKey(window, GLFW_KEY_X);
+
+  if (pressingZ && !rotatingZ && delayZ == 0) {
+    activePiece->rotate(-1);
+    activateDelay(&delayZ, 10);
+    activateDelay(&delayX, 10);
+  } 
+
+  if (pressingX && !rotatingX && delayX == 0) {
+    activePiece->rotate(1);
+    activateDelay(&delayZ, 10);
+    activateDelay(&delayX, 10);
+  }
 
 
+  checkKeyState(pressingZ, &rotatingZ);
+  checkKeyState(pressingX, &rotatingX);
+  
+  reduceDelay(&delayZ);
+  reduceDelay(&delayX);
+}
 
+void Game::activateDelay(int* delay, int value) {
+  *delay = value;
+}
 
+void Game::reduceDelay(int* delay) {
+  if (*delay > 0) {
+    *delay -= 1;
+  }
+}
+
+void Game::checkKeyState(bool beingPress, bool* key) {
+  if (beingPress) {
+    *key = true;
+  } else {
+    *key = false;
+  }
+}
