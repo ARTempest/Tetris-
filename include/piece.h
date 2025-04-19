@@ -28,8 +28,9 @@ public:
   int numberRot = 0;
   std::array<std::array<glm::vec2, 3>, 4> blockRot;
 
-  enum shape {T, L, J, S, Z, O, I};
-  Piece(shape, glm::vec2);
+  enum shapes {T, L, J, S, Z, O, I};
+  shapes shape;
+  Piece(shapes, glm::vec2);
 
   void move(int, int);
   void rotate(int);

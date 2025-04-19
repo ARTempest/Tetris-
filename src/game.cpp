@@ -29,9 +29,8 @@ void Game::Init(){
     std::cout << "Failed to initialize GLAD" << std::endl;
   }    
 
-  activePiece = std::make_unique<Piece>(Piece::T, glm::vec2(5.0f, 10.0f));
+  activePiece = std::make_unique<Piece>(Piece::I, glm::vec2(5.0f, 10.0f));
 }
-
 
 void Game::processInput(int frameRate) {
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
@@ -90,13 +89,9 @@ void Game::pieceMov(int frameRate) {
     movingL = false;
   }
   
-  if (delayR > 0) {
-    delayR -= 1;
-  }
 
-  if (delayL > 0) {
-    delayL -= 1;
-  }
+  reduceDelay(&delayR);
+  reduceDelay(&delayL);
 }
 
 void Game::pieceRot(int frameRate) {
