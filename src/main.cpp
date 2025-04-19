@@ -5,7 +5,6 @@
 #include "../include/block.h"
 
 int main() {
-  // Initializing Game Class
   Game game(800, 600);
   game.Init();
 
@@ -13,7 +12,6 @@ int main() {
   Block myBlock (glm::vec2(1.0f,1.0f), Block::blue);
   Texture myTexture("../textures/blue_block.png");
 
-  // Initializing Render Class
   Render render(&game, &myShader, &myBlock, &myTexture);
   render.activate();
 }

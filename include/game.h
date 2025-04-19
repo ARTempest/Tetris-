@@ -14,13 +14,27 @@ class Piece;
 class Game {
 private:
   unsigned int width, height;
+
+//Key Functions
   void pieceMov(int);
+  void pieceRot(int);
+  void checkKeyState(bool, bool*);
+
+  void activateDelay(int*, int);
+  void reduceDelay(int*);
+
+// Key bools
   bool movingR = false;
-  int delayR = 0;
   bool movingL = false;
-  int delayL = 0;
-  
   bool movingD = false;
+  bool rotatingZ = false;
+  bool rotatingX = false;
+
+// Key Delays
+  int delayR = 0;
+  int delayL = 0;
+  int delayZ = 0;
+  int delayX = 0;
 
 public:
   float worldW = 10.0f;
