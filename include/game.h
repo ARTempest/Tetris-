@@ -37,8 +37,8 @@ private:
   int delayX = 0;
 
 public:
-  float worldW = 10.0f;
-  float worldH = 20.0f;
+  float worldW = 20.0f;
+  float worldH = 50.0f;
 
   std::unique_ptr<Piece> activePiece;
 

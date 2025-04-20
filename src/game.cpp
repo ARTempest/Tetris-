@@ -29,7 +29,7 @@ void Game::Init(){
     std::cout << "Failed to initialize GLAD" << std::endl;
   }    
 
-  activePiece = std::make_unique<Piece>(Piece::I, glm::vec2(5.0f, 10.0f));
+  activePiece = std::make_unique<Piece>(Piece::T, glm::vec2(5.0f, 10.0f));
 }
 
 void Game::processInput(int frameRate) {
@@ -46,7 +46,7 @@ void Game::framebuffer_size_callback(GLFWwindow* window, int w, int h) {
   glViewport(0, 0, w, h);
 
   float aspect = static_cast<float>(w) / static_cast<float>(h);
-  game->worldH = 20.0f;
+  game->worldH = 50.0f;
   game->worldW = game->worldH * aspect;
   
 }
