@@ -3,6 +3,7 @@
 #include "../include/block.h"
 #include "../include/shader.h"
 #include "../include/texture.h"
+#include <glm/ext/vector_float2.hpp>
 
 Render::Render(Game* g, Shader* s, Block* b, Texture* t) : game(g), shader(s), block(b), texture(t) {};
 
@@ -41,7 +42,7 @@ void Render::renderization(){
 
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture->texture);
-
+    
     shader->use();
     shader->setMat4("model", model);
     shader->setMat4("projection", projection);
@@ -49,6 +50,23 @@ void Render::renderization(){
     glBindVertexArray(block->VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
   }
+
+  glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(glm::vec2(1,49), 0.0f));
+
+  glActiveTexture(GL_TEXTURE0);
+  glBindTexture(GL_TEXTURE_2D, texture->texture);
+    
+  shader->use();
+  shader->setMat4("model", model);
+  shader->setMat4("projection", projection);
+
+
+  
+  glBindVertexArray(block->VAO);
+  glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+
+
 }
 
 

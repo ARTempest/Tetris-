@@ -1,4 +1,5 @@
 #pragma once
+#include <glm/ext/vector_float2.hpp>
 #ifndef GAME_H
 #define GAME_H
 
@@ -39,6 +40,10 @@ private:
 public:
   float worldW = 20.0f;
   float worldH = 50.0f;
+
+  //glm::vec2 walls[20] = {
+  //glm::vec2(0,40)
+ // };
 
   std::unique_ptr<Piece> activePiece;
 
