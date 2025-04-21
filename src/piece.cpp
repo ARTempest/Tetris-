@@ -130,8 +130,8 @@ void Piece::createO(glm::vec2 pos) {
 
 void Piece::move(int x, int y) {
   for (auto& pos: blockPos) {
-    pos.x += x;
-    pos.y += y;
+    pos.x += x * 2;
+    pos.y += y * 2;
   }
 }
 

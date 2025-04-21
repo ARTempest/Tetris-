@@ -37,8 +37,13 @@ private:
   int delayX = 0;
 
 public:
-  float worldW = 20.0f;
+  float worldW = 70.0f;
   float worldH = 50.0f;
+  
+
+  //glm::vec2 walls[20] = {
+  //glm::vec2(0,40)
+ // };
 
   std::unique_ptr<Piece> activePiece;
 
