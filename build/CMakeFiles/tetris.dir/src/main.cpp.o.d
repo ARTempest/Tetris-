@@ -2,12 +2,9 @@ CMakeFiles/tetris.dir/src/main.cpp.o: \
  /home/antuan/Personal/projects/Tetris-/src/main.cpp \
  /usr/include/stdc-predef.h \
  /home/antuan/Personal/projects/Tetris-/src/../include/game.h \
- /usr/include/glm/ext/vector_float2.hpp \
- /usr/include/glm/detail/type_vec2.hpp \
- /usr/include/glm/detail/qualifier.hpp /usr/include/glm/detail/setup.hpp \
- /usr/include/c++/13/cassert \
- /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
+ /usr/include/glad/glad.h /usr/include/KHR/khrplatform.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/bits/timesize.h \
@@ -15,13 +12,6 @@ CMakeFiles/tetris.dir/src/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/long-double.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/cpu_defines.h \
- /usr/include/c++/13/pstl/pstl_config.h /usr/include/assert.h \
- /usr/include/c++/13/cstddef \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
- /usr/include/glm/simd/platform.h /usr/include/c++/13/cstdint \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
- /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/x86_64-linux-gnu/bits/types.h \
  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
  /usr/include/x86_64-linux-gnu/bits/time64.h \
@@ -29,14 +19,15 @@ CMakeFiles/tetris.dir/src/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
- /usr/include/c++/13/type_traits /usr/include/glm/detail/type_vec2.inl \
- /usr/include/glm/detail/compute_vector_relational.hpp \
- /usr/include/c++/13/limits /usr/include/glad/glad.h \
- /usr/include/KHR/khrplatform.h \
  /home/antuan/Personal/projects/Tetris-/libs/glfw/include/GLFW/glfw3.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/bits/requires_hosted.h \
- /usr/include/c++/13/ostream /usr/include/c++/13/ios \
- /usr/include/c++/13/iosfwd /usr/include/c++/13/bits/stringfwd.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/cpu_defines.h \
+ /usr/include/c++/13/pstl/pstl_config.h /usr/include/c++/13/ostream \
+ /usr/include/c++/13/ios /usr/include/c++/13/iosfwd \
+ /usr/include/c++/13/bits/stringfwd.h \
  /usr/include/c++/13/bits/memoryfwd.h /usr/include/c++/13/bits/postypes.h \
  /usr/include/c++/13/cwchar /usr/include/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
@@ -55,6 +46,7 @@ CMakeFiles/tetris.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/cxxabi_init_exception.h \
  /usr/include/c++/13/typeinfo /usr/include/c++/13/bits/hash_bytes.h \
  /usr/include/c++/13/new /usr/include/c++/13/bits/move.h \
+ /usr/include/c++/13/type_traits \
  /usr/include/c++/13/bits/nested_exception.h \
  /usr/include/c++/13/bits/char_traits.h \
  /usr/include/c++/13/bits/localefwd.h \
@@ -146,7 +138,7 @@ CMakeFiles/tetris.dir/src/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/13/bits/charconv.h \
  /usr/include/c++/13/bits/basic_string.tcc \
- /usr/include/c++/13/bits/memory_resource.h \
+ /usr/include/c++/13/bits/memory_resource.h /usr/include/c++/13/cstddef \
  /usr/include/c++/13/bits/uses_allocator.h \
  /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
  /usr/include/c++/13/bits/locale_classes.tcc \
@@ -165,7 +157,10 @@ CMakeFiles/tetris.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
  /usr/include/c++/13/bits/istream.tcc \
  /home/antuan/Personal/projects/Tetris-/src/../include/piece.h \
- /usr/include/glm/fwd.hpp /usr/include/glm/glm.hpp \
+ /usr/include/glm/fwd.hpp /usr/include/glm/detail/qualifier.hpp \
+ /usr/include/glm/detail/setup.hpp /usr/include/c++/13/cassert \
+ /usr/include/assert.h /usr/include/glm/simd/platform.h \
+ /usr/include/c++/13/cstdint /usr/include/glm/glm.hpp \
  /usr/include/glm/detail/_fixes.hpp /usr/include/c++/13/cmath \
  /usr/include/math.h /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
@@ -176,7 +171,8 @@ CMakeFiles/tetris.dir/src/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /usr/include/c++/13/bits/specfun.h /usr/include/c++/13/tr1/gamma.tcc \
+ /usr/include/c++/13/bits/specfun.h /usr/include/c++/13/limits \
+ /usr/include/c++/13/tr1/gamma.tcc \
  /usr/include/c++/13/tr1/special_function_util.h \
  /usr/include/c++/13/tr1/bessel_function.tcc \
  /usr/include/c++/13/tr1/beta_function.tcc \
@@ -199,7 +195,11 @@ CMakeFiles/tetris.dir/src/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/c++/13/cfloat \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
  /usr/include/glm/vec2.hpp /usr/include/glm/ext/vector_bool2.hpp \
+ /usr/include/glm/detail/type_vec2.hpp \
+ /usr/include/glm/detail/type_vec2.inl \
+ /usr/include/glm/detail/compute_vector_relational.hpp \
  /usr/include/glm/ext/vector_bool2_precision.hpp \
+ /usr/include/glm/ext/vector_float2.hpp \
  /usr/include/glm/ext/vector_float2_precision.hpp \
  /usr/include/glm/ext/vector_double2.hpp \
  /usr/include/glm/ext/vector_double2_precision.hpp \

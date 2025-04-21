@@ -31,7 +31,8 @@ void Render::actualizeFrame() {
 
 void Render::renderization(){
   
-  glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+  //glClearColor(5.0f, 3.0f, 0.0f, 1.0f);
+  glClearColor(0.0f,0.0f,0.0f,1.0f);
   glClear(GL_COLOR_BUFFER_BIT); 
 
   glm::mat4 projection = glm::ortho(0.0f, game->worldW, 0.0f, game->worldH, -1.0f, 1.0f);

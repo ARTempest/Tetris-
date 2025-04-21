@@ -1,6 +1,7 @@
 #include "../include/game.h"
 #include <GLFW/glfw3.h>
 #include <glm/ext/vector_float2.hpp>
+#include <iostream>
 #include <memory>
 
 Game::Game(unsigned int w, unsigned int h){
@@ -43,12 +44,10 @@ void Game::processInput(int frameRate) {
 void Game::framebuffer_size_callback(GLFWwindow* window, int w, int h) {
   Game* game = static_cast<Game*>(glfwGetWindowUserPointer(window));
 
-  glViewport(0, 0, w, h);
+  //std::cout << "actual window width: " << w << '\n';
+  //std::cout << "actual window height: " << h << '\n';
 
-  float aspect = static_cast<float>(w) / static_cast<float>(h);
-  game->worldH = 50.0f;
-  game->worldW = game->worldH * aspect;
-  
+  glViewport(0, 0, w, h);
 }
 
 void Game::pieceMov(int frameRate) {
