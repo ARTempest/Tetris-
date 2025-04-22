@@ -1,6 +1,9 @@
 #include "../include/piece.h"  // T L J S Z I O
 #include "../include/block.h"
+#include <glm/ext/matrix_float4x4.hpp>
+#include <glm/ext/matrix_transform.hpp>
 #include <glm/ext/vector_float2.hpp>
+#include <memory>
 
 Piece::Piece(shapes newShape, glm::vec2 pos) {
 // Selecting piece shape
@@ -32,6 +35,8 @@ Piece::Piece(shapes newShape, glm::vec2 pos) {
       createO(pos);
     break;
   }
+
+
 };
 
 void Piece::createT(glm::vec2 pos) {
@@ -47,6 +52,10 @@ void Piece::createT(glm::vec2 pos) {
   blockRot[1] = {glm::vec2(0,-2), glm::vec2(-2,0) , glm::vec2(0,2)};
   blockRot[2] = {glm::vec2(2,0) , glm::vec2(-2,0) , glm::vec2(0,2)};
   blockRot[3] = {glm::vec2(2,0) , glm::vec2(0,-2) , glm::vec2(0,2)};
+
+  std::cout << "a" << '\n';
+  texture = std::make_unique<Texture>("../textures/purple_block.png");
+  std::cout << 'b' << '\n';
 }
 
 void Piece::createL(glm::vec2 pos) {
@@ -62,6 +71,8 @@ void Piece::createL(glm::vec2 pos) {
   blockRot[1] = {glm::vec2(-2,0), glm::vec2(2,0), glm::vec2(2,2)};
   blockRot[2] = {glm::vec2(0,-2), glm::vec2(0,2), glm::vec2(-2,2)};
   blockRot[3] = {glm::vec2(2,0), glm::vec2(-2,0), glm::vec2(-2,-2)};
+
+  texture = std::make_unique<Texture>("../textures/orange_block.png");
 }
 
 void Piece::createJ(glm::vec2 pos) {
@@ -77,6 +88,8 @@ void Piece::createJ(glm::vec2 pos) {
   blockRot[1] = {glm::vec2(-2,0), glm::vec2(-2,2), glm::vec2(2,0)};
   blockRot[2] = {glm::vec2(0,2), glm::vec2(2,2), glm::vec2(0,-2)};
   blockRot[3] = {glm::vec2(2,0), glm::vec2(2,-2), glm::vec2(-2,0)};
+
+  texture = std::make_unique<Texture>("../textures/blue_block.png");
 }
 
 void Piece::createS(glm::vec2 pos) {
@@ -91,6 +104,8 @@ void Piece::createS(glm::vec2 pos) {
   amountRot = 2;
   blockRot[0] = {glm::vec2(0,-2), glm::vec2(-2,-2), glm::vec2(2,0)};
   blockRot[1] = {glm::vec2(2,0), glm::vec2(2,-2), glm::vec2(0,2)};
+
+  texture = std::make_unique<Texture>("../textures/green_block.png");
 }
 
 void Piece::createZ(glm::vec2 pos) {
@@ -104,6 +119,8 @@ void Piece::createZ(glm::vec2 pos) {
   amountRot = 2;
   blockRot[0] = {glm::vec2(0,-2), glm::vec2(2,-2), glm::vec2(-2,0)};
   blockRot[1] = {glm::vec2(2,0), glm::vec2(2,2), glm::vec2(0,-2)};
+
+  texture = std::make_unique<Texture>("../textures/red_block.png");
 }
 
 void Piece::createI(glm::vec2 pos) {
@@ -117,6 +134,8 @@ void Piece::createI(glm::vec2 pos) {
   amountRot = 2;
   blockRot[0] = {glm::vec2(0,2), glm::vec2(0,4), glm::vec2(0,-2)};
   blockRot[1] = {glm::vec2(-2,0), glm::vec2(-4,0), glm::vec2(2,0)};
+
+  texture = std::make_unique<Texture>("../textures/cian_block.png");
 }
 
 void Piece::createO(glm::vec2 pos) {
@@ -126,6 +145,8 @@ void Piece::createO(glm::vec2 pos) {
   blockPos[1] = {pos.x + 2, pos.y};
   blockPos[2] = {pos.x, pos.y + 2};
   blockPos[3] = {pos.x + 2, pos.y + 2};
+
+  texture = std::make_unique<Texture>("../textures/yellow_block.png");
 }
 
 void Piece::move(int x, int y) {

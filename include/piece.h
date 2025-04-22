@@ -10,6 +10,8 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <iostream>
 #include <array>
+#include <memory>
+#include "../include/texture.h"
 
 class Block;
 
@@ -27,7 +29,8 @@ public:
   int amountRot = 0;
   int numberRot = 0;
   std::array<std::array<glm::vec2, 3>, 4> blockRot;
-
+  std::unique_ptr<Texture> texture;
+  
   enum shapes {T, L, J, S, Z, O, I};
   shapes shape;
   Piece(shapes, glm::vec2);

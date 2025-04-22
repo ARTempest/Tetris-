@@ -37,13 +37,10 @@ private:
   int delayX = 0;
 
 public:
-  float worldW = 70.0f;
+  float worldW = 68.0f;
   float worldH = 50.0f;
   
-
-  //glm::vec2 walls[20] = {
-  //glm::vec2(0,40)
- // };
+  std::array<glm::mat4, 36> walls;
 
   std::unique_ptr<Piece> activePiece;
 
@@ -52,8 +49,10 @@ public:
   void Init();
 
   void generatePiece();
+  void createWalls();
   void static framebuffer_size_callback(GLFWwindow*, int, int);
   GLFWwindow* window; 
+
 };
 #endif 
 

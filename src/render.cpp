@@ -3,11 +3,21 @@
 #include "../include/block.h"
 #include "../include/shader.h"
 #include "../include/texture.h"
+#include <cstddef>
+#include <glm/ext/matrix_float4x4.hpp>
 #include <glm/ext/vector_float2.hpp>
+#include <glm/ext/vector_float4.hpp>
 
-Render::Render(Game* g, Shader* s, Block* b, Texture* t) : game(g), shader(s), block(b), texture(t) {};
+Render::Render(Game* g, Shader* bs, Shader* ws, Block* b, Block* w, Texture* t) : 
+  game(g),
+  blockShader(bs),
+  wallShader(ws),
+  block(b),
+  wall(w),
+  wallTexture(t) {};
 
 void Render::activate() {
+  initInstanceData();
 
   while (!glfwWindowShouldClose(game->window)) {
     actualizeFrame();
@@ -42,38 +52,48 @@ void Render::renderization(){
     glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(game->activePiece->blockPos[i], 0.0f));
 
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, texture->texture);
+    glBindTexture(GL_TEXTURE_2D, game->activePiece->texture->texture);                                                                             
     
-    shader->use();
-    shader->setMat4("model", model);
-    shader->setMat4("projection", projection);
+    blockShader->use();
+    blockShader->setMat4("model", model);
+    blockShader->setMat4("projection", projection);
 
     glBindVertexArray(block->VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
   }
 
-  glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(glm::vec2(1,49), 0.0f));
+  wallShader->use();
+  wallShader->setMat4("projection", projection);
 
   glActiveTexture(GL_TEXTURE0);
-  glBindTexture(GL_TEXTURE_2D, texture->texture);
-    
-  shader->use();
-  shader->setMat4("model", model);
-  shader->setMat4("projection", projection);
+  glBindTexture(GL_TEXTURE_2D, wallTexture->texture);
+  glBindVertexArray(wall->VAO);
 
-
-  
-  glBindVertexArray(block->VAO);
-  glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-
+  glDrawElementsInstanced(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0, game->walls.size());
 
 }
-
 
 void Render::swapBuffers() {
     glfwPollEvents();
     glfwSwapBuffers(game->window);
 }
 
+void Render::initInstanceData() {
+  glGenBuffers(1, &instanceVBO);
+  glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(glm::mat4) * game->walls.size(), game->walls.data(), GL_STATIC_DRAW);
 
+  glBindVertexArray(wall->VAO);
+
+  std::size_t vec4Size = sizeof(glm::vec4);
+
+  for (unsigned int i=0; i < 4; i++) {
+    unsigned int location = 2+i;
+
+    glEnableVertexAttribArray(location);
+    glVertexAttribPointer(location, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(i * vec4Size));
+    glVertexAttribDivisor(location, 1);
+  }
+
+
+}

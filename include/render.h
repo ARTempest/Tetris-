@@ -14,13 +14,17 @@ class Piece;
 class Render {
 private:
   Game* game;
-  Shader* shader;
+  Shader* blockShader;
+  Shader* wallShader;
   Block* block;
-  Texture* texture;
+  Block* wall;
+  Texture* wallTexture;
   int frame = 0;
   void actualizeFrame();
+  unsigned int instanceVBO;
 public:
-  Render(Game*, Shader*, Block*, Texture*);
+  Render(Game*, Shader*, Shader*, Block*, Block*,Texture*);
+  void initInstanceData();
   void renderization();
   void swapBuffers();
   void activate();

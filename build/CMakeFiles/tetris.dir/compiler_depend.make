@@ -514,6 +514,8 @@ CMakeFiles/tetris.dir/src/block.cpp.o: /home/antuan/Personal/projects/Tetris-/sr
 
 CMakeFiles/tetris.dir/src/game.cpp.o: /home/antuan/Personal/projects/Tetris-/src/game.cpp \
   /home/antuan/Personal/projects/Tetris-/libs/glfw/include/GLFW/glfw3.h \
+  /home/antuan/Personal/projects/Tetris-/libs/stb_image.h \
+  /home/antuan/Personal/projects/Tetris-/include/texture.h \
   /home/antuan/Personal/projects/Tetris-/include/game.h \
   /home/antuan/Personal/projects/Tetris-/include/piece.h \
   /usr/include/KHR/khrplatform.h \
@@ -629,6 +631,7 @@ CMakeFiles/tetris.dir/src/game.cpp.o: /home/antuan/Personal/projects/Tetris-/src
   /usr/include/c++/13/pstl/glue_memory_defs.h \
   /usr/include/c++/13/pstl/pstl_config.h \
   /usr/include/c++/13/stdexcept \
+  /usr/include/c++/13/stdlib.h \
   /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
@@ -954,6 +957,7 @@ CMakeFiles/tetris.dir/src/game.cpp.o: /home/antuan/Personal/projects/Tetris-/src
 CMakeFiles/tetris.dir/src/main.cpp.o: /home/antuan/Personal/projects/Tetris-/src/main.cpp \
   /home/antuan/Personal/projects/Tetris-/libs/glfw/include/GLFW/glfw3.h \
   /home/antuan/Personal/projects/Tetris-/libs/stb_image.h \
+  /home/antuan/Personal/projects/Tetris-/include/texture.h \
   /home/antuan/Personal/projects/Tetris-/include/block.h \
   /home/antuan/Personal/projects/Tetris-/include/game.h \
   /home/antuan/Personal/projects/Tetris-/include/piece.h \
@@ -1405,6 +1409,8 @@ CMakeFiles/tetris.dir/src/main.cpp.o: /home/antuan/Personal/projects/Tetris-/src
 
 CMakeFiles/tetris.dir/src/piece.cpp.o: /home/antuan/Personal/projects/Tetris-/src/piece.cpp \
   /home/antuan/Personal/projects/Tetris-/libs/glfw/include/GLFW/glfw3.h \
+  /home/antuan/Personal/projects/Tetris-/libs/stb_image.h \
+  /home/antuan/Personal/projects/Tetris-/include/texture.h \
   /home/antuan/Personal/projects/Tetris-/include/block.h \
   /home/antuan/Personal/projects/Tetris-/include/piece.h \
   /usr/include/KHR/khrplatform.h \
@@ -1413,10 +1419,15 @@ CMakeFiles/tetris.dir/src/piece.cpp.o: /home/antuan/Personal/projects/Tetris-/sr
   /usr/include/asm-generic/errno.h \
   /usr/include/assert.h \
   /usr/include/c++/13/array \
+  /usr/include/c++/13/backward/auto_ptr.h \
   /usr/include/c++/13/backward/binders.h \
   /usr/include/c++/13/bit \
+  /usr/include/c++/13/bits/align.h \
   /usr/include/c++/13/bits/alloc_traits.h \
+  /usr/include/c++/13/bits/allocated_ptr.h \
   /usr/include/c++/13/bits/allocator.h \
+  /usr/include/c++/13/bits/atomic_base.h \
+  /usr/include/c++/13/bits/atomic_lockfree_defines.h \
   /usr/include/c++/13/bits/basic_ios.h \
   /usr/include/c++/13/bits/basic_ios.tcc \
   /usr/include/c++/13/bits/basic_string.h \
@@ -1454,6 +1465,9 @@ CMakeFiles/tetris.dir/src/piece.cpp.o: /home/antuan/Personal/projects/Tetris-/sr
   /usr/include/c++/13/bits/range_access.h \
   /usr/include/c++/13/bits/refwrap.h \
   /usr/include/c++/13/bits/requires_hosted.h \
+  /usr/include/c++/13/bits/shared_ptr.h \
+  /usr/include/c++/13/bits/shared_ptr_atomic.h \
+  /usr/include/c++/13/bits/shared_ptr_base.h \
   /usr/include/c++/13/bits/specfun.h \
   /usr/include/c++/13/bits/std_abs.h \
   /usr/include/c++/13/bits/stl_algobase.h \
@@ -1463,10 +1477,14 @@ CMakeFiles/tetris.dir/src/piece.cpp.o: /home/antuan/Personal/projects/Tetris-/sr
   /usr/include/c++/13/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/13/bits/stl_iterator_base_types.h \
   /usr/include/c++/13/bits/stl_pair.h \
+  /usr/include/c++/13/bits/stl_raw_storage_iter.h \
+  /usr/include/c++/13/bits/stl_tempbuf.h \
+  /usr/include/c++/13/bits/stl_uninitialized.h \
   /usr/include/c++/13/bits/streambuf.tcc \
   /usr/include/c++/13/bits/streambuf_iterator.h \
   /usr/include/c++/13/bits/string_view.tcc \
   /usr/include/c++/13/bits/stringfwd.h \
+  /usr/include/c++/13/bits/unique_ptr.h \
   /usr/include/c++/13/bits/uses_allocator.h \
   /usr/include/c++/13/bits/uses_allocator_args.h \
   /usr/include/c++/13/bits/utility.h \
@@ -1488,8 +1506,10 @@ CMakeFiles/tetris.dir/src/piece.cpp.o: /home/antuan/Personal/projects/Tetris-/sr
   /usr/include/c++/13/debug/assertions.h \
   /usr/include/c++/13/debug/debug.h \
   /usr/include/c++/13/exception \
+  /usr/include/c++/13/ext/aligned_buffer.h \
   /usr/include/c++/13/ext/alloc_traits.h \
   /usr/include/c++/13/ext/atomicity.h \
+  /usr/include/c++/13/ext/concurrence.h \
   /usr/include/c++/13/ext/numeric_traits.h \
   /usr/include/c++/13/ext/string_conversions.h \
   /usr/include/c++/13/ext/type_traits.h \
@@ -1499,10 +1519,14 @@ CMakeFiles/tetris.dir/src/piece.cpp.o: /home/antuan/Personal/projects/Tetris-/sr
   /usr/include/c++/13/iostream \
   /usr/include/c++/13/istream \
   /usr/include/c++/13/limits \
+  /usr/include/c++/13/memory \
   /usr/include/c++/13/new \
   /usr/include/c++/13/ostream \
+  /usr/include/c++/13/pstl/execution_defs.h \
+  /usr/include/c++/13/pstl/glue_memory_defs.h \
   /usr/include/c++/13/pstl/pstl_config.h \
   /usr/include/c++/13/stdexcept \
+  /usr/include/c++/13/stdlib.h \
   /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
@@ -1828,6 +1852,7 @@ CMakeFiles/tetris.dir/src/piece.cpp.o: /home/antuan/Personal/projects/Tetris-/sr
 CMakeFiles/tetris.dir/src/render.cpp.o: /home/antuan/Personal/projects/Tetris-/src/render.cpp \
   /home/antuan/Personal/projects/Tetris-/libs/glfw/include/GLFW/glfw3.h \
   /home/antuan/Personal/projects/Tetris-/libs/stb_image.h \
+  /home/antuan/Personal/projects/Tetris-/include/texture.h \
   /home/antuan/Personal/projects/Tetris-/include/block.h \
   /home/antuan/Personal/projects/Tetris-/include/game.h \
   /home/antuan/Personal/projects/Tetris-/include/piece.h \

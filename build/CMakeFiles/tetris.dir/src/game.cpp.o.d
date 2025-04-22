@@ -364,4 +364,7 @@ CMakeFiles/tetris.dir/src/game.cpp.o: \
  /usr/include/c++/13/bits/atomic_lockfree_defines.h \
  /usr/include/c++/13/backward/auto_ptr.h \
  /usr/include/c++/13/pstl/glue_memory_defs.h \
- /usr/include/c++/13/pstl/execution_defs.h
+ /usr/include/c++/13/pstl/execution_defs.h \
+ /home/antuan/Personal/projects/Tetris-/src/../include/../include/texture.h \
+ /home/antuan/Personal/projects/Tetris-/src/../include/../include/../libs/stb_image.h \
+ /usr/include/c++/13/stdlib.h

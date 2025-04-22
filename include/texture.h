@@ -14,6 +14,7 @@ public:
   unsigned int texture;
   unsigned char *data; 
   Texture(const char*);
+  void get();
 };
 #endif
 
