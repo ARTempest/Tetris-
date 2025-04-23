@@ -37,10 +37,12 @@ private:
   int delayX = 0;
 
 public:
-  float worldW = 68.0f;
+  float worldW = 76.0f;
   float worldH = 50.0f;
   
-  std::array<glm::mat4, 36> walls;
+
+
+  std::array<glm::mat4, 750> walls; // 700
 
   std::unique_ptr<Piece> activePiece;
 

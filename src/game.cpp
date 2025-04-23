@@ -4,6 +4,7 @@
 #include <glm/ext/matrix_transform.hpp>
 #include <glm/ext/vector_float2.hpp>
 #include <glm/ext/vector_float3.hpp>
+#include <glm/ext/vector_float4.hpp>
 #include <iostream>
 #include <memory>
 
@@ -35,7 +36,7 @@ void Game::Init(){
     std::cout << "Failed to initialize GLAD" << std::endl;
   }    
 
-  activePiece = std::make_unique<Piece>(Piece::O, glm::vec2(5.0f, 11.0f));
+  activePiece = std::make_unique<Piece>(Piece::O, glm::vec2(29.0f, 47.0f));
 }
 
 void Game::processInput(int frameRate) {
@@ -143,17 +144,35 @@ void Game::checkKeyState(bool beingPress, bool* key) {
 void Game::createWalls() {
   int index = 0;
 
-  for (int  y=1; y <= 11; y+=2) {
-    for (int x=1; x <= 5; x+=2) {
-      glm::mat4 model = glm::mat4(1.0f);
-      model = glm::translate(model, glm::vec3(x * 1.0f, y * 1.0f, 0.0f));
-      walls[index] = model;
-      index++;
+  for (int  y=1; y <= worldH-1; y+=2) {
+    if (y >= 11) {
+      for (int x=1; x <= 27; x+=2) {
+        glm::mat4 model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(x * 1.0f, y * 1.0f, 0.0f));
+        walls[index] = model;
+        index++;
        
-      model = glm::mat4(1.0f);
-      model = glm::translate(model, glm::vec3(worldW - x, y * 1.0f, 0.0f));
-      walls[index] = model;
-      index++;
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(worldW - x, y * 1.0f, 0.0f));
+        walls[index] = model;
+        index++;
+      }
+    } else {
+      for (int x=1; x <= worldW - 1; x+=2) {
+        glm::mat4 model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(x * 1.0f, y * 1.0f, 0.0f));
+        walls[index] = model;
+        index++;
+      }
     }
+
   }
+
+ /* for (unsigned int x=1; x <= worldW-1; x+=2){
+    if (x > 27 && x < 49) {
+      for (int y = )
+      glm::mat4 model = glm::mat4(1.0f);
+      model = glm::translate(model, glm::vec3(x));
+    }
+  }*/
 }
