@@ -367,4 +367,5 @@ CMakeFiles/tetris.dir/src/piece.cpp.o: \
  /home/antuan/Personal/projects/Tetris-/src/../include/../include/texture.h \
  /home/antuan/Personal/projects/Tetris-/src/../include/../include/../libs/stb_image.h \
  /usr/include/c++/13/stdlib.h \
- /home/antuan/Personal/projects/Tetris-/src/../include/block.h
+ /home/antuan/Personal/projects/Tetris-/src/../include/block.h \
+ /home/antuan/Personal/projects/Tetris-/src/../include/game.h

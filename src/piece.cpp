@@ -1,11 +1,13 @@
 #include "../include/piece.h"  // T L J S Z I O
 #include "../include/block.h"
+#include "../include/game.h"
 #include <glm/ext/matrix_float4x4.hpp>
 #include <glm/ext/matrix_transform.hpp>
 #include <glm/ext/vector_float2.hpp>
 #include <memory>
 
-Piece::Piece(shapes newShape, glm::vec2 pos) {
+
+Piece::Piece(Game* g, shapes newShape, glm::vec2 pos) : game(g) {
 // Selecting piece shape
   switch (newShape) {
     case Piece::T:
@@ -36,6 +38,7 @@ Piece::Piece(shapes newShape, glm::vec2 pos) {
     break;
   }
 
+  game->setPieceCoords(blockPos);
 
 };
 
@@ -150,9 +153,13 @@ void Piece::createO(glm::vec2 pos) {
 }
 
 void Piece::move(int x, int y) {
-  for (auto& pos: blockPos) {
-    pos.x += x * 2;
-    pos.y += y * 2;
+  glm::vec2 mov[4] = {glm::vec2(x,-y), glm::vec2(x,-y), glm::vec2(x,-y), glm::vec2(x,-y)};
+  
+  if (game->checkAvailability(mov) == true) {
+    for (auto& pos: blockPos) {
+      pos.x += x * 2;
+      pos.y += y * 2;
+    }
   }
 }
 

@@ -1,4 +1,5 @@
 #pragma once
+#include <glm/ext/vector_float2.hpp>
 #ifndef GAME_H
 #define GAME_H
 
@@ -36,15 +37,54 @@ private:
   int delayZ = 0;
   int delayX = 0;
 
+  int fallingSpeed = 10;
+  int fallingDelay = 0;
+
+  glm::vec2 blockCoords[4];
+
 public:
   float worldW = 76.0f;
   float worldH = 50.0f;
 
+  enum grids {nothing, block};
+
   std::unique_ptr<Piece> activePiece;
+
+  int board[24][10] = {    // 0 = nothing, 1 = static_block, 2 = active_block
+    {0,0,0,0,0,0,0,0,0,0}, // hidden section
+    {0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0}, 
+    {0,0,0,0,0,0,0,0,0,0}, // starting of the viewport 
+    {0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0}
+  };
+
 
   Game(unsigned int, unsigned int);
   void processInput(int);
   void Init();
+  void convertCoords();
+
+  void setPieceCoords(glm::vec2[4]);
+  bool checkAvailability(glm::vec2[4]);
 
   void generatePiece();
   void static framebuffer_size_callback(GLFWwindow*, int, int);

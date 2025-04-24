@@ -3,7 +3,6 @@
 #include "../include/block.h"
 #include "../include/shader.h"
 #include "../include/texture.h"
-#include <cstddef>
 #include <glm/ext/matrix_float4x4.hpp>
 #include <glm/ext/vector_float2.hpp>
 #include <glm/ext/vector_float4.hpp>
@@ -17,7 +16,6 @@ Render::Render(Game* g, Shader* bs, Shader* ws, Block* b, Block* w, Texture* t) 
   wallTexture(t) {};
 
 void Render::activate() {
-  //initInstanceData();
 
   while (!glfwWindowShouldClose(game->window)) {
     actualizeFrame();
@@ -76,24 +74,4 @@ void Render::renderization(){
 void Render::swapBuffers() {
     glfwPollEvents();
     glfwSwapBuffers(game->window);
-}
-
-void Render::initInstanceData() {
-  glGenBuffers(1, &instanceVBO);
-  glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(glm::mat4) * game->walls.size(), game->walls.data(), GL_STATIC_DRAW);
-
-  glBindVertexArray(wall->VAO);
-
-  std::size_t vec4Size = sizeof(glm::vec4);
-
-  for (unsigned int i=0; i < 4; i++) {
-    unsigned int location = 2+i;
-
-    glEnableVertexAttribArray(location);
-    glVertexAttribPointer(location, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(i * vec4Size));
-    glVertexAttribDivisor(location, 1);
-  }
-
-
 }

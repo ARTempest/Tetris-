@@ -20,8 +20,6 @@ void Game::Init(){
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
   
   window = glfwCreateWindow(width, height, "Tetris", NULL, NULL);
-  
-  glfwSetWindowUserPointer(window, this);
 
   if (window == NULL) {
     std::cout << "ERROR_WHILE_CREATING_WINDOW" << '\n';
@@ -34,7 +32,7 @@ void Game::Init(){
     std::cout << "Failed to initialize GLAD" << std::endl;
   }    
 
-  activePiece = std::make_unique<Piece>(Piece::O, glm::vec2(29.0f, 47.0f));
+  activePiece = std::make_unique<Piece>(this,Piece::L, glm::vec2(31.0f, 51.0f)); // 0x = 29
 }
 
 void Game::processInput(int frameRate) {
@@ -46,11 +44,6 @@ void Game::processInput(int frameRate) {
 }
 
 void Game::framebuffer_size_callback(GLFWwindow* window, int w, int h) {
-  Game* game = static_cast<Game*>(glfwGetWindowUserPointer(window));
-
-  //std::cout << "actual window width: " << w << '\n';
-  //std::cout << "actual window height: " << h << '\n';
-
   glViewport(0, 0, w, h);
 }
 
@@ -59,6 +52,10 @@ void Game::pieceMov(int frameRate) {
   bool pressingL = glfwGetKey(window, GLFW_KEY_LEFT)  == GLFW_PRESS;
   bool pressingD = glfwGetKey(window, GLFW_KEY_DOWN)  == GLFW_PRESS;
 
+  if (frameRate % (60 - fallingSpeed) == 0 && fallingDelay == 0) {
+    activePiece->move(0, -1);
+    activateDelay(&fallingDelay, 120 - fallingSpeed);
+  }
 
   if (pressingR && !pressingL && movingR == false) {
     activePiece->move(1, 0);
@@ -91,10 +88,10 @@ void Game::pieceMov(int frameRate) {
   if (!pressingL) {
     movingL = false;
   }
-  
 
   reduceDelay(&delayR);
   reduceDelay(&delayL);
+  reduceDelay(&fallingDelay);
 }
 
 void Game::pieceRot(int frameRate) {
@@ -137,5 +134,38 @@ void Game::checkKeyState(bool beingPress, bool* key) {
   } else {
     *key = false;
   }
+}
+
+void Game::setPieceCoords(glm::vec2* blockPos) {
+  for (int i=0; i <= 3; i++) {
+    glm::vec2 bPos = blockPos[i];
+    bPos.x = (bPos.x - 29) / 2;
+    bPos.y = (57 - bPos.y) / 2;
+    blockCoords[i] = bPos;
+  }
+}
+
+bool Game::checkAvailability(glm::vec2* blockPos) {
+  for (int i=0; i <= 3; i++) {
+
+    if (blockCoords[i].x + blockPos[i].x >= 0 && blockCoords[i].x + blockPos[i].x < 10) {
+    } else {
+      return false;
+    }
+
+    if (blockCoords[i].y + blockPos[i].y >= 0 && blockCoords[i].y + blockPos[i].y < 24) {
+      //if glm::vec2 bPos = blockCoords[i] + blockPos
+    } else {
+      return false;
+    }
+
+
+  }
+  
+  for (int i=0; i <= 3; i++) {
+    blockCoords[i] += blockPos[i];
+  }
+
+  return true;
 }
 

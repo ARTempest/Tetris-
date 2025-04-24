@@ -1412,6 +1412,7 @@ CMakeFiles/tetris.dir/src/piece.cpp.o: /home/antuan/Personal/projects/Tetris-/sr
   /home/antuan/Personal/projects/Tetris-/libs/stb_image.h \
   /home/antuan/Personal/projects/Tetris-/include/texture.h \
   /home/antuan/Personal/projects/Tetris-/include/block.h \
+  /home/antuan/Personal/projects/Tetris-/include/game.h \
   /home/antuan/Personal/projects/Tetris-/include/piece.h \
   /usr/include/KHR/khrplatform.h \
   /usr/include/alloca.h \

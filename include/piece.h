@@ -14,6 +14,7 @@
 #include "../include/texture.h"
 
 class Block;
+class Game;
 
 class Piece {
 private:
@@ -24,6 +25,9 @@ private:
   void createZ(glm::vec2 pos);
   void createI(glm::vec2 pos);
   void createO(glm::vec2 pos);
+
+  Game* game;
+
 public:
   glm::vec2 blockPos[4];
   int amountRot = 0;
@@ -33,7 +37,7 @@ public:
   
   enum shapes {T, L, J, S, Z, O, I};
   shapes shape;
-  Piece(shapes, glm::vec2);
+  Piece(Game*, shapes, glm::vec2);
 
   void move(int, int);
   void rotate(int);
