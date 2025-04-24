@@ -39,10 +39,6 @@ private:
 public:
   float worldW = 76.0f;
   float worldH = 50.0f;
-  
-
-
-  std::array<glm::mat4, 750> walls; // 700
 
   std::unique_ptr<Piece> activePiece;
 
@@ -51,7 +47,6 @@ public:
   void Init();
 
   void generatePiece();
-  void createWalls();
   void static framebuffer_size_callback(GLFWwindow*, int, int);
   GLFWwindow* window; 
 

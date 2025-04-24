@@ -17,7 +17,7 @@ Render::Render(Game* g, Shader* bs, Shader* ws, Block* b, Block* w, Texture* t) 
   wallTexture(t) {};
 
 void Render::activate() {
-  initInstanceData();
+  //initInstanceData();
 
   while (!glfwWindowShouldClose(game->window)) {
     actualizeFrame();
@@ -47,6 +47,14 @@ void Render::renderization(){
 
   glm::mat4 projection = glm::ortho(0.0f, game->worldW, 0.0f, game->worldH, -1.0f, 1.0f);
 
+  
+
+  wallShader->use();
+  glActiveTexture(GL_TEXTURE0);
+  glBindTexture(GL_TEXTURE_2D, wallTexture->texture);
+  glBindVertexArray(wall->VAO);
+  glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
   for (int i=0; i < 4; i++){
   
     glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(game->activePiece->blockPos[i], 0.0f));
@@ -62,14 +70,6 @@ void Render::renderization(){
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
   }
 
-  wallShader->use();
-  wallShader->setMat4("projection", projection);
-
-  glActiveTexture(GL_TEXTURE0);
-  glBindTexture(GL_TEXTURE_2D, wallTexture->texture);
-  glBindVertexArray(wall->VAO);
-
-  glDrawElementsInstanced(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0, game->walls.size());
 
 }
 

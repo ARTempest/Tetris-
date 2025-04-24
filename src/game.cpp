@@ -11,8 +11,6 @@
 Game::Game(unsigned int w, unsigned int h){
   width = w;
   height = h;
-
-  createWalls();
 }
 
 void Game::Init(){
@@ -141,38 +139,3 @@ void Game::checkKeyState(bool beingPress, bool* key) {
   }
 }
 
-void Game::createWalls() {
-  int index = 0;
-
-  for (int  y=1; y <= worldH-1; y+=2) {
-    if (y >= 11) {
-      for (int x=1; x <= 27; x+=2) {
-        glm::mat4 model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(x * 1.0f, y * 1.0f, 0.0f));
-        walls[index] = model;
-        index++;
-       
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(worldW - x, y * 1.0f, 0.0f));
-        walls[index] = model;
-        index++;
-      }
-    } else {
-      for (int x=1; x <= worldW - 1; x+=2) {
-        glm::mat4 model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(x * 1.0f, y * 1.0f, 0.0f));
-        walls[index] = model;
-        index++;
-      }
-    }
-
-  }
-
- /* for (unsigned int x=1; x <= worldW-1; x+=2){
-    if (x > 27 && x < 49) {
-      for (int y = )
-      glm::mat4 model = glm::mat4(1.0f);
-      model = glm::translate(model, glm::vec3(x));
-    }
-  }*/
-}
