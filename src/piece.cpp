@@ -4,6 +4,8 @@
 #include <glm/ext/matrix_float4x4.hpp>
 #include <glm/ext/matrix_transform.hpp>
 #include <glm/ext/vector_float2.hpp>
+#include <glm/ext/vector_float3.hpp>
+#include <glm/ext/vector_int2.hpp>
 #include <memory>
 
 
@@ -56,9 +58,7 @@ void Piece::createT(glm::vec2 pos) {
   blockRot[2] = {glm::vec2(2,0) , glm::vec2(-2,0) , glm::vec2(0,2)};
   blockRot[3] = {glm::vec2(2,0) , glm::vec2(0,-2) , glm::vec2(0,2)};
 
-  std::cout << "a" << '\n';
   texture = std::make_unique<Texture>("../textures/purple_block.png");
-  std::cout << 'b' << '\n';
 }
 
 void Piece::createL(glm::vec2 pos) {
@@ -153,9 +153,8 @@ void Piece::createO(glm::vec2 pos) {
 }
 
 void Piece::move(int x, int y) {
-  glm::vec2 mov[4] = {glm::vec2(x,-y), glm::vec2(x,-y), glm::vec2(x,-y), glm::vec2(x,-y)};
-  
-  if (game->checkAvailability(mov) == true) {
+
+  if (game->checkMov(glm::vec2(x, -y)) == true) {
     for (auto& pos: blockPos) {
       pos.x += x * 2;
       pos.y += y * 2;
@@ -164,8 +163,8 @@ void Piece::move(int x, int y) {
 }
 
 void Piece::rotate(int dir) {
-
   if (shape != Piece::O) {
+
     numberRot += dir;
 
     if (numberRot < 0) {
@@ -174,9 +173,23 @@ void Piece::rotate(int dir) {
     else if (numberRot > amountRot - 1) {
       numberRot = 0;
     }
-
+    
+    glm::vec2* rotation = new glm::vec2[3];
+    
     for (int i=0; i <= 2; i++) {
-      blockPos[i + 1] = blockPos[0] + blockRot[numberRot][i];
+      glm::ivec2 rot;
+      rot.x = int(blockRot[numberRot][i].x / 2);
+      rot.y = int(blockRot[numberRot][i].y / 2);
+      rotation[i] = rot;
+      //std::cout << rot.x << '\n';
+    }
+
+    if (game->checkRot(rotation)) {
+      for (int i=0; i <= 2; i++) {
+        blockPos[i + 1] = blockPos[0] + blockRot[numberRot][i];
+      }
+    } else {
+      numberRot -= dir;
     }
   }
 }

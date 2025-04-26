@@ -81,14 +81,17 @@ public:
   Game(unsigned int, unsigned int);
   void processInput(int);
   void Init();
-  void convertCoords();
-
-  void setPieceCoords(glm::vec2[4]);
-  bool checkAvailability(glm::vec2[4]);
 
   void generatePiece();
   void static framebuffer_size_callback(GLFWwindow*, int, int);
   GLFWwindow* window; 
+
+  glm::vec2 convertCoords(glm::vec2);
+  void setPieceCoords(glm::vec2[4]);
+
+  bool checkMov(glm::vec2);
+  bool checkRot(glm::vec2*);
+
 
 };
 #endif 

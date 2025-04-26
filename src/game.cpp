@@ -5,6 +5,7 @@
 #include <glm/ext/vector_float2.hpp>
 #include <glm/ext/vector_float3.hpp>
 #include <glm/ext/vector_float4.hpp>
+#include <glm/ext/vector_int2.hpp>
 #include <iostream>
 #include <memory>
 
@@ -32,7 +33,7 @@ void Game::Init(){
     std::cout << "Failed to initialize GLAD" << std::endl;
   }    
 
-  activePiece = std::make_unique<Piece>(this,Piece::L, glm::vec2(31.0f, 51.0f)); // 0x = 29
+  activePiece = std::make_unique<Piece>(this,Piece::S, glm::vec2(31.0f, 51.0f)); // 0x = 29
 }
 
 void Game::processInput(int frameRate) {
@@ -60,12 +61,14 @@ void Game::pieceMov(int frameRate) {
   if (pressingR && !pressingL && movingR == false) {
     activePiece->move(1, 0);
     movingR = true;
-    delayR = 10;
+    delayR = 15;
+    delayL = 15;
   }
   else if (pressingL && !pressingR && movingL == false) {
     activePiece->move(-1, 0);
     movingL = true;
-    delayL = 10;
+    delayL = 15;
+    delayR = 15;
   }
   else if (frameRate % 15 == 0){
 
@@ -136,35 +139,55 @@ void Game::checkKeyState(bool beingPress, bool* key) {
   }
 }
 
+
+glm::vec2 Game::convertCoords(glm::vec2 coords) {
+  coords.x = (coords.x - 29) / 2;
+  coords.y = (57 - coords.y) / 2;
+  return coords;
+}
+
 void Game::setPieceCoords(glm::vec2* blockPos) {
   for (int i=0; i <= 3; i++) {
-    glm::vec2 bPos = blockPos[i];
-    bPos.x = (bPos.x - 29) / 2;
-    bPos.y = (57 - bPos.y) / 2;
-    blockCoords[i] = bPos;
+    blockCoords[i] = convertCoords(blockPos[i]);
   }
 }
 
-bool Game::checkAvailability(glm::vec2* blockPos) {
-  for (int i=0; i <= 3; i++) {
+bool Game::checkMov(glm::vec2 force) {
+  for (glm::vec2 pos: blockCoords) {
+    glm::ivec2 nextPos = pos + force;
 
-    if (blockCoords[i].x + blockPos[i].x >= 0 && blockCoords[i].x + blockPos[i].x < 10) {
-    } else {
-      return false;
-    }
-
-    if (blockCoords[i].y + blockPos[i].y >= 0 && blockCoords[i].y + blockPos[i].y < 24) {
-      //if glm::vec2 bPos = blockCoords[i] + blockPos
-    } else {
-      return false;
-    }
-
-
+    if (nextPos.x >= 0 && nextPos.x <= 9 && nextPos.y >= 0 && nextPos.y < 24) {
+      if (board[nextPos.y][nextPos.x] != 1) {} else {return false;}
+    } else {return false;}
   }
+
+  for (int i=0; i <= 3; i++) {
+    blockCoords[i] += force;
+  }
+
+
+  return true;
+}
+
+bool Game::checkRot(glm::vec2* blockRot) {
+  for (int i=0; i <= 2; i++) {
+    glm::ivec2 nextPos = blockCoords[0];
+    nextPos.x += int(blockRot[i].x);
+    nextPos.y += int(blockRot[i].y);
+    
+    if (nextPos.x >= 0 && nextPos.x <= 9 && nextPos.y >= 0 && nextPos.y < 23) {
+      if (board[nextPos.y][nextPos.x] != 1) {} else {return false;}
+    } else {return false;}
+  }
+
+  std::cout << "true" << '\n';
   
-  for (int i=0; i <= 3; i++) {
-    blockCoords[i] += blockPos[i];
+  for (int i=0; i <= 2; i++) {
+    blockCoords[i+1].x = blockCoords[0].x + blockRot[i].x;
+    blockCoords[i+1].y = blockCoords[0].y - blockRot[i].y;
   }
+
+  delete blockRot;
 
   return true;
 }
