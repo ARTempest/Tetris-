@@ -7,7 +7,6 @@
 #include <glm/ext/vector_float4.hpp>
 #include <glm/ext/vector_int2.hpp>
 #include <iostream>
-#include <memory>
 
 Game::Game(unsigned int w, unsigned int h){
   width = w;
@@ -33,7 +32,7 @@ void Game::Init(){
     std::cout << "Failed to initialize GLAD" << std::endl;
   }    
 
-  activePiece = std::make_unique<Piece>(this,Piece::S, glm::vec2(31.0f, 51.0f)); // 0x = 29
+  generateNewPiece();
 }
 
 void Game::processInput(int frameRate) {
@@ -158,7 +157,9 @@ bool Game::checkMov(glm::vec2 force) {
 
     if (nextPos.x >= 0 && nextPos.x <= 9 && nextPos.y >= 0 && nextPos.y < 24) {
       if (board[nextPos.y][nextPos.x] != 1) {} else {return false;}
-    } else {return false;}
+    } else {
+      delete activePiece;
+      return false;}
   }
 
   for (int i=0; i <= 3; i++) {
@@ -190,5 +191,16 @@ bool Game::checkRot(glm::vec2* blockRot) {
   delete blockRot;
 
   return true;
+}
+
+
+void Game::generateNewPiece() {
+  std::random_device dev;
+  std::mt19937 rng(dev());
+  std::uniform_int_distribution<std::mt19937::result_type> piece(0,6); // distribution in range [1, 6]
+
+  // piece(rng)
+  
+  activePiece = new Piece(this, Piece::shapesArray[piece(rng)], glm::vec2(31.0f, 51.0f));
 }
 

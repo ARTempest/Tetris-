@@ -194,5 +194,12 @@ void Piece::rotate(int dir) {
   }
 }
 
+void Piece::stop() {
+  canMove = false;
+  canRotate = false;
+
+}
+
+
 
 

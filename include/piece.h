@@ -36,11 +36,18 @@ public:
   std::unique_ptr<Texture> texture;
   
   enum shapes {T, L, J, S, Z, O, I};
+  constexpr static shapes shapesArray[7] = {T, L, J, S, Z, O, I};
+  
   shapes shape;
   Piece(Game*, shapes, glm::vec2);
 
+  bool canMove = true;
+  bool canRotate = true;
+
+
   void move(int, int);
   void rotate(int);
+  void stop();
 };
 #endif
 

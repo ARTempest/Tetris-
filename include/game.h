@@ -1,5 +1,4 @@
 #pragma once
-#include <glm/ext/vector_float2.hpp>
 #ifndef GAME_H
 #define GAME_H
 
@@ -8,6 +7,7 @@
 #include <iostream>
 #include "piece.h"
 #include <memory>
+#include <random>
 
 class Render;
 class Piece;
@@ -48,7 +48,7 @@ public:
 
   enum grids {nothing, block};
 
-  std::unique_ptr<Piece> activePiece;
+  Piece* activePiece;
 
   int board[24][10] = {    // 0 = nothing, 1 = static_block, 2 = active_block
     {0,0,0,0,0,0,0,0,0,0}, // hidden section
@@ -91,7 +91,7 @@ public:
 
   bool checkMov(glm::vec2);
   bool checkRot(glm::vec2*);
-
+  void generateNewPiece();
 
 };
 #endif 
