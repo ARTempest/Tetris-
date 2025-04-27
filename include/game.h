@@ -92,7 +92,7 @@ public:
   bool checkMov(glm::vec2);
   bool checkRot(glm::vec2*);
   void generateNewPiece();
-
+  void erasePiece();
 };
 #endif 
 

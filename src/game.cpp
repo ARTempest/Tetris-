@@ -156,9 +156,18 @@ bool Game::checkMov(glm::vec2 force) {
     glm::ivec2 nextPos = pos + force;
 
     if (nextPos.x >= 0 && nextPos.x <= 9 && nextPos.y >= 0 && nextPos.y < 24) {
-      if (board[nextPos.y][nextPos.x] != 1) {} else {return false;}
+      if (board[nextPos.y][nextPos.x] != 1) {
+      } 
+      else {
+        if (force == glm::vec2(0,1)){
+          erasePiece();
+          generateNewPiece();
+        }
+        return false;
+      }
     } else {
-      delete activePiece;
+      erasePiece();
+      generateNewPiece();
       return false;}
   }
 
@@ -193,13 +202,18 @@ bool Game::checkRot(glm::vec2* blockRot) {
   return true;
 }
 
+void Game::erasePiece() {
+  for (glm::vec2& pos: blockCoords) {
+    board[int(pos.y)][int(pos.x)] = 1;
+  }
+  delete activePiece; 
+}
+
 
 void Game::generateNewPiece() {
   std::random_device dev;
   std::mt19937 rng(dev());
   std::uniform_int_distribution<std::mt19937::result_type> piece(0,6); // distribution in range [1, 6]
-
-  // piece(rng)
   
   activePiece = new Piece(this, Piece::shapesArray[piece(rng)], glm::vec2(31.0f, 51.0f));
 }
