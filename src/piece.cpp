@@ -6,8 +6,6 @@
 #include <glm/ext/vector_float2.hpp>
 #include <glm/ext/vector_float3.hpp>
 #include <glm/ext/vector_int2.hpp>
-#include <memory>
-
 
 Piece::Piece(Game* g, shapes newShape, glm::vec2 pos) : game(g) {
 // Selecting piece shape
@@ -41,7 +39,7 @@ Piece::Piece(Game* g, shapes newShape, glm::vec2 pos) : game(g) {
   }
 
   game->setPieceCoords(blockPos);
-
+  texture = new Texture("../textures/blocks_atlas.png");
 };
 
 void Piece::createT(glm::vec2 pos) {
@@ -57,8 +55,7 @@ void Piece::createT(glm::vec2 pos) {
   blockRot[1] = {glm::vec2(0,-2), glm::vec2(-2,0) , glm::vec2(0,2)};
   blockRot[2] = {glm::vec2(2,0) , glm::vec2(-2,0) , glm::vec2(0,2)};
   blockRot[3] = {glm::vec2(2,0) , glm::vec2(0,-2) , glm::vec2(0,2)};
-
-  texture = std::make_unique<Texture>("../textures/purple_block.png");
+  atlasOffset = glm::vec2(3,0);
 }
 
 void Piece::createL(glm::vec2 pos) {
@@ -74,8 +71,7 @@ void Piece::createL(glm::vec2 pos) {
   blockRot[1] = {glm::vec2(-2,0), glm::vec2(2,0), glm::vec2(2,2)};
   blockRot[2] = {glm::vec2(0,-2), glm::vec2(0,2), glm::vec2(-2,2)};
   blockRot[3] = {glm::vec2(2,0), glm::vec2(-2,0), glm::vec2(-2,-2)};
-
-  texture = std::make_unique<Texture>("../textures/orange_block.png");
+  atlasOffset = glm::vec2(2,0);
 }
 
 void Piece::createJ(glm::vec2 pos) {
@@ -92,7 +88,7 @@ void Piece::createJ(glm::vec2 pos) {
   blockRot[2] = {glm::vec2(0,2), glm::vec2(2,2), glm::vec2(0,-2)};
   blockRot[3] = {glm::vec2(2,0), glm::vec2(2,-2), glm::vec2(-2,0)};
 
-  texture = std::make_unique<Texture>("../textures/blue_block.png");
+  atlasOffset = glm::vec2(3,1);
 }
 
 void Piece::createS(glm::vec2 pos) {
@@ -108,7 +104,7 @@ void Piece::createS(glm::vec2 pos) {
   blockRot[0] = {glm::vec2(0,-2), glm::vec2(-2,-2), glm::vec2(2,0)};
   blockRot[1] = {glm::vec2(2,0), glm::vec2(2,-2), glm::vec2(0,2)};
 
-  texture = std::make_unique<Texture>("../textures/green_block.png");
+  atlasOffset = glm::vec2(1,0);
 }
 
 void Piece::createZ(glm::vec2 pos) {
@@ -123,7 +119,7 @@ void Piece::createZ(glm::vec2 pos) {
   blockRot[0] = {glm::vec2(0,-2), glm::vec2(2,-2), glm::vec2(-2,0)};
   blockRot[1] = {glm::vec2(2,0), glm::vec2(2,2), glm::vec2(0,-2)};
 
-  texture = std::make_unique<Texture>("../textures/red_block.png");
+  atlasOffset = glm::vec2(0,1);
 }
 
 void Piece::createI(glm::vec2 pos) {
@@ -137,8 +133,8 @@ void Piece::createI(glm::vec2 pos) {
   amountRot = 2;
   blockRot[0] = {glm::vec2(0,2), glm::vec2(0,4), glm::vec2(0,-2)};
   blockRot[1] = {glm::vec2(-2,0), glm::vec2(-4,0), glm::vec2(2,0)};
-
-  texture = std::make_unique<Texture>("../textures/cian_block.png");
+  
+  atlasOffset = glm::vec2(0,0);
 }
 
 void Piece::createO(glm::vec2 pos) {
@@ -149,7 +145,7 @@ void Piece::createO(glm::vec2 pos) {
   blockPos[2] = {pos.x, pos.y + 2};
   blockPos[3] = {pos.x + 2, pos.y + 2};
 
-  texture = std::make_unique<Texture>("../textures/yellow_block.png");
+  atlasOffset = glm::vec2(2,1);
 }
 
 void Piece::move(int x, int y) {
@@ -181,7 +177,6 @@ void Piece::rotate(int dir) {
       rot.x = int(blockRot[numberRot][i].x / 2);
       rot.y = int(blockRot[numberRot][i].y / 2);
       rotation[i] = rot;
-      //std::cout << rot.x << '\n';
     }
 
     if (game->checkRot(rotation)) {
@@ -194,12 +189,15 @@ void Piece::rotate(int dir) {
   }
 }
 
-void Piece::stop() {
-  canMove = false;
-  canRotate = false;
+glm::vec2 Piece::getAtlasOffset() {
 
+  return atlasOffset * game->getAtlasScale();
 }
 
+
+Piece::~Piece() {
+  delete texture;
+}
 
 
 

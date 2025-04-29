@@ -1,4 +1,5 @@
 #pragma once
+#include <glm/ext/vector_float2.hpp>
 #ifndef GAME_H
 #define GAME_H
 
@@ -42,6 +43,8 @@ private:
 
   glm::vec2 blockCoords[4];
 
+  glm::vec2 atlasSize = glm::vec2(64.0, 64.0);
+  glm::vec2 tileSize = glm::vec2(16.0, 16.0);
 public:
   float worldW = 76.0f;
   float worldH = 50.0f;
@@ -93,6 +96,10 @@ public:
   bool checkRot(glm::vec2*);
   void generateNewPiece();
   void erasePiece();
+
+  glm::vec2 getAtlasScale();
+
+ 
 };
 #endif 
 

@@ -6,15 +6,14 @@
 #include <GLFW/glfw3.h>
 #include "../libs/stb_image.h"
 
-
 class Texture {
 private:
   int width, height, nrChannels;
-public:
   unsigned int texture;
   unsigned char *data; 
+public:
   Texture(const char*);
-  void get();
+  unsigned int get();
 };
 #endif
 

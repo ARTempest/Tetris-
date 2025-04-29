@@ -21,3 +21,7 @@ Texture::Texture(const char* path) {
 
   stbi_image_free(data);
 }
+
+unsigned int Texture::get() {
+  return texture;
+}

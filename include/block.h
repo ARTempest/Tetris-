@@ -24,9 +24,10 @@ private:
     1, 2, 3
   };
 
-
 public:
   unsigned int VBO, VAO, EBO;
+
+
 
   Block();
 };

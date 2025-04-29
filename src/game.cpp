@@ -211,12 +211,17 @@ void Game::erasePiece() {
   delete activePiece; 
 }
 
-
 void Game::generateNewPiece() {
   std::random_device dev;
   std::mt19937 rng(dev());
-  std::uniform_int_distribution<std::mt19937::result_type> piece(0,6); // distribution in range [1, 6]
+  std::uniform_int_distribution<std::mt19937::result_type> piece(0,6); 
   
   activePiece = new Piece(this, Piece::shapesArray[piece(rng)], glm::vec2(31.0f, 51.0f));
 }
+
+glm::vec2 Game::getAtlasScale() {
+  glm::vec2 atlasScale = tileSize / atlasSize;
+  return atlasScale;
+}
+
 
