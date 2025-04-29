@@ -7,7 +7,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-
 class Block {
 private:
   glm::vec3 color;
@@ -28,8 +27,6 @@ private:
 
 public:
   unsigned int VBO, VAO, EBO;
-  glm::vec2 position;
-  enum colors {red, blue, yellow, green};
 
-  Block(glm::vec2, colors);
+  Block();
 };

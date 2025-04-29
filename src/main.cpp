@@ -12,8 +12,8 @@ int main() {
   Shader blockShader("../src/shaders/block/vShader.txt", "../src/shaders/fShader.txt");
   Shader wallShader("../src/shaders/background/vShader.txt", "../src/shaders/fShader.txt");
 
-  Block block (glm::vec2(1.0f,1.0f), Block::blue);
-  Block wall (glm::vec2(1.0f, 1.0f), Block::blue);
+  Block block;
+  Block wall;
 
   Texture myTexture("../textures/background.png");
 

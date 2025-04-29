@@ -159,15 +159,17 @@ bool Game::checkMov(glm::vec2 force) {
       if (board[nextPos.y][nextPos.x] != 1) {
       } 
       else {
-        if (force == glm::vec2(0,1)){
+        if (force == glm::vec2(0.0, 1.0)) {
           erasePiece();
           generateNewPiece();
         }
         return false;
       }
     } else {
-      erasePiece();
-      generateNewPiece();
+      if (force == glm::vec2(0.0, 1.0)){
+        erasePiece();
+        generateNewPiece();
+      }
       return false;}
   }
 

@@ -1,6 +1,6 @@
 #include "../include/block.h"
 
-Block::Block(glm::vec2 pos, colors c) : position(pos) {
+Block::Block() {
  
   glGenVertexArrays(1, &VAO);
   glGenBuffers(1, &VBO);
