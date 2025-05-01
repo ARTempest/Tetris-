@@ -99,7 +99,7 @@ void Render::initPlacedBlocks() {
 
 void Render::actualizePlacedBlocks() {
   glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(PlacedBlock) * game->placedBlocks.size(), game->placedBlocks.data(), GL_STATIC_DRAW);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(PlacedBlock) * game->placedBlocks.size(), game->placedBlocks.data(), GL_DYNAMIC_DRAW);
 
   glBindVertexArray(placedBlock->VAO);
   glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
@@ -117,7 +117,7 @@ void Render::actualizePlacedBlocks() {
 
   unsigned int offsetLoc = 6;
   glEnableVertexAttribArray(offsetLoc);
-  glVertexAttribPointer(offsetLoc, 2, GL_FLOAT, GL_FALSE, stride, (void*)(sizeof(glm::mat4)));
+  glVertexAttribPointer(offsetLoc, 2, GL_FLOAT, GL_FALSE, stride, (void*)( sizeof(glm::mat4)));// + sizeof(glm::vec2)));
   glVertexAttribDivisor(offsetLoc, 1);
 }
 

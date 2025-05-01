@@ -7,6 +7,7 @@
 #include <glm/ext/vector_float4.hpp>
 #include <glm/ext/vector_int2.hpp>
 #include <iostream>
+#include <vector>
 
 Game::Game(unsigned int w, unsigned int h){
   width = w;
@@ -139,7 +140,7 @@ void Game::checkKeyState(bool beingPress, bool* key) {
 }
 
 
-glm::vec2 Game::convertCoords(glm::vec2 coords) {
+glm::vec2 Game::convertToBoardCoords(glm::vec2 coords) {
   coords.x = (coords.x - 29) / 2;
   coords.y = (57 - coords.y) / 2;
   return coords;
@@ -147,7 +148,7 @@ glm::vec2 Game::convertCoords(glm::vec2 coords) {
 
 void Game::setPieceCoords(glm::vec2* blockPos) {
   for (int i=0; i <= 3; i++) {
-    blockCoords[i] = convertCoords(blockPos[i]);
+    blockCoords[i] = convertToBoardCoords(blockPos[i]);
   }
 }
 
@@ -207,13 +208,26 @@ bool Game::checkRot(glm::vec2* blockRot) {
 
 void Game::erasePiece() {
   for (int i=0; i <= 3; i++) {
+    
     glm::vec2 boardPos = blockCoords[i];
     glm::vec2 worldPos = activePiece->blockPos[i];
-
+    
     addBlockToBoard(boardPos);
-    addPlacedBlock(worldPos);
+    addPlacedBlock(boardPos, worldPos);
+
     needUpdate = true;
   }
+  
+  for (int i=0; i <= 3; i++) {
+    
+    int line = blockCoords[i].y;
+
+    if (checkLine(line) == true) {
+      eraseLine(line);
+      moveBlocksDown(line);
+    }
+  }
+
   delete activePiece; 
 }
 
@@ -237,8 +251,7 @@ void Game::addBlockToBoard(glm::vec2 pos) {
   board[y][x] = 1;
 }
 
-
-void Game::addPlacedBlock(glm::vec2 pos) {
+void Game::addPlacedBlock(glm::vec2 boardPos, glm::vec2 pos) {
   PlacedBlock newPlacedBlock;
 
   glm::mat4 model = glm::mat4(1.0);
@@ -246,10 +259,96 @@ void Game::addPlacedBlock(glm::vec2 pos) {
   
   newPlacedBlock.model = model;
   newPlacedBlock.textureCoord = activePiece->getAtlasOffset();
+  newPlacedBlock.boardCoords = boardPos;
 
   placedBlocks.push_back(newPlacedBlock);
 }
 
+bool Game::checkLine(int line) {
+  for (int i=0; i < 10; i++) {
+    if (board[line][i] == 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+void Game::eraseLine(int line) {
+
+  int index = 0;
+  std::vector<int> indices;
+
+  for (PlacedBlock& block : placedBlocks) {
+    if (block.boardCoords.y == line) {
+      std::cout << "block " << index << " x: " << block.boardCoords.x << " y: " << block.boardCoords.y << '\n';
+      indices.push_back(index);
+    }
+
+    index++;
+  }
+
+  for (int i=0; i < 10; i++) {
+    board[line][i] = 0;
+    placedBlocks.erase(placedBlocks.begin() + indices[i] - 1 * i);
+  }
+}
+
+void Game::moveBlocksDown(int limit) {
+ 
+  int counter = 0;
+
+  std::cout << "placedBlocks: " << placedBlocks.size() << '\n';
+ 
+  for (int i=0; i <= placedBlocks.size(); i++) {
+    if (placedBlocks[i].boardCoords.y < limit) {
+      counter++;
+      int boardX = placedBlocks[i].boardCoords.x;
+      int boardY = placedBlocks[i].boardCoords.y;
+
+      board[boardY][boardX] = 0;
+      board[boardY + 1][boardX] = 1;
+
+      placedBlocks[i].boardCoords.y += 1;
 
 
+      glm::vec2 newWorldCoords = convertToWorldCoords(placedBlocks[i].boardCoords);
+
+      glm::mat4 newModel = convertToModel(newWorldCoords);
+      
+      placedBlocks[i].model = newModel;
+    }
+
+
+  }
+
+  std::cout << "placedBlocks: " << placedBlocks.size() << '\n';
+  
+  //std::cout << counter << '\n';
+  //printBoard();
+}
+
+glm::vec2 Game::convertToWorldCoords(glm::vec2 boardCoords) {
+  glm::vec2 worldCoords = boardCoords;
+
+  worldCoords.x = boardCoords.x * 2 + 29;
+  worldCoords.y = 57 - boardCoords.y * 2;
+
+  return worldCoords;
+}
+
+glm::mat4 Game::convertToModel(glm::vec2 pos) {
+  glm::mat4 model = glm::mat4(1.0);
+  model = glm::translate(model, glm::vec3(pos, 0.0));
+  
+  return model;
+}
+
+void Game::printBoard() {
+  for (int y=0; y < 24; y++) {
+    for (int x=0; x < 10; x++) {
+      std::cout << board[y][x];
+    }
+    std::cout << '\n';
+  } 
+}
 

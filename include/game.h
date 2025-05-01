@@ -13,7 +13,6 @@
 #include <vector>
 #include "placedBlock.h"
 
-
 class Render;
 class Piece;
 
@@ -94,7 +93,11 @@ public:
   void static framebuffer_size_callback(GLFWwindow*, int, int);
   GLFWwindow* window; 
 
-  glm::vec2 convertCoords(glm::vec2);
+  glm::vec2 convertToBoardCoords(glm::vec2);
+  glm::vec2 convertToWorldCoords(glm::vec2);
+  glm::mat4 convertToModel(glm::vec2);
+
+
   void setPieceCoords(glm::vec2[4]);
 
   bool checkMov(glm::vec2);
@@ -105,8 +108,15 @@ public:
   glm::vec2 getAtlasScale();
 
   void addBlockToBoard(glm::vec2);
-  void addPlacedBlock(glm::vec2);
+  void addPlacedBlock(glm::vec2, glm::vec2);
  
+  bool checkLine(int);
+  void eraseLine(int);
+
+  void moveBlocksDown(int);
+
+  void printBoard();
+
 };
 #endif 
 

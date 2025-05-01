@@ -8,6 +8,7 @@
 struct PlacedBlock {
   glm::mat4 model;
   glm::vec2 textureCoord;
+  glm::vec2 boardCoords;
 };
 
 #endif
