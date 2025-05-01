@@ -11,12 +11,14 @@ int main() {
 
   Shader blockShader("../src/shaders/block/vShader.txt", "../src/shaders/fShader.txt");
   Shader wallShader("../src/shaders/background/vShader.txt", "../src/shaders/fShader.txt");
+  Shader placedBlockShader("../src/shaders/wall/vShader.txt", "../src/shaders/fShader.txt");
 
   Block block;
   Block wall;
+  Block placedBlock;
 
   Texture myTexture("../textures/background.png");
 
-  Render render(&game, &blockShader, &wallShader, &block, &wall, &myTexture);
+  Render render(&game, &blockShader, &wallShader, &placedBlockShader,&block, &wall, &placedBlock, &myTexture);
   render.activate();
 }

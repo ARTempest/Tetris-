@@ -7,15 +7,19 @@
 #include <glm/ext/vector_float2.hpp>
 #include <glm/ext/vector_float4.hpp>
 
-Render::Render(Game* g, Shader* bs, Shader* ws, Block* b, Block* w, Texture* t) : 
+Render::Render(Game* g, Shader* bs, Shader* ws, Shader* pbs,Block* b, Block* bg, Block* pb,Texture* t) : 
   game(g),
   blockShader(bs),
   wallShader(ws),
+  placedBlockShader(pbs),
   block(b),
-  wall(w),
+  background(bg),
+  placedBlock(pb),
   wallTexture(t) {};
 
 void Render::activate() {
+  initPlacedBlocks();
+
 
   while (!glfwWindowShouldClose(game->window)) {
     actualizeFrame();
@@ -48,7 +52,7 @@ void Render::renderization(){
   wallShader->use();
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, wallTexture->get());
-  glBindVertexArray(wall->VAO);
+  glBindVertexArray(background->VAO);
   glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 
@@ -68,9 +72,47 @@ void Render::renderization(){
     glBindVertexArray(block->VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
   }
+
+  if (game->needUpdate == true) {
+    actualizePlacedBlocks();
+    game->needUpdate = false;
+  }
+
+
+  placedBlockShader->use();
+  placedBlockShader->setMat4("projection", projection);
+
+  glBindVertexArray(placedBlock->VAO);
+  glDrawElementsInstanced(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0, game->placedBlocks.size());
+
 }
 
 void Render::swapBuffers() {
     glfwPollEvents();
     glfwSwapBuffers(game->window);
 }
+
+
+void Render::initPlacedBlocks() {
+  glGenBuffers(1, &instanceVBO);
+}
+
+void Render::actualizePlacedBlocks() {
+  glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(glm::mat4) * game->placedBlocks.size(), game->placedBlocks.data(), GL_STATIC_DRAW);
+
+  glBindVertexArray(placedBlock->VAO);
+
+  std::size_t vec4Size = sizeof(glm::vec4);
+
+  for (unsigned int i=0; i < 4; i++) {
+    unsigned int location = 2+i;
+
+    glEnableVertexAttribArray(location);
+    glVertexAttribPointer(location, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(i * vec4Size));
+    glVertexAttribDivisor(location, 1);
+  } 
+
+}
+
+

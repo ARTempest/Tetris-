@@ -47,7 +47,7 @@ void Game::framebuffer_size_callback(GLFWwindow* window, int w, int h) {
   glViewport(0, 0, w, h);
 }
 
-void Game::pieceMov(int frameRate) {
+void Game::pieceMov(const int frameRate) {
   bool pressingR = glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS;
   bool pressingL = glfwGetKey(window, GLFW_KEY_LEFT)  == GLFW_PRESS;
   bool pressingD = glfwGetKey(window, GLFW_KEY_DOWN)  == GLFW_PRESS;
@@ -96,7 +96,7 @@ void Game::pieceMov(int frameRate) {
   reduceDelay(&fallingDelay);
 }
 
-void Game::pieceRot(int frameRate) {
+void Game::pieceRot(const int frameRate) {
   bool pressingZ = glfwGetKey(window, GLFW_KEY_Z);
   bool pressingX = glfwGetKey(window, GLFW_KEY_X);
 
@@ -173,6 +173,7 @@ bool Game::checkMov(glm::vec2 force) {
       return false;}
   }
 
+  std::cout << placedBlocks.size() << '\n';
   for (int i=0; i <= 3; i++) {
     blockCoords[i] += force;
   }
@@ -205,8 +206,13 @@ bool Game::checkRot(glm::vec2* blockRot) {
 }
 
 void Game::erasePiece() {
-  for (glm::vec2& pos: blockCoords) {
-    board[int(pos.y)][int(pos.x)] = 1;
+  for (int i=0; i <= 3; i++) {
+    glm::vec2 boardPos = blockCoords[i];
+    glm::vec2 worldPos = activePiece->blockPos[i];
+
+    addBlockToBoard(boardPos);
+    addPlacedBlock(worldPos);
+    needUpdate = true;
   }
   delete activePiece; 
 }
@@ -223,5 +229,21 @@ glm::vec2 Game::getAtlasScale() {
   glm::vec2 atlasScale = tileSize / atlasSize;
   return atlasScale;
 }
+
+void Game::addBlockToBoard(glm::vec2 pos) {
+  int x = pos.x;
+  int y = pos.y;
+
+  board[y][x] = 1;
+}
+
+
+void Game::addPlacedBlock(glm::vec2 pos) {
+  glm::mat4 model = glm::mat4(1.0);
+  model = glm::translate(model, glm::vec3(pos, 0.0));
+  placedBlocks.push_back(model);
+}
+
+
 
 

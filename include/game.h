@@ -1,5 +1,7 @@
 #pragma once
+#include <glm/ext/matrix_float4x4.hpp>
 #include <glm/ext/vector_float2.hpp>
+#include <vector>
 #ifndef GAME_H
 #define GAME_H
 
@@ -18,8 +20,8 @@ private:
   unsigned int width, height;
 
 //Key Functions
-  void pieceMov(int);
-  void pieceRot(int);
+  void pieceMov(const int);
+  void pieceRot(const int);
   void checkKeyState(bool, bool*);
 
   void activateDelay(int*, int);
@@ -46,14 +48,15 @@ private:
   glm::vec2 atlasSize = glm::vec2(64.0, 64.0);
   glm::vec2 tileSize = glm::vec2(16.0, 16.0);
 public:
-  float worldW = 76.0f;
-  float worldH = 50.0f;
-
-  enum grids {nothing, block};
+  const float worldW = 76.0f;
+  const float worldH = 50.0f;
 
   Piece* activePiece;
 
-  int board[24][10] = {    // 0 = nothing, 1 = static_block, 2 = active_block
+  std::vector<glm::mat4> placedBlocks;
+
+
+  int board[24][10] = {    // 0 = nothing, 1 = static_block
     {0,0,0,0,0,0,0,0,0,0}, // hidden section
     {0,0,0,0,0,0,0,0,0,0},
     {0,0,0,0,0,0,0,0,0,0},
@@ -80,6 +83,8 @@ public:
     {0,0,0,0,0,0,0,0,0,0}
   };
 
+  bool needUpdate = false;
+
 
   Game(unsigned int, unsigned int);
   void processInput(int);
@@ -99,6 +104,8 @@ public:
 
   glm::vec2 getAtlasScale();
 
+  void addBlockToBoard(glm::vec2);
+  void addPlacedBlock(glm::vec2);
  
 };
 #endif 

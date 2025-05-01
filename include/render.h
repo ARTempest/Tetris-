@@ -16,15 +16,19 @@ private:
   Game* game;
   Shader* blockShader;
   Shader* wallShader;
+  Shader* placedBlockShader;
   Block* block;
-  Block* wall;
+  Block* background;
+  Block* placedBlock;
   Texture* wallTexture;
   int frame = 0;
   void actualizeFrame();
   unsigned int instanceVBO;
+
 public:
-  Render(Game*, Shader*, Shader*, Block*, Block*,Texture*);
-  void initInstanceData();
+  Render(Game*, Shader*, Shader*, Shader*,Block*, Block*, Block*, Texture*);
+  void initPlacedBlocks();
+  void actualizePlacedBlocks();
   void renderization();
   void swapBuffers();
   void activate();
