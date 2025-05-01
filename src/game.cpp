@@ -239,9 +239,15 @@ void Game::addBlockToBoard(glm::vec2 pos) {
 
 
 void Game::addPlacedBlock(glm::vec2 pos) {
+  PlacedBlock newPlacedBlock;
+
   glm::mat4 model = glm::mat4(1.0);
   model = glm::translate(model, glm::vec3(pos, 0.0));
-  placedBlocks.push_back(model);
+  
+  newPlacedBlock.model = model;
+  newPlacedBlock.textureCoord = activePiece->getAtlasOffset();
+
+  placedBlocks.push_back(newPlacedBlock);
 }
 
 

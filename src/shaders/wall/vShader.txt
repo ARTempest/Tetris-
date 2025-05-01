@@ -7,10 +7,14 @@ layout (location = 2) in vec4 instanceModel_0;
 layout (location = 3) in vec4 instanceModel_1;
 layout (location = 4) in vec4 instanceModel_2;
 layout (location = 5) in vec4 instanceModel_3;
+layout (location = 6) in vec2 atlasOffset;
+
 
 out vec2 TexCoord;
 
 uniform mat4 projection;
+uniform vec2 atlasScale;
+
 
 void main()
 {
@@ -18,5 +22,5 @@ void main()
   mat4 model = mat4(instanceModel_0, instanceModel_1, instanceModel_2, instanceModel_3);
 
   gl_Position = projection * model * vec4(aPos, 1.0);
-  TexCoord = aTexCoord;
+  TexCoord = aTexCoord * atlasScale + atlasOffset;
 }

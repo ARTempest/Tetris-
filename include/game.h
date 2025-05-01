@@ -1,7 +1,4 @@
 #pragma once
-#include <glm/ext/matrix_float4x4.hpp>
-#include <glm/ext/vector_float2.hpp>
-#include <vector>
 #ifndef GAME_H
 #define GAME_H
 
@@ -11,6 +8,11 @@
 #include "piece.h"
 #include <memory>
 #include <random>
+#include <glm/ext/matrix_float4x4.hpp>
+#include <glm/ext/vector_float2.hpp>
+#include <vector>
+#include "placedBlock.h"
+
 
 class Render;
 class Piece;
@@ -53,8 +55,7 @@ public:
 
   Piece* activePiece;
 
-  std::vector<glm::mat4> placedBlocks;
-
+  std::vector<PlacedBlock> placedBlocks;
 
   int board[24][10] = {    // 0 = nothing, 1 = static_block
     {0,0,0,0,0,0,0,0,0,0}, // hidden section
@@ -84,7 +85,6 @@ public:
   };
 
   bool needUpdate = false;
-
 
   Game(unsigned int, unsigned int);
   void processInput(int);

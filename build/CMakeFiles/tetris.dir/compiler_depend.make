@@ -518,6 +518,7 @@ CMakeFiles/tetris.dir/src/game.cpp.o: /home/antuan/Personal/projects/Tetris-/src
   /home/antuan/Personal/projects/Tetris-/include/texture.h \
   /home/antuan/Personal/projects/Tetris-/include/game.h \
   /home/antuan/Personal/projects/Tetris-/include/piece.h \
+  /home/antuan/Personal/projects/Tetris-/include/placedBlock.h \
   /usr/include/KHR/khrplatform.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
@@ -973,6 +974,7 @@ CMakeFiles/tetris.dir/src/main.cpp.o: /home/antuan/Personal/projects/Tetris-/src
   /home/antuan/Personal/projects/Tetris-/include/block.h \
   /home/antuan/Personal/projects/Tetris-/include/game.h \
   /home/antuan/Personal/projects/Tetris-/include/piece.h \
+  /home/antuan/Personal/projects/Tetris-/include/placedBlock.h \
   /home/antuan/Personal/projects/Tetris-/include/render.h \
   /home/antuan/Personal/projects/Tetris-/include/shader.h \
   /home/antuan/Personal/projects/Tetris-/include/texture.h \
@@ -1438,6 +1440,7 @@ CMakeFiles/tetris.dir/src/piece.cpp.o: /home/antuan/Personal/projects/Tetris-/sr
   /home/antuan/Personal/projects/Tetris-/include/block.h \
   /home/antuan/Personal/projects/Tetris-/include/game.h \
   /home/antuan/Personal/projects/Tetris-/include/piece.h \
+  /home/antuan/Personal/projects/Tetris-/include/placedBlock.h \
   /usr/include/KHR/khrplatform.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
@@ -1893,6 +1896,7 @@ CMakeFiles/tetris.dir/src/render.cpp.o: /home/antuan/Personal/projects/Tetris-/s
   /home/antuan/Personal/projects/Tetris-/include/block.h \
   /home/antuan/Personal/projects/Tetris-/include/game.h \
   /home/antuan/Personal/projects/Tetris-/include/piece.h \
+  /home/antuan/Personal/projects/Tetris-/include/placedBlock.h \
   /home/antuan/Personal/projects/Tetris-/include/render.h \
   /home/antuan/Personal/projects/Tetris-/include/shader.h \
   /home/antuan/Personal/projects/Tetris-/include/texture.h \
@@ -3040,8 +3044,6 @@ CMakeFiles/tetris.dir/src/texture.cpp.o: /home/antuan/Personal/projects/Tetris-/
 
 /usr/include/c++/13/cstdio:
 
-/usr/include/c++/13/clocale:
-
 /usr/include/c++/13/cerrno:
 
 /usr/include/c++/13/cctype:
@@ -3133,6 +3135,10 @@ CMakeFiles/tetris.dir/src/texture.cpp.o: /home/antuan/Personal/projects/Tetris-/
 /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
 
 /usr/include/asm-generic/errno.h:
+
+/usr/include/c++/13/clocale:
+
+/home/antuan/Personal/projects/Tetris-/include/placedBlock.h:
 
 /home/antuan/Personal/projects/Tetris-/include/piece.h:
 

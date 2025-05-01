@@ -3,6 +3,7 @@
 #include "../include/block.h"
 #include "../include/shader.h"
 #include "../include/texture.h"
+#include <cstddef>
 #include <glm/ext/matrix_float4x4.hpp>
 #include <glm/ext/vector_float2.hpp>
 #include <glm/ext/vector_float4.hpp>
@@ -78,13 +79,12 @@ void Render::renderization(){
     game->needUpdate = false;
   }
 
-
   placedBlockShader->use();
   placedBlockShader->setMat4("projection", projection);
+  placedBlockShader->setVec2("atlasScale", game->getAtlasScale());
 
   glBindVertexArray(placedBlock->VAO);
   glDrawElementsInstanced(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0, game->placedBlocks.size());
-
 }
 
 void Render::swapBuffers() {
@@ -99,20 +99,26 @@ void Render::initPlacedBlocks() {
 
 void Render::actualizePlacedBlocks() {
   glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(glm::mat4) * game->placedBlocks.size(), game->placedBlocks.data(), GL_STATIC_DRAW);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(PlacedBlock) * game->placedBlocks.size(), game->placedBlocks.data(), GL_STATIC_DRAW);
 
   glBindVertexArray(placedBlock->VAO);
+  glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
 
   std::size_t vec4Size = sizeof(glm::vec4);
+  std::size_t stride = sizeof(PlacedBlock);
 
   for (unsigned int i=0; i < 4; i++) {
     unsigned int location = 2+i;
 
     glEnableVertexAttribArray(location);
-    glVertexAttribPointer(location, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(i * vec4Size));
+    glVertexAttribPointer(location, 4, GL_FLOAT, GL_FALSE, stride, (void*)(i * vec4Size));
     glVertexAttribDivisor(location, 1);
-  } 
+  }
 
+  unsigned int offsetLoc = 6;
+  glEnableVertexAttribArray(offsetLoc);
+  glVertexAttribPointer(offsetLoc, 2, GL_FLOAT, GL_FALSE, stride, (void*)(sizeof(glm::mat4)));
+  glVertexAttribDivisor(offsetLoc, 1);
 }
 
 
