@@ -1,4 +1,5 @@
 #pragma once
+#include <array>
 #ifndef GAME_H
 #define GAME_H
 
@@ -55,6 +56,11 @@ public:
   Piece* activePiece;
 
   std::vector<PlacedBlock> placedBlocks;
+  std::array<int, 10> highestBlocks;
+
+
+  int score = 0;
+
 
   int board[24][10] = {    // 0 = nothing, 1 = static_block
     {0,0,0,0,0,0,0,0,0,0}, // hidden section
@@ -97,11 +103,11 @@ public:
   glm::vec2 convertToWorldCoords(glm::vec2);
   glm::mat4 convertToModel(glm::vec2);
 
-
   void setPieceCoords(glm::vec2[4]);
 
   bool checkMov(glm::vec2);
   bool checkRot(glm::vec2*);
+
   void generateNewPiece();
   void erasePiece();
 
@@ -113,7 +119,11 @@ public:
   bool checkLine(int);
   void eraseLine(int);
 
-  void moveBlocksDown(int);
+  void moveBlocksDown(int, int);
+
+  void increaseScore(int);
+
+  void findHighestBlock();
 
   void printBoard();
 

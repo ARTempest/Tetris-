@@ -81,6 +81,7 @@ void Game::pieceMov(const int frameRate) {
 
     if (pressingD) {
      activePiece->move(0, -1);
+      printBoard();
     }
   }
 
@@ -174,7 +175,7 @@ bool Game::checkMov(glm::vec2 force) {
       return false;}
   }
 
-  std::cout << placedBlocks.size() << '\n';
+  //std::cout << placedBlocks.size() << '\n';
   for (int i=0; i <= 3; i++) {
     blockCoords[i] += force;
   }
@@ -194,7 +195,7 @@ bool Game::checkRot(glm::vec2* blockRot) {
     } else {return false;}
   }
 
-  std::cout << "true" << '\n';
+  //std::cout << "true" << '\n';
   
   for (int i=0; i <= 2; i++) {
     blockCoords[i+1].x = blockCoords[0].x + blockRot[i].x;
@@ -215,18 +216,36 @@ void Game::erasePiece() {
     addBlockToBoard(boardPos);
     addPlacedBlock(boardPos, worldPos);
 
+    std::cout << "must be equal one: "<< board[int(boardPos.y)][int(boardPos.x)] << '\n';
+
     needUpdate = true;
   }
   
+  int amountLines = 0;   
+  int lowestLine = 0;
+  bool lineCompleted = false;
+
+
   for (int i=0; i <= 3; i++) {
     
     int line = blockCoords[i].y;
 
     if (checkLine(line) == true) {
+      if (line > lowestLine) {
+        lowestLine = line;
+        lineCompleted = true;
+      }
       eraseLine(line);
-      moveBlocksDown(line);
+      amountLines += 1;
     }
   }
+
+  if (lineCompleted) {
+    moveBlocksDown(lowestLine, amountLines);
+  }
+  
+  increaseScore(amountLines);
+
 
   delete activePiece; 
 }
@@ -237,6 +256,8 @@ void Game::generateNewPiece() {
   std::uniform_int_distribution<std::mt19937::result_type> piece(0,6); 
   
   activePiece = new Piece(this, Piece::shapesArray[piece(rng)], glm::vec2(31.0f, 51.0f));
+
+  //printBoard();
 }
 
 glm::vec2 Game::getAtlasScale() {
@@ -245,8 +266,8 @@ glm::vec2 Game::getAtlasScale() {
 }
 
 void Game::addBlockToBoard(glm::vec2 pos) {
-  int x = pos.x;
-  int y = pos.y;
+  int x = int(pos.x);
+  int y = int(pos.y);
 
   board[y][x] = 1;
 }
@@ -274,13 +295,12 @@ bool Game::checkLine(int line) {
 }
 
 void Game::eraseLine(int line) {
-
   int index = 0;
   std::vector<int> indices;
 
   for (PlacedBlock& block : placedBlocks) {
     if (block.boardCoords.y == line) {
-      std::cout << "block " << index << " x: " << block.boardCoords.x << " y: " << block.boardCoords.y << '\n';
+      //std::cout << "block " << index << " x: " << block.boardCoords.x << " y: " << block.boardCoords.y << '\n';
       indices.push_back(index);
     }
 
@@ -291,40 +311,39 @@ void Game::eraseLine(int line) {
     board[line][i] = 0;
     placedBlocks.erase(placedBlocks.begin() + indices[i] - 1 * i);
   }
+
 }
+  
+void Game::moveBlocksDown(int lowestLine, int amountLines) {
+  int amountBlocksMoved = 0;
 
-void Game::moveBlocksDown(int limit) {
- 
-  int counter = 0;
+  for (int i=0; i < placedBlocks.size(); i++) {
+    if (placedBlocks[i].boardCoords.y < lowestLine) {
+      amountBlocksMoved++;
 
-  std::cout << "placedBlocks: " << placedBlocks.size() << '\n';
- 
-  for (int i=0; i <= placedBlocks.size(); i++) {
-    if (placedBlocks[i].boardCoords.y < limit) {
-      counter++;
-      int boardX = placedBlocks[i].boardCoords.x;
-      int boardY = placedBlocks[i].boardCoords.y;
+      glm::vec2* coords = &placedBlocks[i].boardCoords;
 
-      board[boardY][boardX] = 0;
-      board[boardY + 1][boardX] = 1;
-
-      placedBlocks[i].boardCoords.y += 1;
-
-
-      glm::vec2 newWorldCoords = convertToWorldCoords(placedBlocks[i].boardCoords);
-
-      glm::mat4 newModel = convertToModel(newWorldCoords);
+      int x = placedBlocks[i].boardCoords.x;
+      int y = placedBlocks[i].boardCoords.y;
+     
+      if (lowestLine + amountLines - 1) {
+        board[y][x] = 0;
+      }
       
+      coords->y += 1*amountLines;
+
+      board[int(coords->y)][x] = 1;
+
+      
+      glm::vec2 newWorldCoords = convertToWorldCoords(*coords);
+      glm::mat4 newModel = convertToModel(newWorldCoords);
       placedBlocks[i].model = newModel;
     }
-
-
   }
 
-  std::cout << "placedBlocks: " << placedBlocks.size() << '\n';
+  std::cout << "Amount of Blocks Moved = " << amountBlocksMoved << '\n';
   
-  //std::cout << counter << '\n';
-  //printBoard();
+
 }
 
 glm::vec2 Game::convertToWorldCoords(glm::vec2 boardCoords) {
@@ -344,11 +363,44 @@ glm::mat4 Game::convertToModel(glm::vec2 pos) {
 }
 
 void Game::printBoard() {
+  std::cout << "-----------------------------------------------------------" << '\n';
   for (int y=0; y < 24; y++) {
     for (int x=0; x < 10; x++) {
-      std::cout << board[y][x];
+      std::cout << board[y][x] << ' ';
     }
     std::cout << '\n';
   } 
+  std::cout << "-----------------------------------------------------------" << '\n';
 }
+
+void Game::findHighestBlock(){
+  for (int x=0; x < 10; x++) {
+    for (int y=0; y < 24; y++) {
+      if (board[y][x] == 1) {
+        highestBlocks[x] = y;
+        break;
+      }
+      
+      if (y == 23) {
+        highestBlocks[x] = -1;
+      }
+
+    }
+  }
+}
+
+
+void Game::increaseScore(int amountLines) {
+  int scoreforAmount[4] = {40, 100, 300, 1200}; 
+
+  score += scoreforAmount[amountLines];
+  //std::cout << score << '\n';
+}
+
+
+
+
+
+
+
 
