@@ -256,8 +256,6 @@ void Game::generateNewPiece() {
   std::uniform_int_distribution<std::mt19937::result_type> piece(0,6); 
   
   activePiece = new Piece(this, Piece::shapesArray[piece(rng)], glm::vec2(31.0f, 51.0f));
-
-  //printBoard();
 }
 
 glm::vec2 Game::getAtlasScale() {
@@ -315,24 +313,22 @@ void Game::eraseLine(int line) {
 }
   
 void Game::moveBlocksDown(int lowestLine, int amountLines) {
-  int amountBlocksMoved = 0;
 
   for (int i=0; i < placedBlocks.size(); i++) {
     if (placedBlocks[i].boardCoords.y < lowestLine) {
-      amountBlocksMoved++;
 
       glm::vec2* coords = &placedBlocks[i].boardCoords;
 
       int x = placedBlocks[i].boardCoords.x;
       int y = placedBlocks[i].boardCoords.y;
      
-      if (lowestLine + amountLines - 1) {
+      if (board[y][x] == 1) {
         board[y][x] = 0;
       }
       
       coords->y += 1*amountLines;
 
-      board[int(coords->y)][x] = 1;
+      board[int(coords->y)][x] = 2;
 
       
       glm::vec2 newWorldCoords = convertToWorldCoords(*coords);
@@ -341,8 +337,14 @@ void Game::moveBlocksDown(int lowestLine, int amountLines) {
     }
   }
 
-  std::cout << "Amount of Blocks Moved = " << amountBlocksMoved << '\n';
-  
+  for (int y=0; y < 24; y++) {
+    for (int x=0; x < 10; x++) {
+      if (board[y][x] == 2) {
+        board[y][x] = 1;
+      } 
+    }
+  }
+
 
 }
 
@@ -373,28 +375,11 @@ void Game::printBoard() {
   std::cout << "-----------------------------------------------------------" << '\n';
 }
 
-void Game::findHighestBlock(){
-  for (int x=0; x < 10; x++) {
-    for (int y=0; y < 24; y++) {
-      if (board[y][x] == 1) {
-        highestBlocks[x] = y;
-        break;
-      }
-      
-      if (y == 23) {
-        highestBlocks[x] = -1;
-      }
-
-    }
-  }
-}
-
 
 void Game::increaseScore(int amountLines) {
   int scoreforAmount[4] = {40, 100, 300, 1200}; 
 
   score += scoreforAmount[amountLines];
-  //std::cout << score << '\n';
 }
 
 
