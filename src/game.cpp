@@ -1,7 +1,6 @@
 #include "../include/game.h"
 #include <GLFW/glfw3.h>
 #include <glm/ext/matrix_float4x4.hpp>
-#include <glm/ext/matrix_transform.hpp>
 #include <glm/ext/vector_float2.hpp>
 #include <glm/ext/vector_float3.hpp>
 #include <glm/ext/vector_float4.hpp>
@@ -34,6 +33,8 @@ void Game::Init(){
   }    
 
   generateNewPiece();
+  initializeScore();
+  initializeLines();
 }
 
 void Game::processInput(int frameRate) {
@@ -243,9 +244,7 @@ void Game::erasePiece() {
   if (lineCompleted) {
     moveBlocksDown(lowestLine, amountLines);
   }
-  
   increaseScore(amountLines);
-
 
   delete activePiece; 
 }
@@ -298,7 +297,6 @@ void Game::eraseLine(int line) {
 
   for (PlacedBlock& block : placedBlocks) {
     if (block.boardCoords.y == line) {
-      //std::cout << "block " << index << " x: " << block.boardCoords.x << " y: " << block.boardCoords.y << '\n';
       indices.push_back(index);
     }
 
@@ -360,7 +358,7 @@ glm::vec2 Game::convertToWorldCoords(glm::vec2 boardCoords) {
 glm::mat4 Game::convertToModel(glm::vec2 pos) {
   glm::mat4 model = glm::mat4(1.0);
   model = glm::translate(model, glm::vec3(pos, 0.0));
-  
+
   return model;
 }
 
@@ -382,8 +380,68 @@ void Game::increaseScore(int amountLines) {
   score += scoreforAmount[amountLines];
 }
 
+glm::vec2 Game::convertToAtlasScale(glm::vec2 coords) {
+  return coords * getAtlasScale();
+}
+
+void Game::initializeScore() {
+  
+  const glm::vec2 coords = convertToWorldCoords(glm::vec2(11, 5));
+  
+  for (int offset=0; offset < 10; offset+=2) {
+    int index = offset / 2;
+
+    glm::mat4 model = convertToModel(glm::vec2(coords.x + offset, coords.y));
+    
+    PlacedBlock newLetter;
+    newLetter.model = model;
+    newLetter.textureCoord = convertToAtlasScale(scoreLetterCoords[index]);
+
+    scoreLetters[index] = newLetter;
+
+  }
 
 
+  for (int offset=12; offset < 24; offset+=2) {
+    int index = offset / 2 - 5;
+
+    glm::mat4 model = convertToModel(glm::vec2(coords.x + offset, coords.y));
+   
+    PlacedBlock newNumber;
+    newNumber.model = model;
+    newNumber.textureCoord = convertToAtlasScale(glm::vec2(1,2));
+
+    scoreNumbers[index] = newNumber;
+  }
+}
+
+void Game::initializeLines() {
+  const glm::vec2 coords = convertToWorldCoords(glm::vec2(11, 7));
+
+  for (int offset=0; offset < 10; offset+=2) {
+    int index = offset / 2;
+
+    glm::mat4 model = convertToModel(glm::vec2(coords.x + offset, coords.y));
+    
+    PlacedBlock newLetter;
+    newLetter.model = model;
+    newLetter.textureCoord = convertToAtlasScale(lineLetterCoords[index]);
+    
+    lineLetters[index] = newLetter;
+  }
+
+  for (int offset=12; offset < 24; offset+=2) {
+    int index = offset / 2 - 5;
+
+    glm::mat4 model = convertToModel(glm::vec2(coords.x + offset, coords.y));
+
+    PlacedBlock newNumber;
+    newNumber.model = model;
+    newNumber.textureCoord = convertToAtlasScale(glm::vec2(1,2));
+
+    lineNumbers[index] = newNumber;
+  } 
+}
 
 
 

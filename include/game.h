@@ -56,8 +56,15 @@ public:
   Piece* activePiece;
 
   std::vector<PlacedBlock> placedBlocks;
-  std::array<int, 10> highestBlocks;
 
+  std::array<PlacedBlock, 5> scoreLetters;
+  glm::vec2 scoreLetterCoords[5] = {glm::vec2(0,0), glm::vec2(1,0), glm::vec2(2,0), glm::vec2(3,0), glm::vec2(0,1)};
+
+  std::array<PlacedBlock, 5> lineLetters;
+  glm::vec2 lineLetterCoords[5] = {glm::vec2(1,1),glm::vec2(2,1),glm::vec2(3,1),glm::vec2(0,1),glm::vec2(0,0)};
+
+  std::array<PlacedBlock, 6> scoreNumbers;
+  std::array<PlacedBlock, 6> lineNumbers;
 
   int score = 0;
 
@@ -101,6 +108,7 @@ public:
 
   glm::vec2 convertToBoardCoords(glm::vec2);
   glm::vec2 convertToWorldCoords(glm::vec2);
+  glm::vec2 convertToAtlasScale(glm::vec2);
   glm::mat4 convertToModel(glm::vec2);
 
   void setPieceCoords(glm::vec2[4]);
@@ -120,6 +128,10 @@ public:
   void eraseLine(int);
 
   void moveBlocksDown(int, int);
+
+  void initializeScore();
+  void initializeLines();
+
 
   void increaseScore(int);
 

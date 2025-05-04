@@ -1,6 +1,5 @@
 #include "../include/render.h"
 #include "../include/game.h"
-#include "../include/block.h"
 #include "../include/shader.h"
 #include "../include/texture.h"
 #include <cstddef>
@@ -8,30 +7,21 @@
 #include <glm/ext/vector_float2.hpp>
 #include <glm/ext/vector_float4.hpp>
 
-Render::Render(Game* g, Shader* bs, Shader* ws, Shader* pbs,Block* b, Block* bg, Block* pb,Texture* t) : 
-  game(g),
-  blockShader(bs),
-  wallShader(ws),
-  placedBlockShader(pbs),
-  block(b),
-  background(bg),
-  placedBlock(pb),
-  wallTexture(t) {};
+Render::Render(Game*g) : game(g) {};
 
 void Render::activate() {
   initPlacedBlocks();
 
-
   while (!glfwWindowShouldClose(game->window)) {
     actualizeFrame();
-    game->processInput(frame); // Input
-    renderization(); // Rendering Commands
-    swapBuffers(); // Calls and swap buffers
+    game->processInput(frame);  // Input
+    renderization();            // Rendering Commands
+    swapBuffers();              // Calls and swap buffers
  }
 
-  glDeleteVertexArrays(1, &block->VAO);
-  glDeleteBuffers(1, &block->VBO);
-  glDeleteBuffers(1, &block->EBO);
+  glDeleteVertexArrays(1, &block.VAO);
+  glDeleteBuffers(1, &block.VBO);
+  glDeleteBuffers(1, &block.EBO);
   delete game->activePiece;
   glfwTerminate();
 }
@@ -50,41 +40,19 @@ void Render::renderization(){
 
   glm::mat4 projection = glm::ortho(0.0f, game->worldW, 0.0f, game->worldH, -1.0f, 1.0f);
 
-  wallShader->use();
-  glActiveTexture(GL_TEXTURE0);
-  glBindTexture(GL_TEXTURE_2D, wallTexture->get());
-  glBindVertexArray(background->VAO);
-  glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-
+  drawBackground();
+  
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, game->activePiece->texture->get());
 
-  for (int i=0; i < 4; i++){
+  drawActiveBlocks(projection);
+
+  checkPlacedBlocksUpdate();
   
-    glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(game->activePiece->blockPos[i], 0.0f));
+  drawPlacedBlocks(projection);
 
-    blockShader->use();
-    blockShader->setMat4("model", model);
-    blockShader->setMat4("projection", projection);
-    blockShader->setVec2("atlasScale", game->getAtlasScale());
-    blockShader->setVec2("atlasOffset", game->activePiece->getAtlasOffset());
-
-    glBindVertexArray(block->VAO);
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-  }
-
-  if (game->needUpdate == true) {
-    actualizePlacedBlocks();
-    game->needUpdate = false;
-  }
-
-  placedBlockShader->use();
-  placedBlockShader->setMat4("projection", projection);
-  placedBlockShader->setVec2("atlasScale", game->getAtlasScale());
-
-  glBindVertexArray(placedBlock->VAO);
-  glDrawElementsInstanced(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0, game->placedBlocks.size());
+  drawNumbers(projection);
+  drawLetters(projection);
 }
 
 void Render::swapBuffers() {
@@ -92,17 +60,111 @@ void Render::swapBuffers() {
     glfwSwapBuffers(game->window);
 }
 
+void Render::drawActiveBlocks(glm::mat4 projection) {
+  for (int i=0; i < 4; i++){
+    glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(game->activePiece->blockPos[i], 0.0f));
 
-void Render::initPlacedBlocks() {
-  glGenBuffers(1, &instanceVBO);
+    blockShader.use();
+    blockShader.setMat4("model", model);
+    blockShader.setMat4("projection", projection);
+    blockShader.setVec2("atlasScale", game->getAtlasScale());
+    blockShader.setVec2("atlasOffset", game->activePiece->getAtlasOffset());
+
+    glBindVertexArray(block.VAO);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+  }
 }
 
-void Render::actualizePlacedBlocks() {
-  glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
+void Render::drawPlacedBlocks(glm::mat4 projection) {
+  placedBlockShader.use();
+  placedBlockShader.setMat4("projection", projection);
+  placedBlockShader.setVec2("atlasScale", game->getAtlasScale());
+
+  glBindVertexArray(placedBlock.VAO);
+  glDrawElementsInstanced(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0, game->placedBlocks.size());
+}
+
+void Render::drawBackground() {
+  backgroundShader.use();
+ 
+  glActiveTexture(GL_TEXTURE0);
+  glBindTexture(GL_TEXTURE_2D, wallTexture.get());
+  glBindVertexArray(background.VAO);
+
+  glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+}
+
+void Render::drawNumbers(glm::mat4 projection) {
+ 
+  blockShader.use();
+  glActiveTexture(GL_TEXTURE0);
+  glBindTexture(GL_TEXTURE_2D, numbersTexture.get());
+  
+  blockShader.setMat4("projection", projection);
+  blockShader.setVec2("atlasScale", game->getAtlasScale());
+
+
+  for (int i=0; i < 7; i++) {
+    blockShader.setMat4("model", game->scoreNumbers[i].model);
+    blockShader.setVec2("atlasOffset", game->scoreNumbers[i].textureCoord);
+    
+    glBindVertexArray(scoreBlock.VAO);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+ 
+    blockShader.setMat4("model", game->lineNumbers[i].model);
+    blockShader.setVec2("atlasOffset", game->lineNumbers[i].textureCoord);
+
+    glBindVertexArray(scoreBlock.VAO);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+ 
+  }
+}
+
+void Render::drawLetters(glm::mat4 projection) {
+  blockShader.use();
+  glActiveTexture(GL_TEXTURE0);
+  glBindTexture(GL_TEXTURE_2D, lettersTexture.get());
+
+  blockShader.setMat4("projection", projection);
+  blockShader.setVec2("atlasScale", game->getAtlasScale());
+
+  for (int i=0; i < 5; i++) {
+    blockShader.setMat4("model", game->scoreLetters[i].model);
+    blockShader.setVec2("atlasOffset", game->scoreLetters[i].textureCoord);
+
+    glBindVertexArray(scoreBlock.VAO);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+    blockShader.setMat4("model", game->lineLetters[i].model);
+    blockShader.setVec2("atlasOffset", game->lineLetters[i].textureCoord);
+
+
+    glBindVertexArray(scoreBlock.VAO);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+  }
+
+} 
+
+
+
+void Render::initPlacedBlocks() {
+  glGenBuffers(1, &instancePlacedVBO);
+}
+
+void Render::checkPlacedBlocksUpdate() {
+  if (game->needUpdate == true) {
+    updatePlacedBlocks();
+    game->needUpdate = false;
+  }
+}
+
+
+void Render::updatePlacedBlocks() {
+  glBindBuffer(GL_ARRAY_BUFFER, instancePlacedVBO);
   glBufferData(GL_ARRAY_BUFFER, sizeof(PlacedBlock) * game->placedBlocks.size(), game->placedBlocks.data(), GL_DYNAMIC_DRAW);
 
-  glBindVertexArray(placedBlock->VAO);
-  glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
+  glBindVertexArray(placedBlock.VAO);
+  glBindBuffer(GL_ARRAY_BUFFER, instancePlacedVBO);
 
   std::size_t vec4Size = sizeof(glm::vec4);
   std::size_t stride = sizeof(PlacedBlock);
@@ -117,8 +179,12 @@ void Render::actualizePlacedBlocks() {
 
   unsigned int offsetLoc = 6;
   glEnableVertexAttribArray(offsetLoc);
-  glVertexAttribPointer(offsetLoc, 2, GL_FLOAT, GL_FALSE, stride, (void*)( sizeof(glm::mat4)));// + sizeof(glm::vec2)));
+  glVertexAttribPointer(offsetLoc, 2, GL_FLOAT, GL_FALSE, stride, (void*)( sizeof(glm::mat4)));
   glVertexAttribDivisor(offsetLoc, 1);
+}
+
+void Render::initScoreBlocks() {
+  glGenBuffers(1, &instanceScoreVBO);
 }
 
 

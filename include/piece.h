@@ -1,5 +1,4 @@
 #pragma once
-#include <glm/ext/vector_float2.hpp>
 #ifndef PIECE_H
 #define PIECE_H
 

@@ -1898,8 +1898,8 @@ CMakeFiles/tetris.dir/src/piece.cpp.o
 CMakeFiles/tetris.dir/src/render.cpp.o
  /home/antuan/Personal/projects/Tetris-/src/render.cpp
  /home/antuan/Personal/projects/Tetris-/libs/glfw/include/GLFW/glfw3.h
- /home/antuan/Personal/projects/Tetris-/libs/stb_image.h
  /home/antuan/Personal/projects/Tetris-/include/texture.h
+ /home/antuan/Personal/projects/Tetris-/libs/stb_image.h
  /home/antuan/Personal/projects/Tetris-/include/block.h
  /home/antuan/Personal/projects/Tetris-/include/game.h
  /home/antuan/Personal/projects/Tetris-/include/piece.h
