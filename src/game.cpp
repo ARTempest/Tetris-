@@ -43,8 +43,11 @@ void Game::processInput(int frameRate) {
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
     glfwSetWindowShouldClose(window, true);
   }
-  pieceMov(frameRate);
-  pieceRot(frameRate);
+  if (gameState == PLAYING) {
+    pieceMov(frameRate);
+    pieceRot(frameRate);
+  }
+  changeGameState();
 }
 
 void Game::framebuffer_size_callback(GLFWwindow* window, int w, int h) {
@@ -442,6 +445,21 @@ void Game::initLetters() {
 
 }
 
+void Game::changeGameState() {
+  if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS && pressingSpace == false) {
+    if (gameState == PLAYING) {
+      gameState = PAUSE;
+    } else {
+      gameState = PLAYING;
+    }
+    pressingSpace = true;
+  } 
+
+  if (glfwGetKey(window, GLFW_KEY_SPACE) != GLFW_PRESS){
+    pressingSpace = false;
+  }
+
+}
 
 
 

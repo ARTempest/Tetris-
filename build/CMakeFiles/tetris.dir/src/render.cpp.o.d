@@ -360,8 +360,8 @@ CMakeFiles/tetris.dir/src/render.cpp.o: \
  /home/antuan/Personal/projects/Tetris-/src/../include/../libs/stb_image.h \
  /usr/include/c++/13/stdlib.h \
  /home/antuan/Personal/projects/Tetris-/src/../include/game.h \
- /usr/include/c++/13/array /usr/include/c++/13/compare \
  /home/antuan/Personal/projects/Tetris-/src/../include/piece.h \
+ /usr/include/c++/13/array /usr/include/c++/13/compare \
  /home/antuan/Personal/projects/Tetris-/src/../include/../include/texture.h \
  /usr/include/c++/13/memory /usr/include/c++/13/bits/stl_tempbuf.h \
  /usr/include/c++/13/bits/stl_uninitialized.h \

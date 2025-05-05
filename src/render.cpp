@@ -3,7 +3,9 @@
 #include "../include/shader.h"
 #include "../include/texture.h"
 #include <cstddef>
+#include <glm/ext/matrix_clip_space.hpp>
 #include <glm/ext/matrix_float4x4.hpp>
+#include <glm/ext/matrix_transform.hpp>
 #include <glm/ext/vector_float2.hpp>
 #include <glm/ext/vector_float4.hpp>
 
@@ -38,21 +40,27 @@ void Render::renderization(){
   glClearColor(0.0f,0.0f,0.0f,1.0f);
   glClear(GL_COLOR_BUFFER_BIT); 
 
-  glm::mat4 projection = glm::ortho(0.0f, game->worldW, 0.0f, game->worldH, -1.0f, 1.0f);
+  if (game->gameState == game->PLAYING){
+    glm::mat4 projection = glm::ortho(0.0f, game->worldW, 0.0f, game->worldH, -1.0f, 1.0f);
+    
+    drawBackground();
+    
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, game->activePiece->texture->get());
+    
+    drawActiveBlocks(projection);
+    
+    checkPlacedBlocksUpdate();
+    
+    drawPlacedBlocks(projection);
+    
+    drawNumbers(projection);
+    drawLetters(projection);
+  } else {
+    glm::mat4 projection = glm::ortho(0.0f, 5.0f, 0.0f, 5.0f, -1.0f, 1.0f);
+    drawPauseLabel(projection);   
+  }
 
-  drawBackground();
-  
-  glActiveTexture(GL_TEXTURE0);
-  glBindTexture(GL_TEXTURE_2D, game->activePiece->texture->get());
-
-  drawActiveBlocks(projection);
-
-  checkPlacedBlocksUpdate();
-  
-  drawPlacedBlocks(projection);
-
-  drawNumbers(projection);
-  drawLetters(projection);
 }
 
 void Render::swapBuffers() {
@@ -168,4 +176,21 @@ void Render::initScoreBlocks() {
   glGenBuffers(1, &instanceScoreVBO);
 }
 
+
+void Render::drawPauseLabel(glm::mat4 projection) {
+  const glm::vec2 pos = glm::vec2(2.5,2.5);
+  glm::mat4 model = glm::mat4(1.0);
+  model = glm::translate(model, glm::vec3(pos, 0.0));
+ 
+  glActiveTexture(GL_TEXTURE0);
+  glBindTexture(GL_TEXTURE_2D, pauseLabelTexture.get());
+
+  labelShader.use();
+  labelShader.setMat4("projection", projection);
+  labelShader.setMat4("model", model);
+  
+  glBindVertexArray(block.VAO);
+  glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+}
 

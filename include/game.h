@@ -1,5 +1,4 @@
 #pragma once
-#include <array>
 #ifndef GAME_H
 #define GAME_H
 
@@ -15,6 +14,7 @@
 #include "placedBlock.h"
 #include "character.h"
 
+#include <array>
 
 class Render;
 class Piece;
@@ -35,6 +35,7 @@ private:
   bool movingR = false;
   bool movingL = false;
   bool movingD = false;
+  bool pressingSpace = false;
   bool rotatingZ = false;
   bool rotatingX = false;
 
@@ -65,6 +66,9 @@ public:
   
   std::array<Letter, 10> letters;
   std::array<Number, 12> numbers;
+
+  enum gameStates {PLAYING, PAUSE, GAME_OVER};
+  gameStates gameState = gameStates::PLAYING;
 
   int score = 0;
   int totalAmountLines = 0;
@@ -140,6 +144,8 @@ public:
 
   void initNumbers();
   void initLetters();
+
+  void changeGameState();
 
 };
 #endif 

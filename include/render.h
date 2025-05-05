@@ -20,12 +20,14 @@ private:
   Texture wallTexture = Texture("../textures/background.png");
   Texture numbersTexture = Texture("../textures/numbers.png");
   Texture lettersTexture = Texture("../textures/letters.png");
-  
+  Texture pauseLabelTexture = Texture("../textures/pause.png"); 
+
   Block block, background, placedBlock, scoreBlock;
   
   Shader blockShader = Shader("../src/shaders/block/vShader.txt", "../src/shaders/fShader.txt");
   Shader backgroundShader = Shader("../src/shaders/background/vShader.txt", "../src/shaders/fShader.txt");
   Shader placedBlockShader = Shader("../src/shaders/wall/vShader.txt", "../src/shaders/fShader.txt");
+  Shader labelShader = Shader("../src/shaders/labels/vShader.txt", "../src/shaders/fShader.txt");
 
   int frame = 0;
   void actualizeFrame();
@@ -36,6 +38,8 @@ private:
   void drawBackground();
   void drawNumbers(glm::mat4);
   void drawLetters(glm::mat4);
+  void drawPauseLabel(glm::mat4);
+
 
   void initPlacedBlocks();
   void checkPlacedBlocksUpdate();
