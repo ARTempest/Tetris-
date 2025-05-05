@@ -1,7 +1,7 @@
-CMakeFiles/tetris.dir/src/render.cpp.o: \
- /home/antuan/Personal/projects/Tetris-/src/render.cpp \
+CMakeFiles/tetris.dir/src/character.cpp.o: \
+ /home/antuan/Personal/projects/Tetris-/src/character.cpp \
  /usr/include/stdc-predef.h \
- /home/antuan/Personal/projects/Tetris-/src/../include/render.h \
+ /home/antuan/Personal/projects/Tetris-/src/../include/character.h \
  /usr/include/glm/ext/matrix_float4x4.hpp \
  /usr/include/glm/detail/type_mat4x4.hpp \
  /usr/include/glm/detail/type_vec4.hpp \
@@ -198,29 +198,48 @@ CMakeFiles/tetris.dir/src/render.cpp.o: \
  /usr/include/glm/detail/_vectorize.hpp /usr/include/glm/common.hpp \
  /usr/include/glm/detail/_fixes.hpp \
  /usr/include/glm/detail/func_common.inl \
- /usr/include/glm/detail/compute_common.hpp /usr/include/glad/glad.h \
- /usr/include/KHR/khrplatform.h \
- /home/antuan/Personal/projects/Tetris-/libs/glfw/include/GLFW/glfw3.h \
- /home/antuan/Personal/projects/Tetris-/src/../include/shader.h \
- /usr/include/c++/13/string /usr/include/c++/13/bits/stringfwd.h \
- /usr/include/c++/13/bits/memoryfwd.h \
- /usr/include/c++/13/bits/char_traits.h \
- /usr/include/c++/13/bits/postypes.h /usr/include/c++/13/cwchar \
- /usr/include/wchar.h /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
+ /usr/include/glm/detail/compute_common.hpp /usr/include/c++/13/iostream \
+ /usr/include/c++/13/ostream /usr/include/c++/13/ios \
+ /usr/include/c++/13/iosfwd /usr/include/c++/13/bits/stringfwd.h \
+ /usr/include/c++/13/bits/memoryfwd.h /usr/include/c++/13/bits/postypes.h \
+ /usr/include/c++/13/cwchar /usr/include/wchar.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
- /usr/include/c++/13/bits/allocator.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h \
- /usr/include/c++/13/bits/new_allocator.h /usr/include/c++/13/new \
- /usr/include/c++/13/bits/exception.h \
+ /usr/include/c++/13/exception /usr/include/c++/13/bits/exception.h \
+ /usr/include/c++/13/bits/exception_ptr.h \
+ /usr/include/c++/13/bits/cxxabi_init_exception.h \
+ /usr/include/c++/13/typeinfo /usr/include/c++/13/bits/hash_bytes.h \
+ /usr/include/c++/13/new /usr/include/c++/13/bits/nested_exception.h \
+ /usr/include/c++/13/bits/char_traits.h \
  /usr/include/c++/13/bits/localefwd.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++locale.h \
  /usr/include/c++/13/clocale /usr/include/locale.h \
- /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/c++/13/iosfwd \
- /usr/include/c++/13/cctype /usr/include/ctype.h \
+ /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/c++/13/cctype \
+ /usr/include/ctype.h /usr/include/c++/13/bits/ios_base.h \
+ /usr/include/c++/13/ext/atomicity.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/gthr-default.h \
+ /usr/include/pthread.h /usr/include/sched.h \
+ /usr/include/x86_64-linux-gnu/bits/sched.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h \
+ /usr/include/x86_64-linux-gnu/bits/cpu-set.h /usr/include/time.h \
+ /usr/include/x86_64-linux-gnu/bits/time.h \
+ /usr/include/x86_64-linux-gnu/bits/timex.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
+ /usr/include/x86_64-linux-gnu/bits/setjmp.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h \
+ /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/atomic_word.h \
+ /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
+ /usr/include/c++/13/bits/locale_classes.h /usr/include/c++/13/string \
+ /usr/include/c++/13/bits/allocator.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h \
+ /usr/include/c++/13/bits/new_allocator.h \
  /usr/include/c++/13/bits/ostream_insert.h \
  /usr/include/c++/13/bits/cxxabi_forced.h \
  /usr/include/c++/13/bits/stl_function.h \
@@ -233,7 +252,6 @@ CMakeFiles/tetris.dir/src/render.cpp.o: \
  /usr/include/c++/13/bits/alloc_traits.h \
  /usr/include/c++/13/bits/stl_construct.h /usr/include/c++/13/string_view \
  /usr/include/c++/13/bits/functional_hash.h \
- /usr/include/c++/13/bits/hash_bytes.h \
  /usr/include/c++/13/bits/string_view.tcc \
  /usr/include/c++/13/ext/string_conversions.h /usr/include/c++/13/cstdlib \
  /usr/include/c++/13/cstdio /usr/include/stdio.h \
@@ -252,28 +270,6 @@ CMakeFiles/tetris.dir/src/render.cpp.o: \
  /usr/include/c++/13/bits/memory_resource.h \
  /usr/include/c++/13/bits/uses_allocator.h \
  /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
- /usr/include/c++/13/fstream /usr/include/c++/13/istream \
- /usr/include/c++/13/ios /usr/include/c++/13/exception \
- /usr/include/c++/13/bits/exception_ptr.h \
- /usr/include/c++/13/bits/cxxabi_init_exception.h \
- /usr/include/c++/13/typeinfo /usr/include/c++/13/bits/nested_exception.h \
- /usr/include/c++/13/bits/ios_base.h /usr/include/c++/13/ext/atomicity.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/gthr-default.h \
- /usr/include/pthread.h /usr/include/sched.h \
- /usr/include/x86_64-linux-gnu/bits/sched.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h \
- /usr/include/x86_64-linux-gnu/bits/cpu-set.h /usr/include/time.h \
- /usr/include/x86_64-linux-gnu/bits/time.h \
- /usr/include/x86_64-linux-gnu/bits/timex.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
- /usr/include/x86_64-linux-gnu/bits/setjmp.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h \
- /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/atomic_word.h \
- /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
- /usr/include/c++/13/bits/locale_classes.h \
  /usr/include/c++/13/bits/locale_classes.tcc \
  /usr/include/c++/13/system_error \
  /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
@@ -286,115 +282,13 @@ CMakeFiles/tetris.dir/src/render.cpp.o: \
  /usr/include/c++/13/bits/streambuf_iterator.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_inline.h \
  /usr/include/c++/13/bits/locale_facets.tcc \
- /usr/include/c++/13/bits/basic_ios.tcc /usr/include/c++/13/ostream \
- /usr/include/c++/13/bits/ostream.tcc \
- /usr/include/c++/13/bits/istream.tcc /usr/include/c++/13/bits/codecvt.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
- /usr/include/c++/13/bits/fstream.tcc /usr/include/c++/13/sstream \
- /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/iostream \
- /usr/include/glm/glm.hpp /usr/include/c++/13/climits \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h \
- /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
- /usr/include/x86_64-linux-gnu/bits/local_lim.h \
- /usr/include/linux/limits.h \
- /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
- /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
- /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/c++/13/cfloat \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
- /usr/include/glm/fwd.hpp /usr/include/glm/trigonometric.hpp \
- /usr/include/glm/detail/func_trigonometric.inl \
- /usr/include/glm/packing.hpp /usr/include/glm/detail/func_packing.inl \
- /usr/include/glm/detail/type_half.hpp \
- /usr/include/glm/detail/type_half.inl /usr/include/glm/integer.hpp \
- /usr/include/glm/detail/func_integer.inl \
- /usr/include/glm/gtc/matrix_transform.hpp \
- /usr/include/glm/ext/matrix_projection.hpp \
- /usr/include/glm/gtc/constants.hpp \
- /usr/include/glm/ext/scalar_constants.hpp \
- /usr/include/glm/ext/scalar_constants.inl \
- /usr/include/glm/gtc/constants.inl \
- /usr/include/glm/ext/matrix_projection.inl \
- /usr/include/glm/ext/matrix_clip_space.hpp \
- /usr/include/glm/ext/matrix_clip_space.inl \
- /usr/include/glm/ext/matrix_transform.hpp \
- /usr/include/glm/ext/matrix_transform.inl \
- /usr/include/glm/gtc/matrix_transform.inl \
- /usr/include/glm/gtc/type_ptr.hpp /usr/include/glm/gtc/quaternion.hpp \
- /usr/include/glm/ext/vector_relational.hpp \
- /usr/include/glm/ext/vector_relational.inl \
- /usr/include/glm/detail/type_float.hpp \
- /usr/include/glm/ext/quaternion_common.hpp \
- /usr/include/glm/ext/quaternion_geometric.hpp \
- /usr/include/glm/ext/quaternion_geometric.inl \
- /usr/include/glm/ext/quaternion_common.inl \
- /usr/include/glm/ext/quaternion_float.hpp \
- /usr/include/glm/detail/type_quat.hpp \
- /usr/include/glm/ext/quaternion_relational.hpp \
- /usr/include/glm/ext/quaternion_relational.inl \
- /usr/include/glm/detail/type_quat.inl \
- /usr/include/glm/ext/quaternion_float_precision.hpp \
- /usr/include/glm/ext/quaternion_double.hpp \
- /usr/include/glm/ext/quaternion_double_precision.hpp \
- /usr/include/glm/ext/quaternion_trigonometric.hpp \
- /usr/include/glm/ext/quaternion_trigonometric.inl \
- /usr/include/glm/ext/quaternion_transform.hpp \
- /usr/include/glm/ext/quaternion_transform.inl \
- /usr/include/glm/gtc/quaternion.inl /usr/include/glm/gtc/epsilon.hpp \
- /usr/include/glm/detail/setup.hpp /usr/include/glm/gtc/epsilon.inl \
- /usr/include/glm/gtc/vec1.hpp /usr/include/glm/ext/vector_bool1.hpp \
- /usr/include/glm/ext/vector_bool1_precision.hpp \
- /usr/include/glm/ext/vector_float1.hpp \
- /usr/include/glm/ext/vector_float1_precision.hpp \
- /usr/include/glm/ext/vector_double1.hpp \
- /usr/include/glm/ext/vector_double1_precision.hpp \
- /usr/include/glm/ext/vector_int1.hpp \
- /usr/include/glm/ext/vector_int1_sized.hpp \
- /usr/include/glm/ext/vector_uint1.hpp \
- /usr/include/glm/ext/vector_uint1_sized.hpp /usr/include/c++/13/cstring \
- /usr/include/string.h /usr/include/strings.h \
- /usr/include/glm/gtc/type_ptr.inl \
- /home/antuan/Personal/projects/Tetris-/src/../include/block.h \
- /home/antuan/Personal/projects/Tetris-/src/../include/texture.h \
- /home/antuan/Personal/projects/Tetris-/src/../include/../libs/stb_image.h \
- /usr/include/c++/13/stdlib.h \
- /home/antuan/Personal/projects/Tetris-/src/../include/game.h \
- /usr/include/c++/13/array /usr/include/c++/13/compare \
- /home/antuan/Personal/projects/Tetris-/src/../include/piece.h \
- /home/antuan/Personal/projects/Tetris-/src/../include/../include/texture.h \
- /usr/include/c++/13/memory /usr/include/c++/13/bits/stl_tempbuf.h \
- /usr/include/c++/13/bits/stl_uninitialized.h \
- /usr/include/c++/13/bits/stl_raw_storage_iter.h \
- /usr/include/c++/13/bits/align.h /usr/include/c++/13/bits/unique_ptr.h \
- /usr/include/c++/13/bits/shared_ptr.h \
- /usr/include/c++/13/bits/shared_ptr_base.h \
- /usr/include/c++/13/bits/allocated_ptr.h \
- /usr/include/c++/13/ext/aligned_buffer.h \
- /usr/include/c++/13/ext/concurrence.h \
- /usr/include/c++/13/bits/shared_ptr_atomic.h \
- /usr/include/c++/13/bits/atomic_base.h \
- /usr/include/c++/13/bits/atomic_lockfree_defines.h \
- /usr/include/c++/13/backward/auto_ptr.h \
- /usr/include/c++/13/pstl/glue_memory_defs.h \
- /usr/include/c++/13/pstl/execution_defs.h /usr/include/c++/13/random \
- /usr/include/c++/13/bits/random.h /usr/include/c++/13/vector \
- /usr/include/c++/13/bits/stl_vector.h \
- /usr/include/c++/13/bits/stl_bvector.h \
- /usr/include/c++/13/bits/vector.tcc \
- /usr/include/c++/13/bits/uniform_int_dist.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/opt_random.h \
- /usr/include/c++/13/bits/random.tcc /usr/include/c++/13/numeric \
- /usr/include/c++/13/bits/stl_numeric.h \
- /usr/include/c++/13/pstl/glue_numeric_defs.h \
- /home/antuan/Personal/projects/Tetris-/src/../include/placedBlock.h \
- /home/antuan/Personal/projects/Tetris-/src/../include/character.h \
- /usr/include/c++/13/unordered_map \
+ /usr/include/c++/13/bits/basic_ios.tcc \
+ /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
+ /usr/include/c++/13/bits/istream.tcc /usr/include/c++/13/unordered_map \
  /usr/include/c++/13/bits/unordered_map.h \
  /usr/include/c++/13/bits/hashtable.h \
  /usr/include/c++/13/bits/hashtable_policy.h \
+ /usr/include/c++/13/ext/aligned_buffer.h \
  /usr/include/c++/13/bits/enable_special_members.h \
  /usr/include/c++/13/bits/node_handle.h \
- /usr/include/c++/13/bits/erase_if.h \
- /home/antuan/Personal/projects/Tetris-/src/../include/shader.h \
- /home/antuan/Personal/projects/Tetris-/src/../include/texture.h
+ /usr/include/c++/13/bits/erase_if.h

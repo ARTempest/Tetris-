@@ -18,6 +18,7 @@ src/block.cpp
 src/piece.cpp
 src/shader.cpp
 src/texture.cpp
+src/character.cpp
 )
 
 # Link OpenGL and GLFW

@@ -95,56 +95,37 @@ void Render::drawBackground() {
 }
 
 void Render::drawNumbers(glm::mat4 projection) {
- 
   blockShader.use();
-  glActiveTexture(GL_TEXTURE0);
-  glBindTexture(GL_TEXTURE_2D, numbersTexture.get());
-  
   blockShader.setMat4("projection", projection);
   blockShader.setVec2("atlasScale", game->getAtlasScale());
+  
+  glActiveTexture(GL_TEXTURE0);
+  glBindTexture(GL_TEXTURE_2D, numbersTexture.get());
+  glBindVertexArray(block.VAO);
 
+  for (Number number: game->numbers) {
+    blockShader.setMat4("model", number.model);
+    blockShader.setVec2("atlasOffset", number.texCoords);
 
-  for (int i=0; i < 7; i++) {
-    blockShader.setMat4("model", game->scoreNumbers[i].model);
-    blockShader.setVec2("atlasOffset", game->scoreNumbers[i].textureCoord);
-    
-    glBindVertexArray(scoreBlock.VAO);
+    glBindVertexArray(block.VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
- 
-    blockShader.setMat4("model", game->lineNumbers[i].model);
-    blockShader.setVec2("atlasOffset", game->lineNumbers[i].textureCoord);
-
-    glBindVertexArray(scoreBlock.VAO);
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
- 
   }
 }
 
 void Render::drawLetters(glm::mat4 projection) {
-  blockShader.use();
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, lettersTexture.get());
+  glBindVertexArray(block.VAO);
 
-  blockShader.setMat4("projection", projection);
-  blockShader.setVec2("atlasScale", game->getAtlasScale());
+  for (Letter letter: game->letters) {
+    blockShader.setMat4("model", letter.model);
+    blockShader.setVec2("atlasOffset", letter.texCoords);
 
-  for (int i=0; i < 5; i++) {
-    blockShader.setMat4("model", game->scoreLetters[i].model);
-    blockShader.setVec2("atlasOffset", game->scoreLetters[i].textureCoord);
-
-    glBindVertexArray(scoreBlock.VAO);
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-    blockShader.setMat4("model", game->lineLetters[i].model);
-    blockShader.setVec2("atlasOffset", game->lineLetters[i].textureCoord);
-
-
-    glBindVertexArray(scoreBlock.VAO);
+    glBindVertexArray(block.VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
   }
 
-} 
-
+}
 
 
 void Render::initPlacedBlocks() {

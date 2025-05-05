@@ -13,6 +13,8 @@
 #include <glm/ext/vector_float2.hpp>
 #include <vector>
 #include "placedBlock.h"
+#include "character.h"
+
 
 class Render;
 class Piece;
@@ -47,8 +49,12 @@ private:
 
   glm::vec2 blockCoords[4];
 
-  glm::vec2 atlasSize = glm::vec2(64.0, 64.0);
-  glm::vec2 tileSize = glm::vec2(16.0, 16.0);
+  const glm::vec2 atlasSize = glm::vec2(64.0, 64.0);
+  const glm::vec2 tileSize = glm::vec2(16.0, 16.0);
+  
+  const int blockSize = 2;
+  
+
 public:
   const float worldW = 76.0f;
   const float worldH = 50.0f;
@@ -56,18 +62,12 @@ public:
   Piece* activePiece;
 
   std::vector<PlacedBlock> placedBlocks;
-
-  std::array<PlacedBlock, 5> scoreLetters;
-  glm::vec2 scoreLetterCoords[5] = {glm::vec2(0,0), glm::vec2(1,0), glm::vec2(2,0), glm::vec2(3,0), glm::vec2(0,1)};
-
-  std::array<PlacedBlock, 5> lineLetters;
-  glm::vec2 lineLetterCoords[5] = {glm::vec2(1,1),glm::vec2(2,1),glm::vec2(3,1),glm::vec2(0,1),glm::vec2(0,0)};
-
-  std::array<PlacedBlock, 6> scoreNumbers;
-  std::array<PlacedBlock, 6> lineNumbers;
+  
+  std::array<Letter, 10> letters;
+  std::array<Number, 12> numbers;
 
   int score = 0;
-
+  int totalAmountLines = 0;
 
   int board[24][10] = {    // 0 = nothing, 1 = static_block
     {0,0,0,0,0,0,0,0,0,0}, // hidden section
@@ -102,16 +102,18 @@ public:
   void processInput(int);
   void Init();
 
-  void generatePiece();
   void static framebuffer_size_callback(GLFWwindow*, int, int);
   GLFWwindow* window; 
+
+  void generatePiece();
+  void setPieceCoords(glm::vec2[4]);
+  
 
   glm::vec2 convertToBoardCoords(glm::vec2);
   glm::vec2 convertToWorldCoords(glm::vec2);
   glm::vec2 convertToAtlasScale(glm::vec2);
   glm::mat4 convertToModel(glm::vec2);
 
-  void setPieceCoords(glm::vec2[4]);
 
   bool checkMov(glm::vec2);
   bool checkRot(glm::vec2*);
@@ -129,15 +131,15 @@ public:
 
   void moveBlocksDown(int, int);
 
-  void initializeScore();
-  void initializeLines();
-
-
   void increaseScore(int);
 
   void findHighestBlock();
 
   void printBoard();
+  void debug();
+
+  void initNumbers();
+  void initLetters();
 
 };
 #endif 

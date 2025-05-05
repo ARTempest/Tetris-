@@ -34,10 +34,9 @@ private:
   void drawActiveBlocks(glm::mat4);
   void drawPlacedBlocks(glm::mat4);
   void drawBackground();
-
-  void drawLetters(glm::mat4);
   void drawNumbers(glm::mat4);
-  
+  void drawLetters(glm::mat4);
+
   void initPlacedBlocks();
   void checkPlacedBlocksUpdate();
   void updatePlacedBlocks();

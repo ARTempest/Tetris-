@@ -1,0 +1,276 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						4
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "libs/glfw",
+					"childIndexes" : 
+					[
+						2,
+						3
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-libs.glfw-c51e36e6d7b3c6e31a85.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "libs/glfw",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "libs/glfw/src",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-libs.glfw.src-68ca795207aa7d397dd8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "libs/glfw/src",
+					"targetIndexes" : 
+					[
+						0,
+						4
+					]
+				},
+				{
+					"build" : "libs/glfw/docs",
+					"jsonFile" : "directory-libs.glfw.docs-6842506bafc5fc2c18b8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "libs/glfw/docs"
+				},
+				{
+					"build" : "libs/glm",
+					"childIndexes" : 
+					[
+						5,
+						6
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-libs.glm-33c39e47eebc52eafde5.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.6"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "libs/glm"
+				},
+				{
+					"build" : "libs/glm/glm",
+					"jsonFile" : "directory-libs.glm.glm-cdeeb9f9b6cfd4b776d1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.6"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 2,
+					"source" : "libs/glm/glm",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "libs/glm/test",
+					"childIndexes" : 
+					[
+						7,
+						8,
+						9,
+						10
+					],
+					"jsonFile" : "directory-libs.glm.test-3f688d94829f9a463702.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.6"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 2,
+					"source" : "libs/glm/test"
+				},
+				{
+					"build" : "libs/glm/test/bug",
+					"jsonFile" : "directory-libs.glm.test.bug-ccb53b6c31cbb73f32ff.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.6"
+					},
+					"parentIndex" : 6,
+					"projectIndex" : 2,
+					"source" : "libs/glm/test/bug"
+				},
+				{
+					"build" : "libs/glm/test/core",
+					"jsonFile" : "directory-libs.glm.test.core-08853e77755ad5a5df97.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.6"
+					},
+					"parentIndex" : 6,
+					"projectIndex" : 2,
+					"source" : "libs/glm/test/core"
+				},
+				{
+					"build" : "libs/glm/test/gtc",
+					"jsonFile" : "directory-libs.glm.test.gtc-c854a91fc78958eaaa24.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.6"
+					},
+					"parentIndex" : 6,
+					"projectIndex" : 2,
+					"source" : "libs/glm/test/gtc"
+				},
+				{
+					"build" : "libs/glm/test/gtx",
+					"jsonFile" : "directory-libs.glm.test.gtx-5662b4bf7b535d3d2e3e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.6"
+					},
+					"parentIndex" : 6,
+					"projectIndex" : 2,
+					"source" : "libs/glm/test/gtx"
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Tetris",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"name" : "GLFW",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						3,
+						4
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10
+					],
+					"name" : "glm",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 2,
+					"id" : "glfw::@9d94ad66e13f8aab41f7",
+					"jsonFile" : "target-glfw-9ec0ab417a082fde8d2a.json",
+					"name" : "glfw",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "glm_dummy::@9689ec0f31a21d795b02",
+					"jsonFile" : "target-glm_dummy-4dc50426d3737401738d.json",
+					"name" : "glm_dummy",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "tetris::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-tetris-77e3fec2d657d88dcb4d.json",
+					"name" : "tetris",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "uninstall::@6746522484b1c52deeae",
+					"jsonFile" : "target-uninstall-d5b07f4cb7477753ee01.json",
+					"name" : "uninstall",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "update_mappings::@9d94ad66e13f8aab41f7",
+					"jsonFile" : "target-update_mappings-ba80a33568ef5512585a.json",
+					"name" : "update_mappings",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/antuan/Personal/projects/Tetris-/build",
+		"source" : "/home/antuan/Personal/projects/Tetris-"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

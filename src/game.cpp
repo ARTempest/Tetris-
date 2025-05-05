@@ -1,11 +1,13 @@
 #include "../include/game.h"
 #include <GLFW/glfw3.h>
+#include <array>
 #include <glm/ext/matrix_float4x4.hpp>
 #include <glm/ext/vector_float2.hpp>
 #include <glm/ext/vector_float3.hpp>
 #include <glm/ext/vector_float4.hpp>
 #include <glm/ext/vector_int2.hpp>
 #include <iostream>
+#include <string>
 #include <vector>
 
 Game::Game(unsigned int w, unsigned int h){
@@ -32,9 +34,9 @@ void Game::Init(){
     std::cout << "Failed to initialize GLAD" << std::endl;
   }    
 
+  initNumbers();
+  initLetters();
   generateNewPiece();
-  initializeScore();
-  initializeLines();
 }
 
 void Game::processInput(int frameRate) {
@@ -82,7 +84,6 @@ void Game::pieceMov(const int frameRate) {
 
     if (pressingD) {
      activePiece->move(0, -1);
-      printBoard();
     }
   }
 
@@ -217,8 +218,6 @@ void Game::erasePiece() {
     addBlockToBoard(boardPos);
     addPlacedBlock(boardPos, worldPos);
 
-    std::cout << "must be equal one: "<< board[int(boardPos.y)][int(boardPos.x)] << '\n';
-
     needUpdate = true;
   }
   
@@ -243,8 +242,8 @@ void Game::erasePiece() {
 
   if (lineCompleted) {
     moveBlocksDown(lowestLine, amountLines);
+    increaseScore(amountLines);
   }
-  increaseScore(amountLines);
 
   delete activePiece; 
 }
@@ -342,15 +341,13 @@ void Game::moveBlocksDown(int lowestLine, int amountLines) {
       } 
     }
   }
-
-
 }
 
 glm::vec2 Game::convertToWorldCoords(glm::vec2 boardCoords) {
   glm::vec2 worldCoords = boardCoords;
 
-  worldCoords.x = boardCoords.x * 2 + 29;
-  worldCoords.y = 57 - boardCoords.y * 2;
+  worldCoords.x = boardCoords.x * blockSize + 29;
+  worldCoords.y = 57 - boardCoords.y * blockSize;
 
   return worldCoords;
 }
@@ -362,86 +359,94 @@ glm::mat4 Game::convertToModel(glm::vec2 pos) {
   return model;
 }
 
-void Game::printBoard() {
-  std::cout << "-----------------------------------------------------------" << '\n';
-  for (int y=0; y < 24; y++) {
-    for (int x=0; x < 10; x++) {
-      std::cout << board[y][x] << ' ';
-    }
-    std::cout << '\n';
-  } 
-  std::cout << "-----------------------------------------------------------" << '\n';
-}
-
-
 void Game::increaseScore(int amountLines) {
   int scoreforAmount[4] = {40, 100, 300, 1200}; 
 
-  score += scoreforAmount[amountLines];
+  score += scoreforAmount[amountLines - 1];
+  totalAmountLines += amountLines;
+  
+  std::string scoreString = std::to_string(score);
+  std::string totalAmountLinesString = std::to_string(totalAmountLines);
+
+  for (int i=0; i < scoreString.size(); i++) {
+    const int digit = scoreString[i] - 48;
+    numbers[6 - scoreString.size() + i].texCoords = convertToAtlasScale(numbers[0].numbers[digit]);
+  }
+
+  for (int i=0; i < totalAmountLinesString.size(); i++) {
+    const int digit = totalAmountLinesString[i] - 48;
+    numbers[12 - totalAmountLinesString.size() + i].texCoords = convertToAtlasScale(numbers[0].numbers[digit]);
+  }
+
 }
 
 glm::vec2 Game::convertToAtlasScale(glm::vec2 coords) {
   return coords * getAtlasScale();
 }
 
-void Game::initializeScore() {
-  
-  const glm::vec2 coords = convertToWorldCoords(glm::vec2(11, 5));
-  
-  for (int offset=0; offset < 10; offset+=2) {
-    int index = offset / 2;
+void Game::initNumbers() {
+  const int value = 0;
+  const glm::vec2 boardPos = glm::vec2(17, 5);
+  const glm::vec2 initialPos = convertToWorldCoords(boardPos);
 
-    glm::mat4 model = convertToModel(glm::vec2(coords.x + offset, coords.y));
+  for (int i=0; i < numbers.size(); i++) {
+    glm::mat4 model;
     
-    PlacedBlock newLetter;
-    newLetter.model = model;
-    newLetter.textureCoord = convertToAtlasScale(scoreLetterCoords[index]);
+    if (i < 6) {
+      model = convertToModel(glm::vec2(initialPos.x + i*blockSize, initialPos.y)); 
+    } else {
+      model = convertToModel(glm::vec2(initialPos.x + (i - 6) * blockSize, initialPos.y - 2 * blockSize));
+    }
 
-    scoreLetters[index] = newLetter;
-
-  }
-
-
-  for (int offset=12; offset < 24; offset+=2) {
-    int index = offset / 2 - 5;
-
-    glm::mat4 model = convertToModel(glm::vec2(coords.x + offset, coords.y));
-   
-    PlacedBlock newNumber;
-    newNumber.model = model;
-    newNumber.textureCoord = convertToAtlasScale(glm::vec2(1,2));
-
-    scoreNumbers[index] = newNumber;
-  }
-}
-
-void Game::initializeLines() {
-  const glm::vec2 coords = convertToWorldCoords(glm::vec2(11, 7));
-
-  for (int offset=0; offset < 10; offset+=2) {
-    int index = offset / 2;
-
-    glm::mat4 model = convertToModel(glm::vec2(coords.x + offset, coords.y));
-    
-    PlacedBlock newLetter;
-    newLetter.model = model;
-    newLetter.textureCoord = convertToAtlasScale(lineLetterCoords[index]);
-    
-    lineLetters[index] = newLetter;
-  }
-
-  for (int offset=12; offset < 24; offset+=2) {
-    int index = offset / 2 - 5;
-
-    glm::mat4 model = convertToModel(glm::vec2(coords.x + offset, coords.y));
-
-    PlacedBlock newNumber;
-    newNumber.model = model;
-    newNumber.textureCoord = convertToAtlasScale(glm::vec2(1,2));
-
-    lineNumbers[index] = newNumber;
+    Number newNumber(value, model);
+    numbers[i] = newNumber;
+    numbers[i].texCoords = convertToAtlasScale(numbers[i].texCoords);
   } 
+
+  for (Number number: numbers) {
+
+    std::cout << "x: " << number.texCoords.x << " y: " << number.texCoords.y << '\n';
+  }
 }
+
+void Game::initLetters() { 
+  const glm::vec2 initialPos = convertToWorldCoords(glm::vec2(11, 5));
+  const std::array<Letter::letter, 10> order = {
+    Letter::letter::s,
+    Letter::letter::c,
+    Letter::letter::o,
+    Letter::letter::r,
+    Letter::letter::e,
+    Letter::letter::l,
+    Letter::letter::i,
+    Letter::letter::n,
+    Letter::letter::e,
+    Letter::letter::s
+  };
+
+
+  for (int i=0; i < order.size(); i++) {
+    glm::mat4 model;
+
+    if (i < 5) {
+      model = convertToModel(glm::vec2(initialPos.x + i*blockSize, initialPos.y));
+    } else {
+      model = convertToModel(glm::vec2(initialPos.x + (i-5)*blockSize, initialPos.y - 2* blockSize));
+    }
+
+    Letter newLetter(order[i], model);
+    letters[i] = newLetter;
+    letters[i].texCoords = convertToAtlasScale(letters[i].texCoords);
+
+  }
+
+}
+
+
+
+
+
+
 
 
 
