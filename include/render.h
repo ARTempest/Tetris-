@@ -21,6 +21,7 @@ private:
   Texture numbersTexture = Texture("../textures/numbers.png");
   Texture lettersTexture = Texture("../textures/letters.png");
   Texture pauseLabelTexture = Texture("../textures/pause.png"); 
+  Texture gameOverLabelTexture = Texture("../textures/game_over.png");
 
   Block block, background, placedBlock, scoreBlock;
   
@@ -39,7 +40,7 @@ private:
   void drawNumbers(glm::mat4);
   void drawLetters(glm::mat4);
   void drawPauseLabel(glm::mat4);
-
+  void drawGameOverScreen(glm::mat4);
 
   void initPlacedBlocks();
   void checkPlacedBlocksUpdate();

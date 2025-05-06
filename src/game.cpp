@@ -55,13 +55,14 @@ void Game::framebuffer_size_callback(GLFWwindow* window, int w, int h) {
 }
 
 void Game::pieceMov(const int frameRate) {
+  checkLoseScreen();
   bool pressingR = glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS;
   bool pressingL = glfwGetKey(window, GLFW_KEY_LEFT)  == GLFW_PRESS;
   bool pressingD = glfwGetKey(window, GLFW_KEY_DOWN)  == GLFW_PRESS;
 
   if (frameRate % (60 - fallingSpeed) == 0 && fallingDelay == 0) {
     activePiece->move(0, -1);
-    activateDelay(&fallingDelay, 120 - fallingSpeed);
+    activateDelay(&fallingDelay, 60 - fallingSpeed);
   }
 
   if (pressingR && !pressingL && movingR == false) {
@@ -76,7 +77,7 @@ void Game::pieceMov(const int frameRate) {
     delayL = 15;
     delayR = 15;
   }
-  else if (frameRate % 15 == 0){
+  else if (frameRate % 10 == 0){
 
     if (pressingR && !pressingL && delayR == 0) {
      activePiece->move(1, 0);
@@ -252,6 +253,7 @@ void Game::erasePiece() {
 }
 
 void Game::generateNewPiece() {
+  checkLoseScreen();
   std::random_device dev;
   std::mt19937 rng(dev());
   std::uniform_int_distribution<std::mt19937::result_type> piece(0,6); 
@@ -381,6 +383,7 @@ void Game::increaseScore(int amountLines) {
     numbers[12 - totalAmountLinesString.size() + i].texCoords = convertToAtlasScale(numbers[0].numbers[digit]);
   }
 
+  increaseSpeed();
 }
 
 glm::vec2 Game::convertToAtlasScale(glm::vec2 coords) {
@@ -446,7 +449,7 @@ void Game::initLetters() {
 }
 
 void Game::changeGameState() {
-  if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS && pressingSpace == false) {
+  if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS && gameState != GAME_OVER && pressingSpace == false) {
     if (gameState == PLAYING) {
       gameState = PAUSE;
     } else {
@@ -461,12 +464,27 @@ void Game::changeGameState() {
 
 }
 
+void Game::checkLoseScreen() {
+  for (int i=0; i < 10; i++) {
+    if (board[3][i] == 1) {
+      gameOverScreen();
+      break;
+    }
+  }
+}
 
+void Game::gameOverScreen() {
+  gameState = GAME_OVER;
+}
 
+void Game::increaseSpeed() {
+  int speed = score / 10;
+  
+  if (initialFallingSpeed + speed > 59) {
+    speed =  39;
+  }
+  std::cout << score / 10 << '\n';
 
-
-
-
-
-
+  fallingSpeed = initialFallingSpeed + speed;
+}
 

@@ -45,7 +45,8 @@ private:
   int delayZ = 0;
   int delayX = 0;
 
-  int fallingSpeed = 10;
+  int fallingSpeed = 20;
+  const int initialFallingSpeed = fallingSpeed;
   int fallingDelay = 0;
 
   glm::vec2 blockCoords[4];
@@ -136,6 +137,7 @@ public:
   void moveBlocksDown(int, int);
 
   void increaseScore(int);
+  void increaseSpeed();
 
   void findHighestBlock();
 
@@ -146,7 +148,8 @@ public:
   void initLetters();
 
   void changeGameState();
-
+  void checkLoseScreen();
+  void gameOverScreen();
 };
 #endif 
 
