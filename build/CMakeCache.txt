@@ -414,6 +414,12 @@ PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
 //Path to a library.
 RT_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/librt.a
 
+//The directory containing a CMake configuration file for SDL2.
+SDL2_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/SDL2
+
+//The directory containing a CMake configuration file for SDL2_mixer.
+SDL2_mixer_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/SDL2_mixer
+
 //Value Computed by CMake
 Tetris_BINARY_DIR:STATIC=/home/antuan/Personal/projects/Tetris-/build
 
@@ -571,10 +577,10 @@ X11_Xrender_LIB:FILEPATH=/usr/lib/x86_64-linux-gnu/libXrender.so
 X11_Xshape_INCLUDE_PATH:PATH=/usr/include
 
 //Path to a file.
-X11_Xss_INCLUDE_PATH:PATH=X11_Xss_INCLUDE_PATH-NOTFOUND
+X11_Xss_INCLUDE_PATH:PATH=/usr/include
 
 //Path to a library.
-X11_Xss_LIB:FILEPATH=X11_Xss_LIB-NOTFOUND
+X11_Xss_LIB:FILEPATH=/usr/lib/x86_64-linux-gnu/libXss.so
 
 //Path to a file.
 X11_Xt_INCLUDE_PATH:PATH=/usr/include
@@ -592,10 +598,10 @@ X11_Xtst_LIB:FILEPATH=X11_Xtst_LIB-NOTFOUND
 X11_Xutil_INCLUDE_PATH:PATH=/usr/include
 
 //Path to a file.
-X11_Xv_INCLUDE_PATH:PATH=X11_Xv_INCLUDE_PATH-NOTFOUND
+X11_Xv_INCLUDE_PATH:PATH=/usr/include
 
 //Path to a library.
-X11_Xv_LIB:FILEPATH=X11_Xv_LIB-NOTFOUND
+X11_Xv_LIB:FILEPATH=/usr/lib/x86_64-linux-gnu/libXv.so
 
 //Path to a file.
 X11_Xxf86misc_INCLUDE_PATH:PATH=X11_Xxf86misc_INCLUDE_PATH-NOTFOUND
@@ -604,10 +610,10 @@ X11_Xxf86misc_INCLUDE_PATH:PATH=X11_Xxf86misc_INCLUDE_PATH-NOTFOUND
 X11_Xxf86misc_LIB:FILEPATH=X11_Xxf86misc_LIB-NOTFOUND
 
 //Path to a file.
-X11_Xxf86vm_INCLUDE_PATH:PATH=X11_Xxf86vm_INCLUDE_PATH-NOTFOUND
+X11_Xxf86vm_INCLUDE_PATH:PATH=/usr/include
 
 //Path to a library.
-X11_Xxf86vm_LIB:FILEPATH=X11_Xxf86vm_LIB-NOTFOUND
+X11_Xxf86vm_LIB:FILEPATH=/usr/lib/x86_64-linux-gnu/libXxf86vm.so
 
 //Path to a file.
 X11_dpms_INCLUDE_PATH:PATH=/usr/include
@@ -836,6 +842,15 @@ glm_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 glm_SOURCE_DIR:STATIC=/home/antuan/Personal/projects/Tetris-/libs/glm
+
+//Path to a library.
+pkgcfg_lib_SDL2_MIXER_SDL2:FILEPATH=/usr/lib/x86_64-linux-gnu/libSDL2.so
+
+//Path to a library.
+pkgcfg_lib_SDL2_MIXER_SDL2_mixer:FILEPATH=/usr/lib/x86_64-linux-gnu/libSDL2_mixer.so
+
+//Path to a library.
+pkgcfg_lib_SDL2_SDL2:FILEPATH=/usr/lib/x86_64-linux-gnu/libSDL2.so
 
 //Path to a library.
 pkgcfg_lib_Wayland_wayland-client:FILEPATH=/usr/lib/x86_64-linux-gnu/libwayland-client.so
@@ -1093,6 +1108,76 @@ PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
 PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: RT_LIBRARY
 RT_LIBRARY-ADVANCED:INTERNAL=1
+SDL2_CFLAGS:INTERNAL=-I/usr/include;-I/usr/include/SDL2;-D_REENTRANT
+SDL2_CFLAGS_I:INTERNAL=
+SDL2_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
+SDL2_FOUND:INTERNAL=1
+SDL2_INCLUDEDIR:INTERNAL=/usr/include
+SDL2_INCLUDE_DIRS:INTERNAL=/usr/include;/usr/include/SDL2
+SDL2_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-lSDL2
+SDL2_LDFLAGS_OTHER:INTERNAL=
+SDL2_LIBDIR:INTERNAL=/usr/lib/x86_64-linux-gnu
+SDL2_LIBRARIES:INTERNAL=SDL2
+SDL2_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu
+SDL2_LIBS:INTERNAL=
+SDL2_LIBS_L:INTERNAL=
+SDL2_LIBS_OTHER:INTERNAL=
+SDL2_LIBS_PATHS:INTERNAL=
+SDL2_MIXER_CFLAGS:INTERNAL=-I/usr/include/SDL2;-I/usr/include;-I/usr/include/glib-2.0;-I/usr/lib/x86_64-linux-gnu/glib-2.0/include;-I/usr/include/opus;-I/usr/include/x86_64-linux-gnu;-I/usr/include/pipewire-0.3;-I/usr/include/spa-0.2;-I/usr/include/dbus-1.0;-I/usr/lib/x86_64-linux-gnu/dbus-1.0/include;-I/usr/include/libinstpatch-2;-pthread;-D_REENTRANT;-D_DEFAULT_SOURCE;-D_XOPEN_SOURCE=600
+SDL2_MIXER_CFLAGS_I:INTERNAL=
+SDL2_MIXER_CFLAGS_OTHER:INTERNAL=-pthread;-D_REENTRANT;-D_DEFAULT_SOURCE;-D_XOPEN_SOURCE=600
+SDL2_MIXER_FOUND:INTERNAL=1
+SDL2_MIXER_INCLUDEDIR:INTERNAL=/usr/include
+SDL2_MIXER_INCLUDE_DIRS:INTERNAL=/usr/include/SDL2;/usr/include;/usr/include/glib-2.0;/usr/lib/x86_64-linux-gnu/glib-2.0/include;/usr/include/opus;/usr/include/x86_64-linux-gnu;/usr/include/pipewire-0.3;/usr/include/spa-0.2;/usr/include/dbus-1.0;/usr/lib/x86_64-linux-gnu/dbus-1.0/include;/usr/include/libinstpatch-2
+SDL2_MIXER_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-lSDL2_mixer;-lSDL2
+SDL2_MIXER_LDFLAGS_OTHER:INTERNAL=
+SDL2_MIXER_LIBDIR:INTERNAL=/usr/lib/x86_64-linux-gnu
+SDL2_MIXER_LIBRARIES:INTERNAL=SDL2_mixer;SDL2
+SDL2_MIXER_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu
+SDL2_MIXER_LIBS:INTERNAL=
+SDL2_MIXER_LIBS_L:INTERNAL=
+SDL2_MIXER_LIBS_OTHER:INTERNAL=
+SDL2_MIXER_LIBS_PATHS:INTERNAL=
+SDL2_MIXER_MODULE_NAME:INTERNAL=SDL2_mixer
+SDL2_MIXER_PREFIX:INTERNAL=/usr
+SDL2_MIXER_SDL2_mixer_INCLUDEDIR:INTERNAL=
+SDL2_MIXER_SDL2_mixer_LIBDIR:INTERNAL=
+SDL2_MIXER_SDL2_mixer_PREFIX:INTERNAL=
+SDL2_MIXER_SDL2_mixer_VERSION:INTERNAL=
+SDL2_MIXER_STATIC_CFLAGS:INTERNAL=-I/usr/include/SDL2;-I/usr/include;-I/usr/include/glib-2.0;-I/usr/lib/x86_64-linux-gnu/glib-2.0/include;-I/usr/include/opus;-I/usr/include/x86_64-linux-gnu;-I/usr/include/pipewire-0.3;-I/usr/include/spa-0.2;-I/usr/include/dbus-1.0;-I/usr/lib/x86_64-linux-gnu/dbus-1.0/include;-I/usr/include/libinstpatch-2;-pthread;-D_REENTRANT;-D_DEFAULT_SOURCE;-D_XOPEN_SOURCE=600
+SDL2_MIXER_STATIC_CFLAGS_I:INTERNAL=
+SDL2_MIXER_STATIC_CFLAGS_OTHER:INTERNAL=-pthread;-D_REENTRANT;-D_DEFAULT_SOURCE;-D_XOPEN_SOURCE=600
+SDL2_MIXER_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/SDL2;/usr/include;/usr/include/glib-2.0;/usr/lib/x86_64-linux-gnu/glib-2.0/include;/usr/include/opus;/usr/include/x86_64-linux-gnu;/usr/include/pipewire-0.3;/usr/include/spa-0.2;/usr/include/dbus-1.0;/usr/lib/x86_64-linux-gnu/dbus-1.0/include;/usr/include/libinstpatch-2
+SDL2_MIXER_STATIC_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-lSDL2_mixer;-lm;-lm;-ldl;-lpthread;-pthread;-lsamplerate;-lX11;-lXext;-lXcursor;-lXi;-lXfixes;-lXrandr;-lXss;-ldrm;-lgbm;-lwayland-egl;-lwayland-client;-lwayland-cursor;-lxkbcommon;-ldecor-0;-lpthread;-L/usr/lib/x86_64-linux-gnu;-lmodplug;-lstdc++;-lm;-lfluidsynth;-lm;/usr/lib/x86_64-linux-gnu/libpulse-simple.so;/usr/lib/x86_64-linux-gnu/libpulse.so;/usr/lib/gcc/x86_64-linux-gnu/13/libgomp.so;/usr/lib/x86_64-linux-gnu/libpthread.a;-L/usr/lib/x86_64-linux-gnu;-lm;-L/usr/lib/x86_64-linux-gnu;-lpcre2-8;-pthread;-lglib-2.0;-lm;-L/usr/lib/x86_64-linux-gnu;-lpcre2-8;-lmp3lame;-L/usr/lib/x86_64-linux-gnu;-lFLAC;-lm;-L/usr/lib/x86_64-linux-gnu;-logg;-lvorbis;-lm;-L/usr/lib/x86_64-linux-gnu;-logg;-L/usr/lib/x86_64-linux-gnu;-lm;-L/usr/lib/x86_64-linux-gnu;-logg;-lm;-lm;-lpulse-simple;-L/usr/lib/x86_64-linux-gnu/pulseaudio;-lpulsecommon-16.1;-lpulse;-L/usr/lib/x86_64-linux-gnu/pulseaudio;-lpulsecommon-16.1;-lasound;-lm;-lrt;-ljack;-lpthread;-lpipewire-0.3;-lsystemd;-ldbus-1;-lsystemd;-Wl,--export-dynamic;-lgmodule-2.0;-pthread;-lglib-2.0;-lm;-pthread;-L/usr/lib/x86_64-linux-gnu;-lpcre2-8;-lm;-pthread;-L/usr/lib/x86_64-linux-gnu;-lpcre2-8;-L/usr/lib64;-linstpatch-1.0;-lm;-pthread;-L/usr/lib/x86_64-linux-gnu;-lpcre2-8;-lgobject-2.0;-lm;-L/usr/lib/x86_64-linux-gnu;-lpcre2-8;-lffi;-lgthread-2.0;-pthread;-lglib-2.0;-lm;-pthread;-L/usr/lib/x86_64-linux-gnu;-lpcre2-8;-lsndfile;-lmp3lame;-L/usr/lib/x86_64-linux-gnu;-lm;-L/usr/lib/x86_64-linux-gnu;-logg;-lvorbis;-lm;-L/usr/lib/x86_64-linux-gnu;-logg;-lvorbisenc;-L/usr/lib/x86_64-linux-gnu;-lvorbis;-lm;-L/usr/lib/x86_64-linux-gnu;-logg;-lm;-lm;-lSDL2;-lm;-lasound;-lm;-ldl;-lpthread;-lpulse;-pthread;-lsamplerate;-lX11;-lXext;-lXcursor;-lXi;-lXfixes;-lXrandr;-lXss;-ldrm;-lgbm;-lwayland-egl;-lwayland-client;-lwayland-cursor;-lxkbcommon;-ldecor-0;-lpthread;-lreadline;-L/usr/lib/x86_64-linux-gnu;-ltinfo;-lvorbisfile;-L/usr/lib/x86_64-linux-gnu;-lvorbis;-lm;-L/usr/lib/x86_64-linux-gnu;-logg;-lFLAC;-lm;-L/usr/lib/x86_64-linux-gnu;-logg;-lmpg123;-lm;-lopusfile;-lm;-L/usr/lib/x86_64-linux-gnu;-logg;-lopus;-lm
+SDL2_MIXER_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread;/usr/lib/x86_64-linux-gnu/libpulse-simple.so;/usr/lib/x86_64-linux-gnu/libpulse.so;/usr/lib/gcc/x86_64-linux-gnu/13/libgomp.so;/usr/lib/x86_64-linux-gnu/libpthread.a;-pthread;-Wl,--export-dynamic;-pthread;-pthread;-pthread;-pthread;-pthread;-pthread;-pthread
+SDL2_MIXER_STATIC_LIBDIR:INTERNAL=
+SDL2_MIXER_STATIC_LIBRARIES:INTERNAL=SDL2_mixer;m;m;dl;pthread;samplerate;X11;Xext;Xcursor;Xi;Xfixes;Xrandr;Xss;drm;gbm;wayland-egl;wayland-client;wayland-cursor;xkbcommon;decor-0;pthread;modplug;stdc++;m;fluidsynth;m;m;pcre2-8;glib-2.0;m;pcre2-8;mp3lame;FLAC;m;ogg;vorbis;m;ogg;m;ogg;m;m;pulse-simple;pulsecommon-16.1;pulse;pulsecommon-16.1;asound;m;rt;jack;pthread;pipewire-0.3;systemd;dbus-1;systemd;gmodule-2.0;glib-2.0;m;pcre2-8;m;pcre2-8;instpatch-1.0;m;pcre2-8;gobject-2.0;m;pcre2-8;ffi;gthread-2.0;glib-2.0;m;pcre2-8;sndfile;mp3lame;m;ogg;vorbis;m;ogg;vorbisenc;vorbis;m;ogg;m;m;SDL2;m;asound;m;dl;pthread;pulse;samplerate;X11;Xext;Xcursor;Xi;Xfixes;Xrandr;Xss;drm;gbm;wayland-egl;wayland-client;wayland-cursor;xkbcommon;decor-0;pthread;readline;tinfo;vorbisfile;vorbis;m;ogg;FLAC;m;ogg;mpg123;m;opusfile;m;ogg;opus;m
+SDL2_MIXER_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu/pulseaudio;/usr/lib/x86_64-linux-gnu/pulseaudio;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib64;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu
+SDL2_MIXER_STATIC_LIBS:INTERNAL=
+SDL2_MIXER_STATIC_LIBS_L:INTERNAL=
+SDL2_MIXER_STATIC_LIBS_OTHER:INTERNAL=
+SDL2_MIXER_STATIC_LIBS_PATHS:INTERNAL=
+SDL2_MIXER_VERSION:INTERNAL=2.8.0
+SDL2_MODULE_NAME:INTERNAL=sdl2
+SDL2_PREFIX:INTERNAL=/usr
+SDL2_STATIC_CFLAGS:INTERNAL=-I/usr/include;-I/usr/include/SDL2;-D_REENTRANT
+SDL2_STATIC_CFLAGS_I:INTERNAL=
+SDL2_STATIC_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
+SDL2_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include;/usr/include/SDL2
+SDL2_STATIC_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-lSDL2;-lm;-lasound;-lm;-ldl;-lpthread;-lpulse;-pthread;-lsamplerate;-lX11;-lXext;-lXcursor;-lXi;-lXfixes;-lXrandr;-lXss;-ldrm;-lgbm;-lwayland-egl;-lwayland-client;-lwayland-cursor;-lxkbcommon;-ldecor-0;-lpthread
+SDL2_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread
+SDL2_STATIC_LIBDIR:INTERNAL=
+SDL2_STATIC_LIBRARIES:INTERNAL=SDL2;m;asound;m;dl;pthread;pulse;samplerate;X11;Xext;Xcursor;Xi;Xfixes;Xrandr;Xss;drm;gbm;wayland-egl;wayland-client;wayland-cursor;xkbcommon;decor-0;pthread
+SDL2_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu
+SDL2_STATIC_LIBS:INTERNAL=
+SDL2_STATIC_LIBS_L:INTERNAL=
+SDL2_STATIC_LIBS_OTHER:INTERNAL=
+SDL2_STATIC_LIBS_PATHS:INTERNAL=
+SDL2_VERSION:INTERNAL=2.30.0
+SDL2_sdl2_INCLUDEDIR:INTERNAL=
+SDL2_sdl2_LIBDIR:INTERNAL=
+SDL2_sdl2_PREFIX:INTERNAL=
+SDL2_sdl2_VERSION:INTERNAL=
 Wayland_CFLAGS:INTERNAL=-I/usr/include
 Wayland_CFLAGS_I:INTERNAL=
 Wayland_CFLAGS_OTHER:INTERNAL=
@@ -1416,8 +1501,18 @@ X11_xkbfile_LIB-ADVANCED:INTERNAL=1
 _CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
+__pkg_config_arguments_SDL2:INTERNAL=REQUIRED;sdl2
+__pkg_config_arguments_SDL2_MIXER:INTERNAL=REQUIRED;SDL2_mixer
 __pkg_config_arguments_Wayland:INTERNAL=REQUIRED;wayland-client>=0.2.7;wayland-cursor>=0.2.7;wayland-egl>=0.2.7;xkbcommon>=0.5.0
+__pkg_config_checked_SDL2:INTERNAL=1
+__pkg_config_checked_SDL2_MIXER:INTERNAL=1
 __pkg_config_checked_Wayland:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_SDL2_MIXER_SDL2
+pkgcfg_lib_SDL2_MIXER_SDL2-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_SDL2_MIXER_SDL2_mixer
+pkgcfg_lib_SDL2_MIXER_SDL2_mixer-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_SDL2_SDL2
+pkgcfg_lib_SDL2_SDL2-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_Wayland_wayland-client
 pkgcfg_lib_Wayland_wayland-client-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_Wayland_wayland-cursor

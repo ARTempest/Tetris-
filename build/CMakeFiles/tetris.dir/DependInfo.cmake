@@ -14,6 +14,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/antuan/Personal/projects/Tetris-/src/character.cpp" "CMakeFiles/tetris.dir/src/character.cpp.o" "gcc" "CMakeFiles/tetris.dir/src/character.cpp.o.d"
   "/home/antuan/Personal/projects/Tetris-/src/game.cpp" "CMakeFiles/tetris.dir/src/game.cpp.o" "gcc" "CMakeFiles/tetris.dir/src/game.cpp.o.d"
   "/home/antuan/Personal/projects/Tetris-/src/main.cpp" "CMakeFiles/tetris.dir/src/main.cpp.o" "gcc" "CMakeFiles/tetris.dir/src/main.cpp.o.d"
+  "/home/antuan/Personal/projects/Tetris-/src/music.cpp" "CMakeFiles/tetris.dir/src/music.cpp.o" "gcc" "CMakeFiles/tetris.dir/src/music.cpp.o.d"
   "/home/antuan/Personal/projects/Tetris-/src/piece.cpp" "CMakeFiles/tetris.dir/src/piece.cpp.o" "gcc" "CMakeFiles/tetris.dir/src/piece.cpp.o.d"
   "/home/antuan/Personal/projects/Tetris-/src/render.cpp" "CMakeFiles/tetris.dir/src/render.cpp.o" "gcc" "CMakeFiles/tetris.dir/src/render.cpp.o.d"
   "/home/antuan/Personal/projects/Tetris-/src/shader.cpp" "CMakeFiles/tetris.dir/src/shader.cpp.o" "gcc" "CMakeFiles/tetris.dir/src/shader.cpp.o.d"

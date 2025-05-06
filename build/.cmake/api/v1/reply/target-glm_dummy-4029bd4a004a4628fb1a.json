@@ -16,6 +16,7 @@
 		"files" : 
 		[
 			"libs/glm/glm/CMakeLists.txt",
+			"CMakeLists.txt",
 			"libs/glm/CMakeLists.txt"
 		],
 		"nodes" : 
@@ -35,14 +36,23 @@
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 162,
+				"line" : 11,
 				"parent" : 2
 			},
 			{
+				"file" : 2
+			},
+			{
 				"command" : 1,
-				"file" : 1,
+				"file" : 2,
+				"line" : 162,
+				"parent" : 4
+			},
+			{
+				"command" : 1,
+				"file" : 2,
 				"line" : 163,
-				"parent" : 2
+				"parent" : 4
 			},
 			{
 				"command" : 1,
@@ -71,14 +81,50 @@
 			[
 				{
 					"backtrace" : 3,
-					"path" : "/home/antuan/Personal/projects/Tetris-/libs/glm"
+					"path" : "/usr/include/SDL2"
 				},
 				{
-					"backtrace" : 4,
-					"path" : "/home/antuan/Personal/projects/Tetris-/libs/glm/test/external"
+					"backtrace" : 3,
+					"path" : "/usr/include/glib-2.0"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/usr/lib/x86_64-linux-gnu/glib-2.0/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/usr/include/opus"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/usr/include/pipewire-0.3"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/usr/include/spa-0.2"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/usr/include/dbus-1.0"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/usr/lib/x86_64-linux-gnu/dbus-1.0/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/usr/include/libinstpatch-2"
 				},
 				{
 					"backtrace" : 5,
+					"path" : "/home/antuan/Personal/projects/Tetris-/libs/glm"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/home/antuan/Personal/projects/Tetris-/libs/glm/test/external"
+				},
+				{
+					"backtrace" : 7,
 					"path" : "/home/antuan/Personal/projects/Tetris-/libs/glm/glm/.."
 				}
 			],

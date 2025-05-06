@@ -394,4 +394,5 @@ CMakeFiles/tetris.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/fstream.tcc /usr/include/c++/13/sstream \
  /usr/include/c++/13/bits/sstream.tcc \
  /home/antuan/Personal/projects/Tetris-/src/../include/block.h \
- /home/antuan/Personal/projects/Tetris-/src/../include/texture.h
+ /home/antuan/Personal/projects/Tetris-/src/../include/texture.h \
+ /home/antuan/Personal/projects/Tetris-/src/../include/music.h

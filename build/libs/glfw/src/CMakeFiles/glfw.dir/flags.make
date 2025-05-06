@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11
 
-C_INCLUDES = -I/home/antuan/Personal/projects/Tetris-/libs/glfw/include -I/home/antuan/Personal/projects/Tetris-/libs/glfw/src -I/home/antuan/Personal/projects/Tetris-/build/libs/glfw/src
+C_INCLUDES = -I/usr/include/SDL2 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/opus -I/usr/include/pipewire-0.3 -I/usr/include/spa-0.2 -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -I/usr/include/libinstpatch-2 -I/home/antuan/Personal/projects/Tetris-/libs/glfw/include -I/home/antuan/Personal/projects/Tetris-/libs/glfw/src -I/home/antuan/Personal/projects/Tetris-/build/libs/glfw/src
 
 C_FLAGS = -std=c99 -fPIC -Wall
 
