@@ -13,6 +13,7 @@ The game mechanics are simple, like I said it is a tetris clon. Basically:
  - The pieces can rotate and move right, left, and down 
  - Moving down means you want to decrease the interval time between every time the piece automatically moves down.
 
+## Project Structure and Assets
 - **Headers** and **src** files are organized in their respective folders.
 - **Textures** and **music** files are placed in folders named after their categories (e.g., `tetris_music` inside the `music` folder).
 
