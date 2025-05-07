@@ -42,8 +42,12 @@ private:
 // Key Delays
   int delayR = 0;
   int delayL = 0;
+
   int delayZ = 0;
   int delayX = 0;
+
+  int keysDelay = 15;
+
 
   int fallingSpeed = 20;
   const int initialFallingSpeed = fallingSpeed;

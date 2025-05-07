@@ -68,14 +68,14 @@ void Game::pieceMov(const int frameRate) {
   if (pressingR && !pressingL && movingR == false) {
     activePiece->move(1, 0);
     movingR = true;
-    delayR = 15;
-    delayL = 15;
+    delayR = keysDelay;
+    delayL = keysDelay;
   }
   else if (pressingL && !pressingR && movingL == false) {
     activePiece->move(-1, 0);
     movingL = true;
-    delayL = 15;
-    delayR = 15;
+    delayL = keysDelay;
+    delayR = keysDelay;
   }
   else if (frameRate % 10 == 0){
 
@@ -408,11 +408,6 @@ void Game::initNumbers() {
     numbers[i] = newNumber;
     numbers[i].texCoords = convertToAtlasScale(numbers[i].texCoords);
   } 
-
-  for (Number number: numbers) {
-
-    std::cout << "x: " << number.texCoords.x << " y: " << number.texCoords.y << '\n';
-  }
 }
 
 void Game::initLetters() { 
@@ -478,13 +473,15 @@ void Game::gameOverScreen() {
 }
 
 void Game::increaseSpeed() {
-  int speed = score / 10;
+  int speed = score / 20;
   
   if (initialFallingSpeed + speed > 59) {
     speed =  39;
   }
-  std::cout << score / 10 << '\n';
 
   fallingSpeed = initialFallingSpeed + speed;
+  if (fallingSpeed > 20) {
+    keysDelay = 10;
+  } 
 }
 
