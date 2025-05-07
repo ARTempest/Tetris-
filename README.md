@@ -1,5 +1,5 @@
 # Tetris++ -> Tetris Clone with C++ and OpenGL
-Just a clon of tetris built in C++ with OpenGL to get a better understanding of how graphics work under the hood. This is my first real C++ project.
+Just a clon of tetris built in C++ with OpenGL to get a better understanding of how graphics work under the hood. This is my first real C++ project. (The clip does not show the true colors of the pieces, because the video editing software I use made them almost gray and white)
 
 ![Tetris Gameplay](clips/clip.gif)
 
